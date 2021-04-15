@@ -18,8 +18,9 @@
 }
 #openBtn {
     color: #FF715B;
-
-
+}
+.navH2 {
+    align-self: center;
 }
 
 /** Mobile Nav **/
