@@ -1,0 +1,62 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: aqua;
+}
+.navbar {
+    border: 1px solid black;
+    padding: 20px;
+}
+.navHead {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+#openBtn {
+    color: #FF715B;
+
+
+}
+
+/** Mobile Nav **/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background: #222;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+    margin-top: 115px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #FF715B;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.sidenav a  {
+    color: white;
+    text-decoration: none;
+}
