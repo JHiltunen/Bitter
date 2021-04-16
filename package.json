@@ -1,0 +1,19 @@
+{
+  "name": "bitter",
+  "version": "1.0.0",
+  "description": "Bitter media sharing application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JHiltunen/Bitter.git"
+  },
+  "author": "Joonas Hiltunen, Jesse Julenius, Miikka Huotari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JHiltunen/Bitter/issues"
+  },
+  "homepage": "https://github.com/JHiltunen/Bitter#readme"
+}
