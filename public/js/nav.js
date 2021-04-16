@@ -1,11 +1,10 @@
 'use strict';
 // redirect to https protocol if needed
-if (window.location.protocol == 'http:') {
+if (window.location.protocol === 'http:') {
   console.log("Redirect to https protocol");
   window.location.href =
       window.location.href.replace('http:', 'https:');
 }
-
 // get close and open button elements
 let openBtn = document.getElementById("openBtn");
 let sidenav = document.getElementById("sidenav");
@@ -15,11 +14,19 @@ openBtn.addEventListener("click", open);
 
 // function to handle navbar opening
 function open() {
-  if (sidenav.style.width == '223px') {
+  if (sidenav.style.width === '223px') {
     sidenav.style.width = '0';
     sidenav.style.opacity = 0;
   } else {
     sidenav.style.width = "223px";
     sidenav.style.opacity = 1.5;
   }
+}
+
+function open() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
 }
