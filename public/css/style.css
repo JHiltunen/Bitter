@@ -3,23 +3,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
 }
 html {
     background: #266DD3;
 }
 .navbar {
     background: #ffffff;
-    border: 1px solid black;
-    padding: 20px;
+    padding: 17px;
 }
 .navHead {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
-#openBtn {
+.headLinks {
+    display: none;
 
+}
+#openBtn {
+    display: flex;
 }
 .navH2 {
     align-self: center;
@@ -116,7 +118,6 @@ html {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 1px solid black;
     background-color: #14366f;
     height: 30rem;
 }
@@ -175,6 +176,14 @@ input[type=submit]:hover {
     color: white;
 }
 
+/**       FORUM     **/
+
+
+
+
+
+
+
 @media only screen and (min-width: 680px) {
     .mainButton {
         transition: all 0.5s;
@@ -201,7 +210,39 @@ input[type=submit]:hover {
         opacity: 1;
         right: 0;
     }
+    #openBtn {
+        display: none;
+    }
+    .navHead {
+        display: flex;
+        flex-direction: row;
+        width: 680px;
+        margin: auto;
+        justify-content: flex-end;
+    }
+    .navH2{
+        margin-right: auto;
+    }
+    .mainText {
+    width: 680px;
+    }
+    .headLinks {
+        display: flex;
+        text-decoration: none;
+        margin-right: 25px;
+        align-items: center;
+        font-size: 14px;
+        color: black;
+    }
+    .headLinks:hover {
+        color: #266DD3;
+    }
 
+/**     FORUM       **/
 
+    .forumArticle {
+        width: 680px;
+        margin: auto;
+    }
 
 }
