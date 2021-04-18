@@ -1,0 +1,289 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    background: #266DD3;
+}
+.navbar {
+    background: #ffffff;
+    padding: 17px;
+}
+.navHead {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.headLinks {
+    display: none;
+
+}
+#openBtn {
+    display: flex;
+}
+.navH2 {
+    align-self: center;
+}
+
+/** Mobile Nav **/
+/*
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background: #222;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+    margin-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #FF715B;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.sidenav a  {
+    color: white;
+    text-decoration: none;
+}*/
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+.mainArticle {
+    display: flex;
+    justify-content: center;
+    height: 28rem;
+    align-items: center;
+    flex-direction: column;
+}
+.mainText {
+    text-shadow: 1px 1px #000000;
+    color: white;
+    font-size: 3em;
+    padding: 20px;
+    text-align: center;
+}
+.mainButton {
+    padding: 12px 16px 12px 16px;
+    width: 11rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 1px solid white;
+    margin: 4px;
+    overflow: hidden;
+    transition-duration: 0.4s;
+    position: relative;
+}
+.mainButton:hover {
+    border: 0;
+    background-color: #14366f;
+
+}
+.mainButton:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.mainButton:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.mainFooter {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #14366f;
+    height: 30rem;
+}
+.footerP {
+    font-size: 1.4rem;
+    color: white;
+    margin-top: 20px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+input[name=name] {
+    width: 18rem;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 12px;
+    border: 0;
+    border: 2px solid white;
+    box-sizing: border-box;
+
+}
+input[name=email] {
+    width: 18rem;
+    height: 2rem;
+    padding: 12px;
+    margin-top: 14px;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    border: 2px solid white;
+    color: white;
+}
+textarea[name=msg] {
+    margin-top: 14px;
+    height: 8rem;
+    width: 18rem;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    border: 2px solid white;
+    color: white;
+}
+input[type=submit] {
+    margin-top: 14px;
+    width: 18rem;
+    height: 2rem;
+    color: #266DD3;
+    background-color: white;
+    border: 0;
+}
+input[type=submit]:hover {
+    background-color: #266DD3;
+    color: white;
+}
+
+/**       FORUM     **/
+
+
+
+
+
+
+
+@media only screen and (min-width: 680px) {
+    .mainButton {
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+    .mainButton span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    .mainButton span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    .mainButton:hover span {
+        padding-right: 25px;
+    }
+    .mainButton:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    #openBtn {
+        display: none;
+    }
+    .navHead {
+        display: flex;
+        flex-direction: row;
+        width: 680px;
+        margin: auto;
+        justify-content: flex-end;
+    }
+    .navH2{
+        margin-right: auto;
+    }
+    .mainText {
+    width: 680px;
+    }
+    .headLinks {
+        display: flex;
+        text-decoration: none;
+        margin-right: 25px;
+        align-items: center;
+        font-size: 14px;
+        color: black;
+    }
+    .headLinks:hover {
+        color: #266DD3;
+    }
+
+/**     FORUM       **/
+
+    .forumArticle {
+        width: 680px;
+        margin: auto;
+    }
+}
