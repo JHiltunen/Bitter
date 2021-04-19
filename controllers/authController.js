@@ -19,7 +19,8 @@ const login = (req, res) => {
       }
       // generate a signed son web token with the contents of user object and return it in the response
       const token = jwt.sign(user, 'gfdrtfyui987654rtyuio8765ewwertyu');
-      return res.redirect('/forum.html');
+      
+      return res.json({user, token});
     });
   })(req, res);
 };

@@ -1,3 +1,4 @@
+const url = 'https://localhost:8001'; // change url when uploading to server
 const loginForm = document.querySelector('#login-form');
 
 // login
@@ -20,12 +21,6 @@ loginForm.addEventListener('submit', async (evt) => {
     } else {
       // save token
       sessionStorage.setItem('token', json.token);
-      // show/hide forms + cats
-      loginWrapper.style.display = 'none';
-      logOut.style.display = 'block';
-      main.style.display = 'block';
-      userInfo.innerHTML = `Hello ${json.user.name}`;
-      getCat();
-      getUsers();
+      window.location.href = url + "/forum.html";
     }
   });
