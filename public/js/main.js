@@ -15,6 +15,10 @@ if (sessionStorage.getItem('token')) {
     loginForm.style.display = 'flex';
 }
 
+function checkIfLoggedIn() {
+  
+}
+
 registerNow.addEventListener('click', showRegistration);
 loginNow.addEventListener('click', showLogin);
 
@@ -28,8 +32,31 @@ function showRegistration() {
     registerForm.style.display = 'flex';
 }
 
+// submit register form
+registerForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(registerForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + '/auth/register', fetchOptions);
+  const json = await response.json();
+  console.log('user add response', json);
+  if (json.errors === undefined || json.errors.length == 0) {
+    // save token
+    sessionStorage.setItem('token', json.token);
+    logOut.style.display = 'block';
+    window.location.href = url + "/forum.html";
+  }
+});
+
 // login
 loginForm.addEventListener('submit', async (evt) => {
+    console.log("LOGGEDIN");
     evt.preventDefault();
     const data = serializeJson(loginForm);
     const fetchOptions = {

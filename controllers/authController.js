@@ -34,8 +34,11 @@ const user_create_post = async (req, res, next) => {
   } else {
     const salt = bcrypt.genSaltSync(12);
     const user = {};
-    user.name = req.body.name;
+    user.firstname = req.body.firstname;
+    user.lastname = req.body.lastname;
     user.username = req.body.username;
+    user.dateOfBirth = req.body.dateOfBirth;
+    user.gender = req.body.gender;
     user.password = bcrypt.hashSync(req.body.password, salt);
     
     const id = await userModel.insertUser(user);

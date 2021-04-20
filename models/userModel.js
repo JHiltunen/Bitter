@@ -6,7 +6,7 @@ const promisePool = pool.promise();
 const getAllUsers = async () => {
   try {
     // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.execute('SELECT user_id, name, email FROM wop_user');
+    const [rows] = await promisePool.execute('SELECT user_id, name, email FROM users');
     console.log('something back from db?', rows);
     return rows;
   } catch (e) {
@@ -17,7 +17,7 @@ const getAllUsers = async () => {
 const getAllUsersSort = async (order) => {
   try {
     // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.execute(`SELECT user_id, name, email FROM wop_user ORDER BY ${order}`);
+    const [rows] = await promisePool.execute(`SELECT user_id, name, email FROM users ORDER BY ${order}`);
     return rows;
   } catch (e) {
     console.error('error', e.message);
@@ -27,7 +27,7 @@ const getAllUsersSort = async (order) => {
 const getUser = async (id) => {
   try {
     console.log('userModel getUser', id);
-    const [rows] = await promisePool.execute('SELECT * FROM wop_user WHERE user_id = ?', [id]);
+    const [rows] = await promisePool.execute('SELECT * FROM users WHERE user_id = ?', [id]);
     return rows[0];
   } catch (e) {
     console.error('userModel:', e.message);
@@ -35,13 +35,13 @@ const getUser = async (id) => {
 };
 
 const insertUser = async (user) => {
-  const [row] = await promisePool.execute('INSERT INTO wop_user (name, email, password) VALUES (?, ?, ?)', [user.name, user.username, user.password]);
+  const [row] = await promisePool.execute('INSERT INTO users (firstname, lastname, email, dateOfBirth, gender, password) VALUES (?, ?, ?, ?, ?, ?)', [user.firstname, user.lastname, user.username, user.dateOfBirth, user.gender, user.password]);
   console.log('insert row', row);
   return row.insertId;
 };
 
 const updateUser = async (user) => {
-  const [row] = await promisePool.execute('UPDATE wop_user (name, email) VALUES (?, ?)', [user.name, user.username]);
+  const [row] = await promisePool.execute('UPDATE users (name, email) VALUES (?, ?)', [user.name, user.username]);
   console.log('insert row', row);
   return row.insertId;
 };
@@ -50,7 +50,7 @@ const getUserLogin = async (params) => {
   try {
     console.log(params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM wop_user WHERE email = ?;',
+        'SELECT * FROM users WHERE email = ?;',
         params);
     return rows;
   } catch (e) {
