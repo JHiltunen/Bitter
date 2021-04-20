@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bitter</title>
 </head>
 <body>
@@ -39,8 +40,14 @@
         <p id="login-error"></p>
         <form action="/auth/login" method="POST" class="login-form">
             <p class="login-Text" >Login</p>
-            <input class="login" type="text" name="username" placeholder="Email" required>
-            <input class="login" type="password" name="password" placeholder="Password" required>
+            <div class="login-icons">
+            <i class="w3-xxlarge fa fa-user" id="user"></i>
+            <input id="login-user" class="login" type="text" name="username" placeholder="Email" required>
+            </div>
+            <div class="login-icons">
+                <i class="w3-xxlarge fa fa-envelope-o" id="mail"></i>
+            <input id="login-mail" class="login" type="password" name="password" placeholder="Password" required>
+            </div>
             <button class="login-Btn" type="submit">Login</button>
             <a class="register-Btn" href="#" id="register-now">Register now</a>
         </form>

@@ -257,6 +257,27 @@ input[type=submit]:hover {
     display: flex;
     justify-content: center;
 }
+.login-icons {
+    display: flex;
+    justify-content: center;
+    margin-right: 11px;
+}
+#user {
+    margin-right: 12px;
+    color: #266DD3;
+    font-size: 38px
+}
+#mail {
+    margin-right: 7px;
+    color: #266DD3;
+    font-size: 38px
+}
+#login-mail {
+    margin-right: 10px;
+}
+#login-user {
+    margin-right: 5px;
+}
 
 input.login {
     align-self: center;
@@ -272,7 +293,7 @@ input.login {
 }
 .login-Btn {
     align-self: center;
-    width: 18rem;
+    width: 6rem;
     height: 2rem;
     background-color: #266DD3;
     color: white;
@@ -293,7 +314,6 @@ input.login {
     margin-top: 7px;
 }
 .register-Btn:hover {
-
     text-decoration: underline;
 }
 
