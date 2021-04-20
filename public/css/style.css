@@ -231,10 +231,71 @@ input[type=submit]:hover {
 /**       FORUM     **/
 
 
+/**     LOGIN       **/
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e7e7e7;
+    box-shadow: 0px 1px 5px black;
+    height: 25rem;
+    width: 24rem;
+    margin: auto;
+}
+.login-Text {
+    display: flex;
+    align-self: center;
+    font-size: 53px;
+    margin-bottom: 36px;
+    color: #266DD3;
+    text-shadow: 1px 1px #000000;
+}
 
+.loginArticle {
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+}
 
+input.login {
+    align-self: center;
+    width: 18rem;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    border: 2px solid #266DD3;
+    color: #266DD3;
+    padding: 12px;
+    margin: 5px 0px 10px 0px;
 
+}
+.login-Btn {
+    align-self: center;
+    width: 18rem;
+    height: 2rem;
+    background-color: #266DD3;
+    color: white;
+    border: 0;
+    border: 2px solid #266DD3;
+    cursor: pointer;
+    text-align: center;
+}
+.login-Btn:hover {
+    background-color: #e7e7e7;
+    color: #266DD3;
+
+}
+.register-Btn {
+    color: #266DD3;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 7px;
+}
+.register-Btn:hover {
+
+    text-decoration: underline;
+}
 
 @media only screen and (min-width: 680px) {
     .mainButton {
