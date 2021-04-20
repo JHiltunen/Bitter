@@ -35,7 +35,7 @@ const getUser = async (id) => {
 };
 
 const insertUser = async (user) => {
-  const [row] = await promisePool.execute('INSERT INTO users (firstname, lastname, email, dateOfBirth, gender, password) VALUES (?, ?, ?, ?, ?, ?)', [user.firstname, user.lastname, user.username, user.dateOfBirth, user.gender, user.password]);
+  const [row] = await promisePool.execute('INSERT INTO users (firstname, lastname, email, dateOfBirth, gender, password, vst) VALUES (?, ?, ?, ?, ?, ?, curdate())', [user.firstname, user.lastname, user.username, user.dateOfBirth, user.gender, user.password]);
   console.log('insert row', row);
   return row.insertId;
 };
