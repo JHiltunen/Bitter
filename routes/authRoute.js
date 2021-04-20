@@ -15,9 +15,9 @@ router.post('/register',
       body('username', 'email is not valid').isEmail(),
       check('dateOfBirth').custom((dateOfBirth, {req}) => {
         if (currentDate < body('dateOfBirth')) {
-          return true;
+          throw new Error('Birthdate can not be in the future');
         } else {
-          throw new Error('Password confirmation does not match password');
+          return true;
         }
       }),
       // TODO. REGEX for gender enum
