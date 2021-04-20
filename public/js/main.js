@@ -2,6 +2,7 @@
 const url = 'https://localhost:8001'; // change url when uploading to server
 const loginNow = document.querySelector('#login-now');
 const loginForm = document.querySelector('#login-form');
+const loginError = document.querySelector('#login-error');
 const logOut = document.querySelector('#log-out');
 const registerNow = document.querySelector('#register-now');
 const registerForm = document.querySelector('#register-form');
@@ -51,7 +52,9 @@ registerForm.addEventListener('submit', async (evt) => {
     sessionStorage.setItem('token', json.token);
     logOut.style.display = 'block';
     window.location.href = url + "/forum.html";
-  }
+  } else {
+    loginError.innerHTML = JSON.stringify(json.errors);
+  } 
 });
 
 // login

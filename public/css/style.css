@@ -7,6 +7,11 @@
 html {
     background: #266DD3;
 }
+
+#login-error {
+    color: red;
+}
+
 .navbar {
     background: #ffffff;
     padding: 17px;
