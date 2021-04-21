@@ -36,33 +36,43 @@
         </nav>
     </header>
     <article class="loginArticle">
-
         <p id="login-error"></p>
-        <form action="/auth/login" method="POST" class="login-form">
+        <form id="login-form" action="/auth/login" method="POST" class="login-form">
             <p class="login-Text" >Login</p>
             <div class="login-icons">
-            <i class="w3-xxlarge fa fa-user" id="user"></i>
+            <i class="fa fa-user" id="user"></i>
             <input id="login-user" class="login" type="text" name="username" placeholder="Email" required>
             </div>
             <div class="login-icons">
-                <i class="w3-xxlarge fa fa-envelope-o" id="mail"></i>
+                <i class="fa fa-unlock-alt" id="mail"></i>
             <input id="login-mail" class="login" type="password" name="password" placeholder="Password" required>
             </div>
             <button class="login-Btn" type="submit">Login</button>
             <a class="register-Btn" href="#" id="register-now">Register now</a>
         </form>
-        <form novalidate id="register-form" action="https://localhost:8001/auth/register" method="POST" enctype="multipart/form-data" class="form">
-            <input class="register" type="text" name="firstname" placeholder="Firstname" required>
-            <input class="register" type="text" name="lastname" placeholder="Lastname" required>
-            <input class="register" type="text" name="username" placeholder="Email" required>
-            <input type="date" name="dateOfBirth" id="dateOfBirth" required>
-            <select name="gender" id="gender" required>
+        <form novalidate id="register-form" action="https://localhost:8001/auth/register" method="POST" enctype="multipart/form-data" class="login-form">
+            <p class="register-Text" >Registration</p>
+            <div class="names">
+                <input class="login" type="text" name="firstname" placeholder="Firstname" required>
+            </div>
+            <div class="names">
+                <input class="login" type="text" name="lastname" placeholder="Lastname" required>
+            </div>
+            <div class="bDate">
+                <input id="email-box" class="login" type="text" name="username" placeholder="Email" required>
+                <span id="emailIcon" class="fa fa-envelope"></span>
+            </div>
+            <div class="bDate">
+                <input class="date" type="date" name="dateOfBirth" id="dateOfBirth" required>
+                    <span id="dateIcon" class="fa fa-calendar"></span>
+                </div>
+            <select class="gender" name="gender" id="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="password" name="password" id="password" placeholder="Password" required>
-            <button type="submit">Register</button>
+            <input class="login" type="password" name="password" id="password" placeholder="Password" required>
+            <button class="registerFormBtn" type="submit">Register</button>
             <a href="#" id="login-now">Login now</a>
         </form>
     </article>

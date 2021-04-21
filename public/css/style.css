@@ -33,49 +33,6 @@ html {
 }
 
 /** Mobile Nav **/
-/*
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    background: #222;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 30px;
-    margin-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #FF715B;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-.sidenav a  {
-    color: white;
-    text-decoration: none;
-}*/
-
-/* Registration */
-#register-form {
-    display: none;
-}
 
 .overlay {
     height: 0%;
@@ -239,7 +196,7 @@ input[type=submit]:hover {
     justify-content: center;
     background-color: #e7e7e7;
     box-shadow: 0px 1px 5px black;
-    height: 25rem;
+    height: 26rem;
     width: 24rem;
     margin: auto;
 }
@@ -253,7 +210,7 @@ input[type=submit]:hover {
 }
 
 .loginArticle {
-    height: 30rem;
+    height: 29rem;
     display: flex;
     justify-content: center;
 }
@@ -263,7 +220,7 @@ input[type=submit]:hover {
     margin-right: 11px;
 }
 #user {
-    margin-right: 12px;
+    margin-right: 7px;
     color: #266DD3;
     font-size: 38px
 }
@@ -272,11 +229,11 @@ input[type=submit]:hover {
     color: #266DD3;
     font-size: 38px
 }
-#login-mail {
-    margin-right: 10px;
-}
 #login-user {
-    margin-right: 5px;
+    margin-right: 3px;
+}
+#login-now {
+    display: none;
 }
 
 input.login {
@@ -284,7 +241,6 @@ input.login {
     width: 18rem;
     height: 2rem;
     background-color: rgba(0, 0, 0, 0);
-    border: 0;
     border: 2px solid #266DD3;
     color: #266DD3;
     padding: 12px;
@@ -297,7 +253,6 @@ input.login {
     height: 2rem;
     background-color: #266DD3;
     color: white;
-    border: 0;
     border: 2px solid #266DD3;
     cursor: pointer;
     text-align: center;
@@ -305,7 +260,6 @@ input.login {
 .login-Btn:hover {
     background-color: #e7e7e7;
     color: #266DD3;
-
 }
 .register-Btn {
     color: #266DD3;
@@ -313,9 +267,79 @@ input.login {
     text-decoration: none;
     margin-top: 7px;
 }
+.registerFormBtn {
+    align-self: center;
+    width: 6rem;
+    height: 2rem;
+    background-color: #266DD3;
+    color: white;
+    border: 2px solid #266DD3;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+.registerFormBtn:hover {
+    background-color: #e7e7e7;
+    color: #266DD3;
+}
+#register-form {
+    display: none;
+}
+.register-Text {
+    display: flex;
+    align-self: center;
+    font-size: 53px;
+    color: #266DD3;
+    margin-bottom: 4px;
+}
+
 .register-Btn:hover {
     text-decoration: underline;
 }
+.names {
+    align-self: center;
+}
+
+.bDate {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row-reverse;
+    margin-left: 15px;
+}
+.date {
+    height: 2rem;
+    width: 7rem;
+    margin-bottom: 13px;
+    margin-top: 3px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #266DD3;
+    color: #266DD3;
+}
+#dateIcon {
+    height: 40px;
+    font-size: 29px;
+    margin-right: 6px;
+}
+#emailIcon {
+    height: 40px;
+    font-size: 29px;
+    margin-right: 6px;
+}
+#email-box {
+    margin-left: 2px;
+}
+.gender {
+    width: 7rem;
+    height: 2rem;
+    margin-left: 48px;
+    margin-bottom: 9px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #266DD3;
+    color: #266DD3;
+    cursor: pointer;
+}
+
 
 @media only screen and (min-width: 680px) {
     .mainButton {
