@@ -37,8 +37,14 @@ const getUser = async (id) => {
 const insertUser = async (user) => {
   const [row] = await promisePool.execute('INSERT INTO users (firstname, lastname, email, dateOfBirth, gender, password, vst) VALUES (?, ?, ?, ?, ?, ?, curdate())', [user.firstname, user.lastname, user.username, user.dateOfBirth, user.gender, user.password]);
   console.log('insert row', row);
+  await giveUserDefaultRole(row.insertId);
   return row.insertId;
 };
+
+const giveUserDefaultRole = async (id) => {
+  const [row] = await promisePool.execute('INSERT INTO user_roles (roleId, userId) VALUES (2, ?)', [id]);
+  return row.insertId;
+}
 
 const updateUser = async (user) => {
   const [row] = await promisePool.execute('UPDATE users (name, email) VALUES (?, ?)', [user.name, user.username]);
@@ -50,7 +56,7 @@ const getUserLogin = async (params) => {
   try {
     console.log(params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM users WHERE email = ?;',
+        'SELECT * FROM users WHERE email = ? AND vet IS NULL;',
         params);
     return rows;
   } catch (e) {
