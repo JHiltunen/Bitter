@@ -56,7 +56,7 @@ const getUserLogin = async (params) => {
   try {
     console.log(params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM users WHERE email = ? AND vet IS NULL;',
+        'SELECT users.*, roles.name FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE email = ? AND vet IS NULL;',
         params);
     return rows;
   } catch (e) {
