@@ -305,13 +305,14 @@ input.login {
     align-items: center;
     justify-content: left;
     flex-direction: row-reverse;
-    margin-left: 15px;
+    margin-left: 18px;
 }
 .date {
     height: 2rem;
     width: 7rem;
     margin-bottom: 13px;
     margin-top: 3px;
+    margin-left: 4px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
     color: #266DD3;
@@ -320,11 +321,13 @@ input.login {
     height: 40px;
     font-size: 29px;
     margin-right: 6px;
+    color: #266DD3;
 }
 #emailIcon {
     height: 40px;
     font-size: 29px;
     margin-right: 6px;
+    color: #266DD3;
 }
 #email-box {
     margin-left: 2px;
@@ -332,12 +335,61 @@ input.login {
 .gender {
     width: 7rem;
     height: 2rem;
-    margin-left: 48px;
+    margin-left: 9px;
     margin-bottom: 9px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
     color: #266DD3;
     cursor: pointer;
+}
+.names {
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: center;
+
+}
+#name {
+    font-size: 36px;
+    margin-right: 8px;
+    margin-top: 3px;
+    color: #266DD3;
+}
+#lName {
+    font-size: 32px;
+    margin-right: 9px;
+    margin-top: 5px;
+    color: #266DD3;
+}
+#reg-1 {
+    margin-right: 20px;
+}
+#reg-2 {
+    margin-right: 22px;
+}
+#reg-5 {
+    align-self: center;
+}
+.pass {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 22px;
+
+}
+#pass {
+    color: #266DD3;
+    font-size: 37px;
+    margin-top: 5px;
+    margin-right: 13px;
+}
+.mars-venus {
+    flex-direction: row-reverse;
+    display: flex;
+    align-self: flex-start;
+    margin-left: 12px;
+}
+#mars-venus {
+    color: #266DD3;
+    font-size: 30px;
 }
 
 
