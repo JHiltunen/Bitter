@@ -4,6 +4,7 @@ const express = require('express');
 
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
+const adminRoute = require('./routes/adminRoute');
 const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
 const app = express();
@@ -30,3 +31,4 @@ app.use(express.static('public'));
 // routes
 app.use('/auth', authRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+app.use('/admin', passport.authenticate('jwt', {session: false}), adminRoute);
