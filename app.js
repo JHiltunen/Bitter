@@ -20,6 +20,20 @@ app.get('/', (req, res) => {
   res.send('Hello Secure World!');
 });
 
+const needsGroup = function(role) {
+  return function(req, res, next) {
+    Object.entries(req.user).forEach(([key,value]) => {
+      console.log(key,value)
+    })
+
+    if (req.user && req.user.name === role) {
+      next();
+    } else {
+      res.status(401).send('Unauthorized');
+    }  
+  };
+};
+
 
 app.use(cors());
 
@@ -30,5 +44,5 @@ app.use(express.static('public'));
 
 // routes
 app.use('/auth', authRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
-app.use('/admin', passport.authenticate('jwt', {session: false}), adminRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), needsGroup('User'), userRoute);
+app.use('/admin', passport.authenticate('jwt', {session: false}), needsGroup('Admin'), adminRoute);

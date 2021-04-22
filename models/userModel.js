@@ -27,7 +27,7 @@ const getAllUsersSort = async (order) => {
 const getUser = async (id) => {
   try {
     console.log('userModel getUser', id);
-    const [rows] = await promisePool.execute('SELECT * FROM users WHERE userId = ?', [id]);
+    const [rows] = await promisePool.execute('SELECT * FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE users.userId = ?', [id]);
     return rows[0];
   } catch (e) {
     console.error('userModel:', e.message);
