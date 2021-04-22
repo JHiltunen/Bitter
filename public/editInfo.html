@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Bitter</title>
+    <title>Edit User Information</title>
 </head>
 <body>
+
 <header>
     <nav class="navbar">
         <div class="navHead">
@@ -34,26 +33,18 @@
         </div>
     </nav>
 </header>
-<article class="mainArticle">
-    <p class="mainText">Bitter. Miksi tulla kouluun jos ei osaa koodaa!</p>
-    <a href="login.html">
-        <button class="mainButton" type="logIn"><span>Log In</span></button>
-    </a>
-    <a href="forum.html">
-        <button class="mainButton" type="Forum"><span>Check the Forum</span></button>
-    </a>
-</article>
-<footer class="mainFooter">
-    <p class="footerP">© 2021 by Bitter</p>
-    <p class="footerP">Need help? Please fill the form to Contact Us!</p>
-    <form action="" class="form">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="email" placeholder="Email" required>
-        <textarea name="msg" placeholder="Type your message here..." required></textarea>
-        <input type="submit" value="Submit">
-    </form>
-</footer>
+
+<h2 class="edit">Edit user information</h2>
+
+<table>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email/Username</th>
+        <th>Gender</th>
+        <th>DateOfBirth</th>
+    </tr>
+</table>
 <script src="js/nav.js"></script>
-<script src="js/serialize.js"></script>
 </body>
 </html>

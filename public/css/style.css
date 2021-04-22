@@ -20,6 +20,7 @@ html {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+
 }
 .headLinks {
     display: none;
@@ -226,6 +227,31 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #266DD3;
     color: white;
+}
+
+.edit {
+    text-align: center;
+    margin-top: 40px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px ;
+    letter-spacing: 2px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 /**       FORUM     **/
