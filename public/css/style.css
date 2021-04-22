@@ -394,9 +394,32 @@ input.login {
 
 
 @media only screen and (min-width: 680px) {
+    * {
+        font-size: 120%;
+    }
+    .navbar {
+
+    }
+    /*html {*/
+    /*    background-image: url("../img/bg1.jpg");*/
+    /*    background-repeat: no-repeat;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*    position: sticky;*/
+    /*    z-index: -1;*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*}*/
+    .mainArticle {
+        height: 38rem;
+    }
+    .mainText {
+        font-size: 2.5em;
+    }
     .mainButton {
         transition: all 0.5s;
         cursor: pointer;
+        font-size: 0.5em;
     }
     .mainButton span {
         cursor: pointer;
@@ -440,17 +463,50 @@ input.login {
         text-decoration: none;
         margin-right: 25px;
         align-items: center;
-        font-size: 14px;
+        font-size: 0.5em;
         color: black;
     }
     .headLinks:hover {
         color: #266DD3;
     }
+    input[name="name"] {
+        font-size: 0.6em;
+    }
+    input[name="email"] {
+        font-size: 0.6em;
+    }
+    textarea[name="msg"]{
+        font-size: 0.6em;
+    }
+    input[type="submit"] {
+        font-size: 0.6em;
+        cursor: pointer;
+    }
 
-/**     FORUM       **/
+        /**     FORUM       **/
 
     .forumArticle {
         width: 680px;
         margin: auto;
+    }
+
+    .login-Btn {
+        font-size: 0.6em;
+    }
+    input.login {
+        font-size: 0.6em;
+    }
+    .register-Btn {
+        font-size: 0.6em;
+    }
+    .gender {
+        font-size: 0.6em;
+    }
+    .date {
+       width: 6.8em;
+        font-size: 0.6em;
+    }
+    .registerFormBtn {
+        font-size: 0.6em;
     }
 }
