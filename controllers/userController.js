@@ -5,7 +5,7 @@ const {validationResult} = require('express-validator');
 const users = userModel.users;
 
 const user_list_get = async (req, res) => {
-    console.log('get all users from controllers', req.query);
+    console.log('get all users from controllers', req.user);
     if (req.query.sort === 'name') {
         const usersSort = await userModel.getAllUsersSort('name');
         res.json(usersSort);
