@@ -3,27 +3,6 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
-const getAllUsers = async () => {
-  try {
-    // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.execute('SELECT userId, firstname, lastname, email FROM users');
-    console.log('something back from db?', rows);
-    return rows;
-  } catch (e) {
-    console.error('error', e.message);
-  }
-};
-
-const getAllUsersSort = async (order) => {
-  try {
-    // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.execute(`SELECT user_id, name, email FROM users ORDER BY ${order}`);
-    return rows;
-  } catch (e) {
-    console.error('error', e.message);
-  }
-};
-
 const getUser = async (id) => {
   try {
     console.log('userModel getUser', id);
@@ -65,8 +44,6 @@ const getUserLogin = async (params) => {
 };
 
 module.exports = {
-  getAllUsers,
-  getAllUsersSort,
   getUser,
   insertUser,
   updateUser,
