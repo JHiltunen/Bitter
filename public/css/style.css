@@ -288,7 +288,7 @@ input.login {
 .register-Text {
     display: flex;
     align-self: center;
-    font-size: 53px;
+    font-size: 2em;
     color: #266DD3;
     margin-bottom: 4px;
 }
@@ -305,28 +305,28 @@ input.login {
     align-items: center;
     justify-content: left;
     flex-direction: row-reverse;
-    margin-left: 18px;
+    margin-left: 30px;
 }
 .date {
     height: 2rem;
     width: 7rem;
     margin-bottom: 13px;
     margin-top: 3px;
-    margin-left: 4px;
+    margin-left: 8px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
     color: #266DD3;
 }
 #dateIcon {
-    height: 40px;
-    font-size: 29px;
-    margin-right: 6px;
+    height: 47px;
+    font-size: 34px;
+    margin-right: 1px;
     color: #266DD3;
 }
 #emailIcon {
-    height: 40px;
-    font-size: 29px;
-    margin-right: 6px;
+    height: 41px;
+    font-size: 35px;
+    margin-right: 7px;
     color: #266DD3;
 }
 #email-box {
@@ -335,7 +335,7 @@ input.login {
 .gender {
     width: 7rem;
     height: 2rem;
-    margin-left: 9px;
+    margin-left: 8px;
     margin-bottom: 9px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
@@ -349,13 +349,13 @@ input.login {
 
 }
 #name {
-    font-size: 36px;
+    font-size: 42px;
     margin-right: 8px;
     margin-top: 3px;
     color: #266DD3;
 }
 #lName {
-    font-size: 32px;
+    font-size: 38px;
     margin-right: 9px;
     margin-top: 5px;
     color: #266DD3;
@@ -366,13 +366,19 @@ input.login {
 #reg-2 {
     margin-right: 22px;
 }
+#reg-3 {
+    margin-left: 23px;
+}
+#reg-4 {
+    margin-left: 27px;
+}
 #reg-5 {
     align-self: center;
 }
 .pass {
     display: flex;
     flex-direction: row-reverse;
-    margin-right: 22px;
+    margin-right: 15px;
 
 }
 #pass {
@@ -385,11 +391,13 @@ input.login {
     flex-direction: row-reverse;
     display: flex;
     align-self: flex-start;
-    margin-left: 12px;
+    margin-left: 25px;
+
 }
 #mars-venus {
     color: #266DD3;
-    font-size: 30px;
+    font-size: 31px;
+    margin-top: 4px;
 }
 
 
