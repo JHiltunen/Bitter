@@ -341,7 +341,7 @@ input.login {
     margin-left: 8px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
-    color: #266DD3;
+    color: #757575;
 }
 #dateIcon {
     height: 47px;
@@ -365,7 +365,7 @@ input.login {
     margin-bottom: 9px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
-    color: #266DD3;
+    color: #757575;
     cursor: pointer;
 }
 .names {
@@ -537,10 +537,11 @@ input.login {
         font-size: 0.6em;
     }
     .date {
-       width: 6.8em;
+        width: 8.5em;
         font-size: 0.6em;
+        padding: 12px;
+    }
     }
     .registerFormBtn {
         font-size: 0.6em;
     }
-}
