@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bitter</title>
 </head>
 <body>
@@ -36,24 +37,50 @@
     </header>
     <article class="loginArticle">
         <p id="login-error"></p>
-        <form id="login-form" action="/auth/login" method="POST" class="form">
-            <input type="text" name="username" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-            <a href="#" id="register-now">Register now</a>
+        <form id="login-form" action="/auth/login" method="POST" class="login-form">
+            <p class="login-Text" >Login</p>
+            <div class="login-icons">
+            <i class="fa fa-user" id="user"></i>
+            <input id="login-user" class="login" type="text" name="username" placeholder="Email" required>
+            </div>
+            <div class="login-icons">
+                <i class="fa fa-unlock-alt" id="mail"></i>
+            <input id="login-mail" class="login" type="password" name="password" placeholder="Password" required>
+            </div>
+            <button class="login-Btn" type="submit">Login</button>
+            <a class="register-Btn" href="#" id="register-now">Register now</a>
         </form>
-        <form novalidate id="register-form" action="https://localhost:8001/auth/register" method="POST" enctype="multipart/form-data" class="form">
-            <input type="text" name="firstname" placeholder="Firstname" required>
-            <input type="text" name="lastname" placeholder="Lastname" required>
-            <input type="text" name="username" placeholder="Email" required>
-            <input type="date" name="dateOfBirth" id="dateOfBirth" required>
-            <select name="gender" id="gender" required>
+        <form novalidate id="register-form" action="https://localhost:8001/auth/register" method="POST" enctype="multipart/form-data" class="login-form">
+            <p class="register-Text" >Registration</p>
+            <div class="names" id="reg-1">
+                <input class="login" type="text" name="firstname" placeholder="Firstname" required>
+                <i class="fa fa-user" id="name"></i>
+            </div>
+            <div class="names" id="reg-2">
+                <input class="login" type="text" name="lastname" placeholder="Lastname" required>
+                <i class="fa fa-user-o" id="lName"></i>
+            </div>
+            <div class="bDate" id="reg-3">
+                <input id="email-box" class="login" type="text" name="username" placeholder="Email" required>
+                <i id="emailIcon" class="fa fa-envelope"></i>
+            </div>
+            <div class="bDate" id="reg-4">
+                <input class="date" type="date" name="dateOfBirth" id="dateOfBirth" required>
+                    <i id="dateIcon" class="fa fa-calendar"></i>
+                </div>
+            <div class="mars-venus">
+            <select class="gender" name="gender" id="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-            <input type="password" name="password" id="password" placeholder="Password" required>
-            <button type="submit">Register</button>
+                <i class="fa fa-venus-mars" id="mars-venus"></i>
+            </div>
+            <div class="pass" id="reg-5">
+            <input class="login" type="password" name="password" id="password" placeholder="Password" required>
+                <i class="fa fa-unlock-alt" id="pass"></i>
+            </div>
+            <button class="registerFormBtn" type="submit">Register</button>
             <a href="#" id="login-now">Login now</a>
         </form>
     </article>
