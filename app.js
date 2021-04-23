@@ -10,22 +10,27 @@ const authRoute = require('./routes/authRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
 
+// decide whether using production or localhost environment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
   require('./utils/production')(app, port);
 } else {
   require('./utils/localhost')(app, process.env.HTTPS_PORT || 8001, port);
 }
+
+// root directory
 app.get('/', (req, res) => {
   res.send('Hello Secure World!');
 });
 
+// custom middleware to check which role user has
 const needsGroup = function(role) {
   return function(req, res, next) {
     Object.entries(req.user).forEach(([key,value]) => {
       console.log(key,value)
     })
 
+    // check if loggedin user roles corresponds to the required role 
     if (req.user && req.user.name === role) {
       next();
     } else {

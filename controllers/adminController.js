@@ -3,6 +3,7 @@
 const adminModel = require('../models/adminModel');
 const {validationResult} = require('express-validator');
 
+// get list of all users
 const user_list_get = async (req, res) => {
     console.log('get all users from controllers', req.user);
     if (req.query.sort === 'name') {
