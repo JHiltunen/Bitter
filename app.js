@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 });
 
 // custom middleware to check which role user has
-const needsGroup = function(role) {
-  return function(req, res, next) {
+const needsGroup = (role) => {
+  return (req, res, next) => {
     Object.entries(req.user).forEach(([key,value]) => {
       console.log(key,value)
     })
