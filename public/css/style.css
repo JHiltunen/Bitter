@@ -329,9 +329,9 @@ input.login {
 .bDate {
     display: flex;
     align-items: center;
-    justify-content: left;
     flex-direction: row-reverse;
     margin-left: 30px;
+    align-self: start;
 }
 .date {
     height: 2rem;
@@ -393,7 +393,7 @@ input.login {
     margin-right: 22px;
 }
 #reg-3 {
-    margin-left: 23px;
+    margin-right: 23px;
 }
 #reg-4 {
     margin-left: 27px;
