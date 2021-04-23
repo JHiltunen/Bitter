@@ -3,31 +3,10 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
-const getAllUsers = async () => {
-  try {
-    // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.execute('SELECT user_id, name, email FROM users');
-    console.log('something back from db?', rows);
-    return rows;
-  } catch (e) {
-    console.error('error', e.message);
-  }
-};
-
-const getAllUsersSort = async (order) => {
-  try {
-    // TODO: do the LEFT (or INNER) JOIN to get owner name too.
-    const [rows] = await promisePool.execute(`SELECT user_id, name, email FROM users ORDER BY ${order}`);
-    return rows;
-  } catch (e) {
-    console.error('error', e.message);
-  }
-};
-
 const getUser = async (id) => {
   try {
     console.log('userModel getUser', id);
-    const [rows] = await promisePool.execute('SELECT * FROM users WHERE user_id = ?', [id]);
+    const [rows] = await promisePool.execute('SELECT * FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE users.userId = ?', [id]);
     return rows[0];
   } catch (e) {
     console.error('userModel:', e.message);
@@ -56,7 +35,7 @@ const getUserLogin = async (params) => {
   try {
     console.log(params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM users WHERE email = ? AND vet IS NULL;',
+        'SELECT users.*, roles.name FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE email = ? AND vet IS NULL;',
         params);
     return rows;
   } catch (e) {
@@ -65,8 +44,6 @@ const getUserLogin = async (params) => {
 };
 
 module.exports = {
-  getAllUsers,
-  getAllUsersSort,
   getUser,
   insertUser,
   updateUser,

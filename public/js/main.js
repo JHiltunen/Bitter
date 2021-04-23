@@ -73,6 +73,7 @@ loginForm.addEventListener('submit', async (evt) => {
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
     console.log('login response', json);
+    console.log('Group: ' + json.user.name);
     if (!json.user) {
       alert(json.message);
     } else {

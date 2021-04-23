@@ -5,6 +5,8 @@ const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
 const {validationResult} = require('express-validator');
 
+// handle login
+// use passport and jwt for token
 const login = (req, res) => {
   passport.authenticate('local', {session: false}, (err, user, info) => {
     if (err || !user) {
@@ -19,7 +21,7 @@ const login = (req, res) => {
       }
       // generate a signed son web token with the contents of user object and return it in the response
       const token = jwt.sign(user, 'gfdrtfyui987654rtyuio8765ewwertyu');
-      
+      // return token for the loggedin user
       return res.json({user, token});
     });
   })(req, res);
@@ -29,10 +31,13 @@ const user_create_post = async (req, res, next) => {
   // Extract the validation errors from a request.
   const errors = validationResult(req); // TODO require validationResult, see userController
 
+  // if errors array isn't empty
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   } else {
+    // generate salt for hashed password
     const salt = bcrypt.genSaltSync(12);
+    // create user object to store data
     const user = {};
     user.firstname = req.body.firstname;
     user.lastname = req.body.lastname;
@@ -41,6 +46,7 @@ const user_create_post = async (req, res, next) => {
     user.gender = req.body.gender;
     user.password = bcrypt.hashSync(req.body.password, salt);
     
+    // insert new 
     const id = await userModel.insertUser(user);
     if (id > 0) {
       next();
@@ -50,6 +56,7 @@ const user_create_post = async (req, res, next) => {
   }
 };
 
+// logout
 const logout = (req, res) => {
   req.logout();
   res.json({message: 'logout'});

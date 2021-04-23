@@ -34,49 +34,6 @@ html {
 }
 
 /** Mobile Nav **/
-/*
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    background: #222;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 30px;
-    margin-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #FF715B;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-.sidenav a  {
-    color: white;
-    text-decoration: none;
-}*/
-
-/* Registration */
-#register-form {
-    display: none;
-}
 
 .overlay {
     height: 0%;
@@ -257,15 +214,246 @@ tr:nth-child(even) {
 /**       FORUM     **/
 
 
+/**     LOGIN       **/
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e7e7e7;
+    box-shadow: 0px 1px 5px black;
+    height: 26rem;
+    width: 24rem;
+    margin: auto;
+}
+.login-Text {
+    display: flex;
+    align-self: center;
+    font-size: 53px;
+    margin-bottom: 36px;
+    color: #266DD3;
+    text-shadow: 1px 1px #000000;
+}
 
+.loginArticle {
+    height: 29rem;
+    display: flex;
+    justify-content: center;
+}
+.login-icons {
+    display: flex;
+    justify-content: center;
+    margin-right: 11px;
+}
+#user {
+    margin-right: 7px;
+    color: #266DD3;
+    font-size: 38px
+}
+#mail {
+    margin-right: 7px;
+    color: #266DD3;
+    font-size: 38px
+}
+#login-user {
+    margin-right: 3px;
+}
+#login-now {
+    display: none;
+}
 
+input.login {
+    align-self: center;
+    width: 18rem;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #266DD3;
+    color: #266DD3;
+    padding: 12px;
+    margin: 5px 0px 10px 0px;
+
+}
+.login-Btn {
+    align-self: center;
+    width: 6rem;
+    height: 2rem;
+    background-color: #266DD3;
+    color: white;
+    border: 2px solid #266DD3;
+    cursor: pointer;
+    text-align: center;
+}
+.login-Btn:hover {
+    background-color: #e7e7e7;
+    color: #266DD3;
+}
+.register-Btn {
+    color: #266DD3;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 7px;
+}
+.registerFormBtn {
+    align-self: center;
+    width: 6rem;
+    height: 2rem;
+    background-color: #266DD3;
+    color: white;
+    border: 2px solid #266DD3;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+.registerFormBtn:hover {
+    background-color: #e7e7e7;
+    color: #266DD3;
+}
+#register-form {
+    display: none;
+}
+.register-Text {
+    display: flex;
+    align-self: center;
+    font-size: 2em;
+    color: #266DD3;
+    margin-bottom: 4px;
+}
+
+.register-Btn:hover {
+    text-decoration: underline;
+}
+.names {
+    align-self: center;
+}
+
+.bDate {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row-reverse;
+    margin-left: 30px;
+}
+.date {
+    height: 2rem;
+    width: 7rem;
+    margin-bottom: 13px;
+    margin-top: 3px;
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #266DD3;
+    color: #266DD3;
+}
+#dateIcon {
+    height: 47px;
+    font-size: 34px;
+    margin-right: 1px;
+    color: #266DD3;
+}
+#emailIcon {
+    height: 41px;
+    font-size: 35px;
+    margin-right: 7px;
+    color: #266DD3;
+}
+#email-box {
+    margin-left: 2px;
+}
+.gender {
+    width: 7rem;
+    height: 2rem;
+    margin-left: 8px;
+    margin-bottom: 9px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #266DD3;
+    color: #266DD3;
+    cursor: pointer;
+}
+.names {
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: center;
+
+}
+#name {
+    font-size: 42px;
+    margin-right: 8px;
+    margin-top: 3px;
+    color: #266DD3;
+}
+#lName {
+    font-size: 38px;
+    margin-right: 9px;
+    margin-top: 5px;
+    color: #266DD3;
+}
+#reg-1 {
+    margin-right: 20px;
+}
+#reg-2 {
+    margin-right: 22px;
+}
+#reg-3 {
+    margin-left: 23px;
+}
+#reg-4 {
+    margin-left: 27px;
+}
+#reg-5 {
+    align-self: center;
+}
+.pass {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 15px;
+
+}
+#pass {
+    color: #266DD3;
+    font-size: 37px;
+    margin-top: 5px;
+    margin-right: 13px;
+}
+.mars-venus {
+    flex-direction: row-reverse;
+    display: flex;
+    align-self: flex-start;
+    margin-left: 25px;
+
+}
+#mars-venus {
+    color: #266DD3;
+    font-size: 31px;
+    margin-top: 4px;
+}
 
 
 @media only screen and (min-width: 680px) {
+    * {
+        font-size: 120%;
+    }
+    .navbar {
+
+    }
+    /*html {*/
+    /*    background-image: url("../img/bg1.jpg");*/
+    /*    background-repeat: no-repeat;*/
+    /*    background-position: center;*/
+    /*    background-size: cover;*/
+    /*    position: sticky;*/
+    /*    z-index: -1;*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*}*/
+    .mainArticle {
+        height: 38rem;
+    }
+    .mainText {
+        font-size: 2.5em;
+    }
     .mainButton {
         transition: all 0.5s;
         cursor: pointer;
+        font-size: 0.5em;
     }
     .mainButton span {
         cursor: pointer;
@@ -309,17 +497,50 @@ tr:nth-child(even) {
         text-decoration: none;
         margin-right: 25px;
         align-items: center;
-        font-size: 14px;
+        font-size: 0.5em;
         color: black;
     }
     .headLinks:hover {
         color: #266DD3;
     }
+    input[name="name"] {
+        font-size: 0.6em;
+    }
+    input[name="email"] {
+        font-size: 0.6em;
+    }
+    textarea[name="msg"]{
+        font-size: 0.6em;
+    }
+    input[type="submit"] {
+        font-size: 0.6em;
+        cursor: pointer;
+    }
 
-/**     FORUM       **/
+        /**     FORUM       **/
 
     .forumArticle {
         width: 680px;
         margin: auto;
+    }
+
+    .login-Btn {
+        font-size: 0.6em;
+    }
+    input.login {
+        font-size: 0.6em;
+    }
+    .register-Btn {
+        font-size: 0.6em;
+    }
+    .gender {
+        font-size: 0.6em;
+    }
+    .date {
+       width: 6.8em;
+        font-size: 0.6em;
+    }
+    .registerFormBtn {
+        font-size: 0.6em;
     }
 }
