@@ -2,6 +2,9 @@
 require('dotenv').config();
 const express = require('express');
 const logger = require('./utils/winston');
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path')
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
@@ -9,6 +12,12 @@ const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
+
+// Create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+// Setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
 
 // decide whether using production or localhost environment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
