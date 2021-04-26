@@ -1,7 +1,10 @@
 'use strict';
 require('dotenv').config();
 const express = require('express');
-
+const logger = require('./utils/winston');
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path')
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
@@ -10,11 +13,19 @@ const authRoute = require('./routes/authRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
 
+// Create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+// Setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
+
 // decide whether using production or localhost environment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
+  logger.info("Environment: production");
   require('./utils/production')(app, port);
 } else {
+  logger.info("Environment: development");
   require('./utils/localhost')(app, process.env.HTTPS_PORT || 8001, port);
 }
 
@@ -32,8 +43,12 @@ const needsGroup = (role) => {
 
     // check if loggedin user roles corresponds to the required role 
     if (req.user && req.user.name === role) {
+      logger.info(`User: ${req.user}`);
+      logger.info(`User role: ${req.user.name}`);
       next();
     } else {
+      logger.info(`User: ${req.user}`);
+      logger.warning(`User doesn't have required role (${req.user.name}) to access ${req.originalUrl}`);
       res.status(401).send('Unauthorized');
     }  
   };
