@@ -67,9 +67,24 @@ const getUserLogin = async (params) => {
   }
 };
 
+const createPost = async (post) => {
+  try {
+    console.log(post);
+    logger.info(`createPost post: ${JSON.stringify(post)}`);
+    const [rows] = await promisePool.execute(
+        'INSERT INTO posts (title, content, image, likes, dislikes, userId, vst) VALUES (?, ?, ?, 0, 0, 1, curdate())', [post.title, post.content, post.image]);
+    logger.info(`createPost : ${JSON.stringify(rows)}`);
+    return rows;
+  } catch (e) {
+    logger.error(`Error while fetching database: ${e}`);
+    console.log('error', e.message);
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
   updateUser,
   getUserLogin,
+  createPost,
 };

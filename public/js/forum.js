@@ -1,6 +1,7 @@
 'use strict';
 const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelector('#log-out');
+const post = document.querySelector('#forum-post');
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
@@ -31,4 +32,21 @@ logOut.addEventListener('click', async (evt) => {
     catch (e) {
       console.log(e.message);
     }
+});
+
+// submit post
+post.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const pd = new FormData(post);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: pd,
+  };
+  const response = await fetch(url + '/user/post', fetchOptions);
+  console.log(response);
+  const json = await response.json();
+  console.log('add response', json);
 });

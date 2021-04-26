@@ -211,9 +211,6 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-/**       FORUM     **/
-
-
 /**     LOGIN       **/
 
 .login-form {
@@ -426,6 +423,28 @@ input.login {
     margin-top: 4px;
 }
 
+/**       FORUM     **/
+
+.post {
+
+}
+.post-title {
+
+}
+.post-content {
+
+}
+.post-file {
+
+}
+.post-button {
+
+}
+
+
+
+
+
 
 @media only screen and (min-width: 680px) {
     * {
@@ -511,6 +530,7 @@ input.login {
     }
     textarea[name="msg"]{
         font-size: 0.6em;
+        resize: none;
     }
     input[type="submit"] {
         font-size: 0.6em;
