@@ -8,8 +8,10 @@ const getAllUsers = async () => {
   try {
     const [rows] = await promisePool.execute('SELECT users.userId, firstname, lastname, email, roles.name FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId');
     console.log('something back from db?', rows);
+    logger.info(`Get all users from database: ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
+    logger.error(`Error while fetching database: ${e}`);
     console.error('error', e.message);
   }
 };
@@ -18,8 +20,10 @@ const getAllUsers = async () => {
 const getAllUsersSort = async (order) => {
   try {
     const [rows] = await promisePool.execute(`SELECT users.userId, firstname, lastname, email, roles.name FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId ORDER BY ${order}`);
+    logger.info(`Get all users from database: ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
+    logger.error(`Error while fetching database: ${e}`);
     console.error('error', e.message);
   }
 };
