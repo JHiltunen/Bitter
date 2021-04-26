@@ -9,6 +9,11 @@ router.route('/')
     res.send('Users information and frontpage');
   });
 
-router.post('/post', userController.create_post);
+router.route('/post')
+    .post(
+    body('title').isLength({min: 1}).trim().escape().blacklist(';'),
+    body('content').isLength({min: 1}),
+    userController.create_post
+);
 
 module.exports = router;

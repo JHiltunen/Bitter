@@ -48,7 +48,7 @@ const needsGroup = (role) => {
       next();
     } else {
       logger.info(`User: ${req.user}`);
-      logger.warning(`User doesn't have required role (${req.user.name}) to access ${req.originalUrl}`);
+      logger.error(`User doesn't have required role (${req.user.name}) to access ${req.originalUrl}`);
       res.status(401).send('Unauthorized');
     }  
   };

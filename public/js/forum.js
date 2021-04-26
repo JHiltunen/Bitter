@@ -48,5 +48,4 @@ post.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/user/post', fetchOptions);
   console.log(response);
   const json = await response.json();
-  console.log('add response', json);
 });

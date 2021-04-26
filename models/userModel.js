@@ -7,7 +7,7 @@ const promisePool = pool.promise();
 const getUser = async (id) => {
   try {
     console.log('userModel getUser', id);
-    logger.info(`userModel getUser with id: ${userModel}`);
+    logger.info(`userModel getUser with id: ${id}`);
     const [rows] = await promisePool.execute('SELECT * FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE users.userId = ?', [id]);
     logger.info(`Data fetched from database: ${JSON.stringify(rows)}`);
     return rows[0];
@@ -72,7 +72,7 @@ const createPost = async (post) => {
     console.log(post);
     logger.info(`createPost post: ${JSON.stringify(post)}`);
     const [rows] = await promisePool.execute(
-        'INSERT INTO posts (title, content, image, likes, dislikes, userId, vst) VALUES (?, ?, ?, 0, 0, 1, curdate())', [post.title, post.content, post.image]);
+        'INSERT INTO posts (title, content, image, likes, dislikes, userId, vst) VALUES (?, ?, ?, 0, 0, ?, curdate())', post);
     logger.info(`createPost : ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
