@@ -1,3 +1,4 @@
+/*MAIN*/
 * {
     font-family: 'Ubuntu', sans-serif;
     box-sizing: border-box;
@@ -8,10 +9,12 @@ html {
     background: #266DD3;
 }
 
+/*LOGIN ERROR*/
 #login-error {
     color: red;
 }
 
+/*NAVIGATION BAR*/
 .navbar {
     background: #ffffff;
     padding: 17px;
@@ -34,7 +37,6 @@ html {
 }
 
 /** Mobile Nav **/
-
 .overlay {
     height: 0%;
     width: 100%;
@@ -75,6 +77,8 @@ html {
     right: 45px;
     font-size: 60px;
 }
+
+/*HOMEPAGE*/
 .mainArticle {
     display: flex;
     justify-content: center;
@@ -284,6 +288,8 @@ input.login {
     background-color: #e7e7e7;
     color: #266DD3;
 }
+
+/*REGISTRATION*/
 .register-Btn {
     color: #266DD3;
     text-align: center;
@@ -441,18 +447,81 @@ input.login {
 
 }
 
+/**     FORUM       **/
+
+.forumArticle {
+    width: 680px;
+    margin: auto;
+}
+
+.login-Btn {
+    font-size: 0.6em;
+}
+input.login {
+    font-size: 0.6em;
+}
+.register-Btn {
+    font-size: 0.6em;
+}
+.gender {
+    font-size: 0.6em;
+}
+.date {
+    width: 8.5em;
+    font-size: 0.6em;
+    padding: 12px;
+}
+
+.registerFormBtn {
+    font-size: 0.6em;
+}
+
+/*POST CONTENT */
+
+.flex {
+    padding: 10px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+
+}
+
+/* Image */
+.img {
+    background-color: #aaa;
+    width: 90%;
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: #14366f;
+    padding: 20px;
+    text-align: center;
+    width: 40vh;
+    font-size: 0.6em;
+
+}
+
+.icons {
+    margin-top: 15px;
+}
 
 
-
-
+/*MEDIA*/
 
 @media only screen and (min-width: 680px) {
     * {
         font-size: 120%;
     }
+
     .navbar {
 
     }
+
     /*html {*/
     /*    background-image: url("../img/bg1.jpg");*/
     /*    background-repeat: no-repeat;*/
@@ -466,20 +535,24 @@ input.login {
     .mainArticle {
         height: 38rem;
     }
+
     .mainText {
         font-size: 2.5em;
     }
+
     .mainButton {
         transition: all 0.5s;
         cursor: pointer;
         font-size: 0.5em;
     }
+
     .mainButton span {
         cursor: pointer;
         display: inline-block;
         position: relative;
         transition: 0.5s;
     }
+
     .mainButton span:after {
         content: '\00bb';
         position: absolute;
@@ -488,16 +561,20 @@ input.login {
         right: -20px;
         transition: 0.5s;
     }
+
     .mainButton:hover span {
         padding-right: 25px;
     }
+
     .mainButton:hover span:after {
         opacity: 1;
         right: 0;
     }
+
     #openBtn {
         display: none;
     }
+
     .navHead {
         display: flex;
         flex-direction: row;
@@ -505,12 +582,15 @@ input.login {
         margin: auto;
         justify-content: flex-end;
     }
-    .navH2{
+
+    .navH2 {
         margin-right: auto;
     }
+
     .mainText {
-    width: 680px;
+        width: 680px;
     }
+
     .headLinks {
         display: flex;
         text-decoration: none;
@@ -519,49 +599,27 @@ input.login {
         font-size: 0.5em;
         color: black;
     }
+
     .headLinks:hover {
         color: #266DD3;
     }
+
     input[name="name"] {
         font-size: 0.6em;
     }
+
     input[name="email"] {
         font-size: 0.6em;
     }
-    textarea[name="msg"]{
+
+    textarea[name="msg"] {
         font-size: 0.6em;
         resize: none;
     }
+
     input[type="submit"] {
         font-size: 0.6em;
         cursor: pointer;
     }
+}
 
-        /**     FORUM       **/
-
-    .forumArticle {
-        width: 680px;
-        margin: auto;
-    }
-
-    .login-Btn {
-        font-size: 0.6em;
-    }
-    input.login {
-        font-size: 0.6em;
-    }
-    .register-Btn {
-        font-size: 0.6em;
-    }
-    .gender {
-        font-size: 0.6em;
-    }
-    .date {
-        width: 8.5em;
-        font-size: 0.6em;
-        padding: 12px;
-    }
-    }
-    .registerFormBtn {
-        font-size: 0.6em;
-    }
