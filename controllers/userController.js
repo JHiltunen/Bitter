@@ -16,7 +16,7 @@ const create_post = async (req, res, next) => {
     const post = [
       req.body.title,
       req.body.content,
-      req.body.image.filename,
+      req.file.filename,
       req.user.userId,
     ];
     // insert new
