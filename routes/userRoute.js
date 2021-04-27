@@ -12,6 +12,10 @@ router.route('/')
   });
 
 router.route('/post')
-.post(upload.single('image'), userController.create_post)
+.post(upload.single('image'), [
+  body('title', 'minimum of 1 characters').isLength({min: 1}),
+  body('content', 'minimum of 1 characters').isLength({min: 1}),
+], userController.create_post)
+
 
 module.exports = router;

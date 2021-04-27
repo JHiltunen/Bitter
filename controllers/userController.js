@@ -13,10 +13,16 @@ const create_post = async (req, res, next) => {
     return res.status(400).json({ errors: errors.array() });
   } else {
     // create user object to store data
+    let postFile;
+    if (req.file) {
+      postFile = req.file.filename;
+    } else {
+      postFile = "No Image";
+    }
     const post = [
       req.body.title,
       req.body.content,
-      req.file.filename,
+      postFile,
       req.user.userId,
     ];
     // insert new
