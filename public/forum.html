@@ -37,7 +37,12 @@
     </nav>
 </header>
 <article class="forumArticle">
-    <p>Content comes here!</p>
+        <form novalidate class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
+        <textarea name="title" class="post-title" placeholder="Type your message here..." required></textarea>
+        <textarea name="content" class="post-content" placeholder="Type your message here..." required></textarea>
+        <input type="file" name="image" class="post-file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime,video/webm">
+        <input type="submit" class="post-button" value="Submit">
+        </form>
 </article>
 <footer class="mainFooter">
     <p class="footerP">© 2021 by Bitter</p>
