@@ -402,7 +402,6 @@ input.login {
     display: flex;
     flex-direction: row-reverse;
     margin-right: 15px;
-
 }
 #pass {
     color: #266DD3;
@@ -415,7 +414,6 @@ input.login {
     display: flex;
     align-self: flex-start;
     margin-left: 25px;
-
 }
 #mars-venus {
     color: #266DD3;
@@ -424,6 +422,35 @@ input.login {
 }
 
 /**       FORUM     **/
+.flex {
+    padding: 10px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+/* Image */
+.img {
+    background-color: #aaa;
+    width: 90%;
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: #14366f;
+    padding: 20px;
+    text-align: center;
+    width: 40vh;
+    font-size: 0.6em;
+
+}
+
+.icons {
+    margin-top: 15px;
+}
 
 .post {
 
@@ -537,7 +564,7 @@ input.login {
         cursor: pointer;
     }
 
-        /**     FORUM       **/
+    /**     FORUM       **/
 
     .forumArticle {
         width: 680px;

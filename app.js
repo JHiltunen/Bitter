@@ -10,6 +10,7 @@ const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
 const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
+const postRoute = require('./routes/postRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
 
@@ -63,6 +64,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(express.static('public'));
 
 // routes
+app.use('/forum', postRoute);
 app.use('/auth', authRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), needsGroup('User'), userRoute);
 app.use('/admin', passport.authenticate('jwt', {session: false}), needsGroup('Admin'), adminRoute);
