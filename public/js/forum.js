@@ -102,6 +102,8 @@ const getPost = async () => {
   }
 };
 
+getPost();
+
 const image = document.getElementById('image');
 const previewContainer = document.getElementById('imagePreview');
 const previewImage = document.querySelector('.image-preview-image');
@@ -129,4 +131,3 @@ image.addEventListener("change", function() {
 });
 
 
-getPost();

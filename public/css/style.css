@@ -506,9 +506,10 @@ input.login {
     color: white;
     background: #266DD3;
     width: 5em;
-    margin: 0;
+    margin: 0 0 0 4em;
     padding: 0;
     border-radius: 15px;
+
 }
 #post-btn:hover {
     background: #14366f;
