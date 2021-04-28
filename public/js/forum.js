@@ -2,6 +2,7 @@
 const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelector('#log-out');
 const post = document.querySelector('#forum-post');
+const section = document.querySelector('section');
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
@@ -48,4 +49,57 @@ post.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/user/post', fetchOptions);
   console.log(response);
   const json = await response.json();
+  getPost();
 });
+
+// create post view
+const createPostView = (posts) => {
+  // clear article
+  section.innerHTML = '';
+  posts.forEach((post) => {
+    // create li with DOM methods
+    const article = document.createElement('article')
+    article.classList.add('PostArticle')
+    const card = document.createElement('div');
+    card.classList.add('card')
+    const title = document.createElement('h2');
+    title.innerHTML = `${post.title}`;
+    
+    const content = document.createElement('p');
+    content.innerHTML = `${post.content}`;
+
+    if (post.image != 'No Image') {
+      const img = document.createElement('img');
+      img.src = url + '/thumbnails/' + post.image;
+      img.alt = post.title;
+      img.classList.add('resp');
+      card.appendChild(img);
+    }
+
+    card.appendChild(title);
+    card.appendChild(content);
+
+    article.appendChild(card);
+    section.appendChild(article);
+  });
+};
+
+
+const getPost = async () => {
+  console.log('getPost? token ', sessionStorage.getItem('token'));
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/forum/posts', options);
+    const posts = await response.json();
+    createPostView(posts);
+  }
+  catch (e) {
+    console.log(e.message);
+  }
+};
+
+getPost();
