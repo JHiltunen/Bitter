@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path')
 const cors = require('cors');
+const contactRoute = require('./routes/contactRoute');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
 const passport = require('./utils/pass');
@@ -65,6 +66,7 @@ app.use(express.static('public'));
 app.use(express.static('uploads'));
 app.use('/thumbnails', express.static('thumbnails'));
 // routes
+app.use('/contact', contactRoute);
 app.use('/forum', postRoute);
 app.use('/auth', authRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), needsGroup('User'), userRoute);
