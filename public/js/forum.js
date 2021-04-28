@@ -102,4 +102,31 @@ const getPost = async () => {
   }
 };
 
+const image = document.getElementById('image');
+const previewContainer = document.getElementById('imagePreview');
+const previewImage = document.querySelector('.image-preview-image');
+const previewDefaultText = document.querySelector('.image-preview-default-text');
+
+image.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+    previewContainer.style.display = "flex";
+    previewDefaultText.style.display = "none";
+    previewImage.style.display = "block";
+
+    reader.addEventListener('load', function() {
+      console.log(this);
+      previewImage.setAttribute('src', this.result);
+    });
+    reader.readAsDataURL(file);
+  } else {
+    previewDefaultText.style.display = null;
+    previewImage.style.display = null;
+    previewImage.setAttribute('src', '');
+  }
+});
+
+
 getPost();
