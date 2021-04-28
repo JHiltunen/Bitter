@@ -8,5 +8,4 @@ const upload = multer({dest: 'uploads/'});
 
 router.get('/posts', postController.post_list_get);
 
-
 module.exports = router;

@@ -70,7 +70,7 @@ const createPostView = (posts) => {
 
     if (post.image != 'No Image') {
       const img = document.createElement('img');
-      img.src = url + '/' + post.image;
+      img.src = url + '/thumbnails/' + post.image;
       img.alt = post.title;
       img.classList.add('resp');
       card.appendChild(img);
