@@ -68,14 +68,16 @@ const createPostView = (posts) => {
     const content = document.createElement('p');
     content.innerHTML = `${post.content}`;
 
-    const img = document.createElement('img');
-    img.src = url + '/' + post.image;
-    img.alt = post.title;
-    img.classList.add('resp');
+    if (post.image != 'No Image') {
+      const img = document.createElement('img');
+      img.src = url + '/' + post.image;
+      img.alt = post.title;
+      img.classList.add('resp');
+      card.appendChild(img);
+    }
 
     card.appendChild(title);
     card.appendChild(content);
-    card.appendChild(img);
 
     article.appendChild(card);
     section.appendChild(article);
