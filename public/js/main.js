@@ -7,6 +7,7 @@ const logOut = document.querySelector('#log-out');
 const registerNow = document.querySelector('#register-now');
 const registerForm = document.querySelector('#register-form');
 
+
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
     loginForm.style.display = 'none';

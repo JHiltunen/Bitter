@@ -4,7 +4,7 @@ const { body } = require('express-validator');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
 
-router.route('/')
+router.route('/users')
   .get(adminController.user_list_get);
 
 module.exports = router;
