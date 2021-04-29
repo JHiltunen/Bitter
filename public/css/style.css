@@ -439,7 +439,6 @@ input.login {
     background: #a8bee2;
 }
 
-
 /** POSTS LAYOUT **/
 .img {
     background-color: #aaa;
@@ -565,7 +564,18 @@ input.login {
         font-size: 120%;
     }
     .navbar {
-
+        top: 0;
+        z-index: 100;
+        position: fixed;
+        width: 100%;
+    }
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
     }
     /*html {*/
     /*    background-image: url("../img/bg1.jpg");*/
@@ -579,6 +589,7 @@ input.login {
     /*}*/
     .mainArticle {
         height: 38rem;
+        margin-top: 8.5vh;
     }
     .mainText {
         font-size: 2.5em;
@@ -657,7 +668,9 @@ input.login {
         width: 680px;
         margin: auto;
     }
-
+    .loginArticle {
+        margin-top: 9.5vh;
+    }
     .login-Btn {
         font-size: 0.6em;
     }
@@ -675,7 +688,20 @@ input.login {
         font-size: 0.6em;
         padding: 12px;
     }
-    }
     .registerFormBtn {
         font-size: 0.6em;
     }
+    .post {
+        margin-top: 9.5vh;
+    }
+    /** ABOUT **/
+
+    .aboutArticle {
+        margin-top: 9.5vh;
+    }
+    /** edit user info **/
+    .editArticle {
+        margin-top: 9.5vh;
+    }
+}
+
