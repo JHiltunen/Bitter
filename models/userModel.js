@@ -69,7 +69,7 @@ const getUserLogin = async (params) => {
 
 const createPost = async (post) => {
   try {
-    console.log(post);
+    console.log('Row 72:', post);
     logger.info(`createPost post: ${JSON.stringify(post)}`);
     const [rows] = await promisePool.execute(
         'INSERT INTO posts (title, content, image, likes, dislikes, userId, vst) VALUES (?, ?, ?, 0, 0, ?, curdate())', post);

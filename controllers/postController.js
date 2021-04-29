@@ -13,10 +13,12 @@ const make_thumbnail = async (req, res, next) => {
   try {
     // image is not mandatory -> handle case where there is no file
     if (req.file == undefined) {
+      console.log('PostController row 16');
       next();
     }
     const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
     if (thumbnail) {
+      console.log('PostController row 21');
       next();
     }
   } catch (e) {
