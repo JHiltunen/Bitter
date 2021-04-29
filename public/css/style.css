@@ -589,7 +589,7 @@ input.login {
     /*}*/
     .mainArticle {
         height: 38rem;
-        margin-top: 8.5vh;
+        margin-top: 4.61rem;
     }
     .mainText {
         font-size: 2.5em;
@@ -669,7 +669,7 @@ input.login {
         margin: auto;
     }
     .loginArticle {
-        margin-top: 9.5vh;
+        margin-top: 4.61rem;
     }
     .login-Btn {
         font-size: 0.6em;
@@ -692,16 +692,16 @@ input.login {
         font-size: 0.6em;
     }
     .post {
-        margin-top: 9.5vh;
+        margin-top: 4.61rem;
     }
     /** ABOUT **/
 
     .aboutArticle {
-        margin-top: 9.5vh;
+        margin-top: 4.61rem;
     }
     /** edit user info **/
     .editArticle {
-        margin-top: 9.5vh;
+        margin-top: 4.61rem;
     }
 }
 
