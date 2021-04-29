@@ -11,6 +11,10 @@ const post_list_get = async (req, res) => {
 
 const make_thumbnail = async (req, res, next) => {
   try {
+    // image is not mandatory -> handle case where there is no file
+    if (req.file == undefined) {
+      next();
+    }
     const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
     if (thumbnail) {
       next();
