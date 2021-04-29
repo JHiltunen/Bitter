@@ -15,6 +15,8 @@ const postRoute = require('./routes/postRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
 
+app.use(cors());
+
 // Create a write stream (in append mode)
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
@@ -56,8 +58,6 @@ const needsGroup = (role) => {
   };
 };
 
-
-app.use(cors());
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
