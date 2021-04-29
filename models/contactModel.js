@@ -10,7 +10,7 @@ const insertContact = async (contact) => {
     logger.info(`Insert row on insertContact: ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
-    logger.error(`Error while inserting to database ${e}`);
+    logger.error(`Error on contactModel.insertContact while inserting to database ${e}`);
   }
 };
 module.exports = {
