@@ -435,6 +435,15 @@ input.login {
 }
 
 /** DISCUSSION FORUM  **/
+.forumArticle {
+    background: #a8bee2;
+}
+.resp {
+    width: 100%;
+    height: auto;
+    margin-top: 1.2em;
+    border-radius: 5px;
+}
 
 /** POSTS LAYOUT **/
 .img {
@@ -449,12 +458,15 @@ input.login {
 .card {
     background-color: #f5f5f5;
     padding: 20px;
-    text-align: center;
-    width: 40vh;
-    font-size: 0.6em;
+    font-size: 1em;
+    margin: 10px 0 0 0;
 }
 .icons {
     margin-top: 15px;
+}
+.post-article {
+    display: flex;
+    flex-direction: column;
 }
 
 /** MAKING POST **/
