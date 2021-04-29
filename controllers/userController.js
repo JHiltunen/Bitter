@@ -33,7 +33,7 @@ const create_post = async (req, res, next) => {
       logger.info(`Post to be created: ${JSON.stringify(post)}`);
       // insert new
       const response = await userModel.createPost(post);
-      logger.info(`Create new post response: ${response}`)
+      //logger.info(`Create new post response: ${response}`)
       res.json(response);
     }
   } catch (e) {
