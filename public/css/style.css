@@ -438,12 +438,7 @@ input.login {
 .forumArticle {
     background: #a8bee2;
 }
-.resp {
-    width: 100%;
-    height: auto;
-    margin-top: 1.2em;
-    border-radius: 5px;
-}
+
 
 /** POSTS LAYOUT **/
 .img {
@@ -453,6 +448,20 @@ input.login {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+.resp {
+    width: 100%;
+    height: auto;
+    margin-top: 1.2em;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px #888;
+    border: 1px solid #888;
+}
+.content-text {
+
+}
+.title-text {
+    margin-bottom: 1em;
 }
 /* Add a card effect for articles */
 .card {

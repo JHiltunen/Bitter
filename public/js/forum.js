@@ -63,9 +63,11 @@ const createPostView = (posts) => {
     const card = document.createElement('div');
     card.classList.add('card')
     const title = document.createElement('h2');
+    title.classList.add('title-text');
     title.innerHTML = `${post.title}`;
     
     const content = document.createElement('p');
+    content.classList.add('content-text');
     content.innerHTML = `${post.content}`;
 
     card.appendChild(title);
@@ -124,9 +126,10 @@ image.addEventListener("change", function() {
     });
     reader.readAsDataURL(file);
   } else {
+    previewContainer.style.display = null;
     previewDefaultText.style.display = null;
     previewImage.style.display = null;
-    previewImage.setAttribute('src', '');
+    previewImage.setAttribute("src", null);
   }
 });
 
