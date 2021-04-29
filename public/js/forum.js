@@ -63,10 +63,15 @@ const createPostView = (posts) => {
     const card = document.createElement('div');
     card.classList.add('card')
     const title = document.createElement('h2');
+    title.classList.add('title-text');
     title.innerHTML = `${post.title}`;
     
     const content = document.createElement('p');
+    content.classList.add('content-text');
     content.innerHTML = `${post.content}`;
+
+    card.appendChild(title);
+    card.appendChild(content);
 
     if (post.image != 'No Image') {
       const img = document.createElement('img');
@@ -75,9 +80,6 @@ const createPostView = (posts) => {
       img.classList.add('resp');
       card.appendChild(img);
     }
-
-    card.appendChild(title);
-    card.appendChild(content);
 
     article.appendChild(card);
     section.appendChild(article);
@@ -103,3 +105,32 @@ const getPost = async () => {
 };
 
 getPost();
+
+const image = document.getElementById('image');
+const previewContainer = document.getElementById('imagePreview');
+const previewImage = document.querySelector('.image-preview-image');
+const previewDefaultText = document.querySelector('.image-preview-default-text');
+
+image.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+    previewContainer.style.display = "flex";
+    previewDefaultText.style.display = "none";
+    previewImage.style.display = "block";
+
+    reader.addEventListener('load', function() {
+      console.log(this);
+      previewImage.setAttribute('src', this.result);
+    });
+    reader.readAsDataURL(file);
+  } else {
+    previewContainer.style.display = null;
+    previewDefaultText.style.display = null;
+    previewImage.style.display = null;
+    previewImage.setAttribute("src", null);
+  }
+});
+
+

@@ -12,6 +12,8 @@ html {
     color: red;
 }
 
+/** HEADER AND NAVIGATION **/
+
 .navbar {
     background: #ffffff;
     padding: 17px;
@@ -20,11 +22,9 @@ html {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-
 }
 .headLinks {
     display: none;
-
 }
 #openBtn {
     display: flex;
@@ -33,8 +33,7 @@ html {
     align-self: center;
 }
 
-/** Mobile Nav **/
-
+/** MOBILE NAVIGATION **/
 .overlay {
     height: 0%;
     width: 100%;
@@ -64,17 +63,18 @@ html {
     display: block;
     transition: 0.3s;
 }
-
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
 }
-
 .overlay .closebtn {
     position: absolute;
     top: 20px;
     right: 45px;
     font-size: 60px;
 }
+
+/** MAIN PAGE **/
+
 .mainArticle {
     display: flex;
     justify-content: center;
@@ -103,7 +103,6 @@ html {
 .mainButton:hover {
     border: 0;
     background-color: #14366f;
-
 }
 .mainButton:after {
     content: "";
@@ -117,13 +116,15 @@ html {
     opacity: 0;
     transition: all 0.8s
 }
-
 .mainButton:active:after {
     padding: 0;
     margin: 0;
     opacity: 1;
     transition: 0s
 }
+
+/** FOOTER FOR EVERY PAGE **/
+
 .mainFooter {
     display: flex;
     flex-direction: column;
@@ -151,8 +152,10 @@ input[name=name] {
     border: 0;
     border: 2px solid white;
     box-sizing: border-box;
-
 }
+
+/** INPUTS FOR FOOTER **/
+
 input[name=email] {
     width: 18rem;
     height: 2rem;
@@ -172,6 +175,7 @@ textarea[name=message] {
     box-sizing: border-box;
     border: 2px solid white;
     color: white;
+    resize: none;
 }
 input[type=submit] {
     margin-top: 14px;
@@ -185,6 +189,8 @@ input[type=submit]:hover {
     background-color: #266DD3;
     color: white;
 }
+
+/** EDIT USER INFO PAGE! **/
 
 .edit {
     text-align: center;
@@ -211,7 +217,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-/**     LOGIN       **/
+/** LOGIN PAGE  **/
 
 .login-form {
     display: flex;
@@ -231,7 +237,6 @@ tr:nth-child(even) {
     color: #266DD3;
     text-shadow: 1px 1px #000000;
 }
-
 .loginArticle {
     height: 29rem;
     display: flex;
@@ -241,34 +246,6 @@ tr:nth-child(even) {
     display: flex;
     justify-content: center;
     margin-right: 11px;
-}
-#user {
-    margin-right: 7px;
-    color: #266DD3;
-    font-size: 38px
-}
-#mail {
-    margin-right: 7px;
-    color: #266DD3;
-    font-size: 38px
-}
-#login-user {
-    margin-right: 3px;
-}
-#login-now {
-    display: none;
-}
-
-input.login {
-    align-self: center;
-    width: 18rem;
-    height: 2rem;
-    background-color: rgba(0, 0, 0, 0);
-    border: 2px solid #266DD3;
-    color: #266DD3;
-    padding: 12px;
-    margin: 5px 0px 10px 0px;
-
 }
 .login-Btn {
     align-self: center;
@@ -284,12 +261,43 @@ input.login {
     background-color: #e7e7e7;
     color: #266DD3;
 }
+
+input.login {
+    align-self: center;
+    width: 18rem;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #266DD3;
+    color: #266DD3;
+    padding: 12px;
+    margin: 5px 0px 10px 0px;
+}
 .register-Btn {
     color: #266DD3;
     text-align: center;
     text-decoration: none;
     margin-top: 7px;
 }
+#login-user {
+    margin-right: 3px;
+}
+#login-now {
+    display: none;
+}
+/** LOGIN SCREEN ICONS **/
+#user {
+    margin-right: 7px;
+    color: #266DD3;
+    font-size: 38px
+}
+#mail {
+    margin-right: 7px;
+    color: #266DD3;
+    font-size: 38px
+}
+
+/** REGISTRATION FORM **/
+
 .registerFormBtn {
     align-self: center;
     width: 6rem;
@@ -315,14 +323,12 @@ input.login {
     color: #266DD3;
     margin-bottom: 4px;
 }
-
 .register-Btn:hover {
     text-decoration: underline;
 }
 .names {
     align-self: center;
 }
-
 .bDate {
     display: flex;
     align-items: center;
@@ -340,21 +346,7 @@ input.login {
     border: 2px solid #266DD3;
     color: #757575;
 }
-#dateIcon {
-    height: 47px;
-    font-size: 34px;
-    margin-right: 1px;
-    color: #266DD3;
-}
-#emailIcon {
-    height: 41px;
-    font-size: 35px;
-    margin-right: 7px;
-    color: #266DD3;
-}
-#email-box {
-    margin-left: 2px;
-}
+
 .gender {
     width: 7rem;
     height: 2rem;
@@ -369,20 +361,63 @@ input.login {
     display: flex;
     flex-direction: row-reverse;
     align-self: center;
-
 }
+.pass {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 15px;
+}
+#email-box {
+    margin-left: 2px;
+}
+/** DATE ICON **/
+#dateIcon {
+    height: 47px;
+    font-size: 34px;
+    margin-right: 1px;
+    color: #266DD3;
+}
+/** EMAIL ICON **/
+#emailIcon {
+    height: 41px;
+    font-size: 35px;
+    margin-right: 7px;
+    color: #266DD3;
+}
+/** FIRSTNAME ICON **/
 #name {
     font-size: 42px;
     margin-right: 8px;
     margin-top: 3px;
     color: #266DD3;
 }
+/** LASTNAME ICON **/
 #lName {
     font-size: 38px;
     margin-right: 9px;
     margin-top: 5px;
     color: #266DD3;
 }
+/** PASSWORD ICON **/
+#pass {
+    color: #266DD3;
+    font-size: 37px;
+    margin-top: 5px;
+    margin-right: 13px;
+}
+/** GENDER ICON **/
+.mars-venus {
+    flex-direction: row-reverse;
+    display: flex;
+    align-self: flex-start;
+    margin-left: 25px;
+}
+#mars-venus {
+    color: #266DD3;
+    font-size: 31px;
+    margin-top: 4px;
+}
+/** ID'S FOR EVERY TEXT BOX **/
 #reg-1 {
     margin-right: 20px;
 }
@@ -398,37 +433,13 @@ input.login {
 #reg-5 {
     align-self: center;
 }
-.pass {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-right: 15px;
-}
-#pass {
-    color: #266DD3;
-    font-size: 37px;
-    margin-top: 5px;
-    margin-right: 13px;
-}
-.mars-venus {
-    flex-direction: row-reverse;
-    display: flex;
-    align-self: flex-start;
-    margin-left: 25px;
-}
-#mars-venus {
-    color: #266DD3;
-    font-size: 31px;
-    margin-top: 4px;
+
+/** DISCUSSION FORUM  **/
+.forumArticle {
+    background: #a8bee2;
 }
 
-/**       FORUM     **/
-.flex {
-    padding: 10px;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-}
-
-/* Image */
+/** POSTS LAYOUT **/
 .img {
     background-color: #aaa;
     width: 90%;
@@ -437,48 +448,134 @@ input.login {
     margin-left: auto;
     margin-right: auto;
 }
-
-/* Add a card effect for articles */
-.card {
-    background-color: #14366f;
-    padding: 20px;
-    text-align: center;
-    width: 40vh;
-    font-size: 0.6em;
+.resp {
+    width: 100%;
+    height: auto;
+    margin-top: 1.2em;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px #888;
+    border: 1px solid #888;
+}
+.content-text {
 
 }
-
+.title-text {
+    margin-bottom: 1em;
+}
+/* Add a card effect for articles */
+.card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    font-size: 1em;
+    margin: 10px 0 0 0;
+}
 .icons {
     margin-top: 15px;
 }
+.post-article {
+    display: flex;
+    flex-direction: column;
+}
 
+/** MAKING POST **/
 .post {
-
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #bbb;
 }
 .post-title {
+    resize: none;
+    align-self: center;
+    height: 2em;
+    padding: 0.4em 0 0 0;
+    width: 90%;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid #bbb;
+    font-size: 1.3em;
+}
+
+.post-content {
+    resize: none;
+    align-self: center;
+    padding: 0.4em 0 0 0;
+    width: 90%;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height: 4em;
+}
+.attachments-send {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 0.4em;
+    border-top: 1px solid #bbb;
+    padding: 0.6em 0 0.6em 0;
+}
+#post-btn {
+    color: white;
+    background: #266DD3;
+    width: 5em;
+    margin: 0 0 0 4em;
+    padding: 0;
+    border-radius: 15px;
 
 }
-.post-content {
-
+#post-btn:hover {
+    background: #14366f;
+    color: #f8f8f8;
 }
 .post-file {
-
+    align-self: center;
 }
-.post-button {
+/** Preview Image **/
+.image-preview {
+    width: 300px;
+    min-height: 100px;
+    margin-top: 15px;
+    border: 0;
 
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+.image-preview-image {
+    display: none;
+    width: 100%;
 }
 
 
-
-
-
+/** DESKTOP VIEW! **/
 
 @media only screen and (min-width: 680px) {
     * {
         font-size: 120%;
     }
     .navbar {
-
+        top: 0;
+        z-index: 100;
+        position: fixed;
+        width: 100%;
+    }
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
     }
     /*html {*/
     /*    background-image: url("../img/bg1.jpg");*/
@@ -492,6 +589,7 @@ input.login {
     /*}*/
     .mainArticle {
         height: 38rem;
+        margin-top: 8.5vh;
     }
     .mainText {
         font-size: 2.5em;
@@ -564,13 +662,15 @@ input.login {
         cursor: pointer;
     }
 
-    /**     FORUM       **/
+    /** FORUM **/
 
     .forumArticle {
         width: 680px;
         margin: auto;
     }
-
+    .loginArticle {
+        margin-top: 9.5vh;
+    }
     .login-Btn {
         font-size: 0.6em;
     }
@@ -588,7 +688,20 @@ input.login {
         font-size: 0.6em;
         padding: 12px;
     }
-    }
     .registerFormBtn {
         font-size: 0.6em;
     }
+    .post {
+        margin-top: 9.5vh;
+    }
+    /** ABOUT **/
+
+    .aboutArticle {
+        margin-top: 9.5vh;
+    }
+    /** edit user info **/
+    .editArticle {
+        margin-top: 9.5vh;
+    }
+}
+
