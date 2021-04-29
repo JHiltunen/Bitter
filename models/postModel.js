@@ -1,5 +1,6 @@
 'use strict';
 const pool = require('../database/db');
+const logger = require('../utils/winston');
 const promisePool = pool.promise();
 
 const getAllPosts = async () => {
@@ -8,6 +9,7 @@ const getAllPosts = async () => {
     return rows;
   } catch (e) {
     console.error('postModel:', e.message);
+    logger.error(`Error on postModel.getAllPosts function while fetching database ${e}`);
   }
 };
 module.exports = {

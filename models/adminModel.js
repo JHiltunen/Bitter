@@ -11,7 +11,7 @@ const getAllUsers = async () => {
     logger.info(`Get all users from database: ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on adminModel.getAllUsers function while fetching database: ${e}`);
     console.error('error', e.message);
   }
 };
@@ -23,7 +23,7 @@ const getAllUsersSort = async (order) => {
     logger.info(`Get all users from database: ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on adminModel.GetAllUsersSort function while fetching database: ${e}`);
     console.error('error', e.message);
   }
 };
