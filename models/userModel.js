@@ -76,7 +76,7 @@ const createPost = async (post) => {
     logger.info(`createPost : ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on createPost function: ${e}`);
     console.log('error', e.message);
   }
 };
