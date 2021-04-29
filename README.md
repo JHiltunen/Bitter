@@ -16,8 +16,3 @@
   <li> MySQL </li>
 </ul>
 
-<h3>License<h/3>
-
-[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
- 
-
