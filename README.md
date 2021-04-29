@@ -1,7 +1,7 @@
 # Bitter
 
 About the Project: <br>
-Media sharing web application. The app is intended as a meeting place and discussion platform for those how are interested in coding.
+Media sharing web application which is intended as a meeting place and discussion platform for those how are interested in coding.
 
 Built whit:
 * HTML
