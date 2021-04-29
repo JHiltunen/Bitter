@@ -693,6 +693,16 @@ input.login {
     }
     .post {
         margin-top: 4.61rem;
+        font-size: 0.6em;
+    }
+    .post-file {
+        font-size: 0.6em;
+    }
+    .card{
+        font-size: 0.6em;
+    }
+    .attachments-send {
+        justify-content: space-between;
     }
     /** ABOUT **/
 
@@ -702,6 +712,9 @@ input.login {
     /** edit user info **/
     .editArticle {
         margin-top: 4.61rem;
+    }
+    #log-out {
+        font-size: 0.6em;
     }
 }
 
