@@ -15,7 +15,9 @@ const make_thumbnail = async (req, res, next) => {
     if (req.file == undefined) {
       console.log('PostController row 16');
       next();
+      return;
     }
+
     const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
     if (thumbnail) {
       console.log('PostController row 21');
