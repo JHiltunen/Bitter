@@ -4,7 +4,7 @@ const express = require('express');
 const logger = require('./utils/winston');
 const morgan = require('morgan');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 const cors = require('cors');
 const contactRoute = require('./routes/contactRoute');
 const userRoute = require('./routes/userRoute');
@@ -18,7 +18,7 @@ const port = process.env.HTTP_PORT || 3001;
 app.use(cors());
 
 // Create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs', '/access.log'), { flags: 'a' })
 
 // Setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
