@@ -1,5 +1,3 @@
-![GitHub contributors](https://img.shields.io/github/contributors/jhiltunen/bitter?color=%23266DD3&logo=github)
-
 # Bitter
 
 <p align="center">
