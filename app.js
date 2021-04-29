@@ -4,8 +4,9 @@ const express = require('express');
 const logger = require('./utils/winston');
 const morgan = require('morgan');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 const cors = require('cors');
+const contactRoute = require('./routes/contactRoute');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
 const passport = require('./utils/pass');
@@ -14,8 +15,10 @@ const postRoute = require('./routes/postRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
 
+app.use(cors());
+
 // Create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs', '/access.log'), { flags: 'a' })
 
 // Setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
@@ -56,8 +59,6 @@ const needsGroup = (role) => {
 };
 
 
-app.use(cors());
-
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -65,6 +66,7 @@ app.use(express.static('public'));
 app.use(express.static('uploads'));
 app.use('/thumbnails', express.static('thumbnails'));
 // routes
+app.use('/contact', contactRoute);
 app.use('/forum', postRoute);
 app.use('/auth', authRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), needsGroup('User'), userRoute);

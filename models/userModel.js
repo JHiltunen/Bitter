@@ -8,11 +8,11 @@ const getUser = async (id) => {
   try {
     console.log('userModel getUser', id);
     logger.info(`userModel getUser with id: ${id}`);
-    const [rows] = await promisePool.execute('SELECT * FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE users.userId = ?', [id]);
+    const [rows] = await promisePool.execute('SELECT userId, firstname, lastname, email, dateofBirth, gender, vst, vet FROM users INNER JOIN user_roles ON users.userId = user_roles.userId INNER JOIN roles ON user_roles.roleId = roles.roleId WHERE users.userId = ?', [id]);
     logger.info(`Data fetched from database: ${JSON.stringify(rows)}`);
     return rows[0];
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on userModel.getUser function while fetching database: ${e}`);
     console.error('userModel:', e.message);
   }
 };
@@ -26,7 +26,7 @@ const insertUser = async (user) => {
     logger.info(`Inserted default role`);
     return row.insertId;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on userModel.insertUser function while fetching database: ${e}`);
   }
 };
 
@@ -37,7 +37,7 @@ const giveUserDefaultRole = async (id) => {
     logger.info(`Data fetched from database: ${JSON.stringify(rows)}`);
     return row.insertId;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on usermodel.giveUserDefaultRole function while fetching database: ${e}`);
   }
 }
 
@@ -48,7 +48,7 @@ const updateUser = async (user) => {
     logger.info(`Update row on updateUser: ${JSON.stringify(row)}`);
     return row.insertId;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on userModel.updateUser function while fetching database: ${e}`);
   }
 };
 
@@ -62,21 +62,21 @@ const getUserLogin = async (params) => {
     logger.info(`GetUserLogin : ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on userModel.getUserLogin function while fetching database: ${e}`);
     console.log('error', e.message);
   }
 };
 
 const createPost = async (post) => {
   try {
-    console.log(post);
+    console.log('Row 72:', post);
     logger.info(`createPost post: ${JSON.stringify(post)}`);
     const [rows] = await promisePool.execute(
         'INSERT INTO posts (title, content, image, likes, dislikes, userId, vst) VALUES (?, ?, ?, 0, 0, ?, curdate())', post);
     logger.info(`createPost : ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
-    logger.error(`Error while fetching database: ${e}`);
+    logger.error(`Error on userModel.createPost function: ${e}`);
     console.log('error', e.message);
   }
 };
