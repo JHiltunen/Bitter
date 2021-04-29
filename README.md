@@ -1,3 +1,5 @@
+![GitHub contributors](https://img.shields.io/github/contributors/jhiltunen/bitter?color=%23266DD3&logo=github)
+
 # Bitter
 
 <p align="center">
@@ -14,4 +16,10 @@
    <li> Node.JS </li>
   <li> REST API </li>
   <li> MySQL </li>
-<ul>
+</ul>
+
+<h3>License<h/3>
+
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+ 
+
