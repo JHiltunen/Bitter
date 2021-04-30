@@ -18,7 +18,7 @@ passport.use(new Strategy(
           return done(null, false, {message: 'Incorrect credentials.'});
         }
         //if (user.password !== password) {
-        if (!bcrypt.compare(password, user.password)) { 
+        if (!await bcrypt.compare(password, user.password)) { 
           return done(null, false, {message: 'Incorrect credentials.'});
         }
         delete user.password; // poista salasana
