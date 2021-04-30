@@ -38,7 +38,6 @@ passport.use(new JWTStrategy({
       //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
      try {
        const user = await userModel.getUser(jwtPayload.userId);
-       delete user.password; // poista salasana
        return done(null, user);
      } catch (err) {
        return done(err);
