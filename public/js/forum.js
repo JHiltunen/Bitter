@@ -49,6 +49,19 @@ post.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/user/post', fetchOptions);
   console.log(response);
   const json = await response.json();
+  if (response.status === 200) {
+    document.querySelector('.post-title').value = '';
+    document.querySelector('.post-content').value = '';
+    document.getElementById('image').value = '';
+    document.getElementById('imagePreview').value = '';
+    document.getElementById('imagePreview').setAttribute('src', '')
+    document.querySelector('.image-preview-image'). value = '';
+    document.querySelector('.image-preview-default-text').value = '';
+
+    previewContainer.style.display = "";
+    previewDefaultText.style.display = "";
+    previewImage.style.display = "";
+  }
   getPost();
 });
 
@@ -80,7 +93,6 @@ const createPostView = (posts) => {
       img.classList.add('resp');
       card.appendChild(img);
     }
-
     article.appendChild(card);
     section.appendChild(article);
   });
