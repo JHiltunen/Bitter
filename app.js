@@ -34,9 +34,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // root directory
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.send('Hello Secure World!');
-});
+}); */
 
 // custom middleware to check which role user has
 const needsGroup = (role) => {
