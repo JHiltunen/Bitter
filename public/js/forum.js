@@ -126,10 +126,10 @@ image.addEventListener("change", function() {
     });
     reader.readAsDataURL(file);
   } else {
-    previewContainer.style.display = null;
-    previewDefaultText.style.display = null;
-    previewImage.style.display = null;
-    previewImage.setAttribute("src", null);
+    previewContainer.style.display = "";
+    previewDefaultText.style.display = "";
+    previewImage.style.display = "";
+    previewImage.setAttribute("src", "");
   }
 });
 
