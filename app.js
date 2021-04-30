@@ -33,11 +33,6 @@ if (process.env.NODE_ENV === 'production') {
   require('./utils/localhost')(app, process.env.HTTPS_PORT || 8001, port);
 }
 
-// root directory
-/* app.get('/', (req, res) => {
-  res.send('Hello Secure World!');
-}); */
-
 // custom middleware to check which role user has
 const needsGroup = (role) => {
   return (req, res, next) => {
