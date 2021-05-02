@@ -18,4 +18,9 @@ router.route('/post')
   body('content', 'minimum of 1 characters').isLength({min: 1}),
 ], forumController.create_post);
 
+router.route('/postComment')
+  .post(
+    [body('comment', 'minimum of 1 characters').isLength({min: 1}).trim().escape().blacklist(';')],
+    forumController.create_comment);
+
 module.exports = router;
