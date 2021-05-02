@@ -11,7 +11,7 @@ const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
 const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
-const postRoute = require('./routes/postRoute');
+const forumRoute = require('./routes/forumRoute');
 const app = express();
 const port = process.env.HTTP_PORT || 3001;
 
@@ -62,7 +62,7 @@ app.use(express.static('uploads'));
 app.use('/thumbnails', express.static('thumbnails'));
 // routes
 app.use('/contact', contactRoute);
-app.use('/forum', postRoute);
+app.use('/forum', forumRoute);
 app.use('/auth', authRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), needsGroup('User'), userRoute);
 app.use('/admin', passport.authenticate('jwt', {session: false}), needsGroup('Admin'), adminRoute);
