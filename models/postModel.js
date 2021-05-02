@@ -12,6 +12,22 @@ const getAllPosts = async () => {
     logger.error(`Error on postModel.getAllPosts function while fetching database ${e}`);
   }
 };
+
+const createPost = async (post) => {
+  try {
+    console.log('Row 72:', post);
+    logger.info(`createPost post: ${JSON.stringify(post)}`);
+    const [rows] = await promisePool.execute(
+        'INSERT INTO posts (title, content, image, likes, dislikes, userId, vst) VALUES (?, ?, ?, 0, 0, ?, curdate())', post);
+    logger.info(`createPost : ${JSON.stringify(rows)}`);
+    return rows;
+  } catch (e) {
+    logger.error(`Error on userModel.createPost function: ${e}`);
+    console.log('error', e.message);
+  }
+};
+
 module.exports = {
   getAllPosts,
+  createPost,
 };
