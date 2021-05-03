@@ -75,16 +75,21 @@ const createPostView = (posts) => {
     article.classList.add('PostArticle')
     const card = document.createElement('div');
     card.setAttribute('id', post.postId);
-    card.classList.add('card')
+    card.classList.add('card');
     const title = document.createElement('h2');
     title.classList.add('title-text');
     title.innerHTML = `${post.title}`;
+
+    const postAuthor = document.createElement('h4');
+    postAuthor.classList.add('post-author');
+    postAuthor.innerHTML = `${post.firstname} ${post.lastname}`;
     
     const content = document.createElement('p');
     content.classList.add('content-text');
     content.innerHTML = `${post.content}`;
 
     card.appendChild(title);
+    card.appendChild(postAuthor);
     card.appendChild(content);
 
     if (post.image != 'No Image') {
@@ -94,11 +99,20 @@ const createPostView = (posts) => {
       img.classList.add('resp');
       card.appendChild(img);
     }
+
+    const likes = document.createElement('span');
+    likes.classList.add('likes');
+    likes.innerHTML = post.likes;
+    
+    card.appendChild(likes);
+
     article.appendChild(card);
     section.appendChild(article);
 
     // div for comment section
     const commentContainer = document.createElement('div');
+    const commentsList = document.createElement('div');
+    commentsList.classList.add('comments');
 
     // write a new comment form
     const commentForm = document.createElement('form');
@@ -138,9 +152,14 @@ const createPostView = (posts) => {
 
     comments.then((result) => {
       result.forEach(comment => {
+        const commentAuthor = document.createElement('h6');
+        commentAuthor.innerHTML = `${comment.firstname} ${comment.lastname}`;
         const p = document.createElement('p');
         p.innerHTML = comment.comment;
-        commentContainer.appendChild(p);
+
+        commentsList.appendChild(commentAuthor);
+        commentsList.appendChild(p);
+        commentContainer.appendChild(commentsList);
       })
     });
     

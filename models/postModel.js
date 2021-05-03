@@ -15,7 +15,7 @@ const getAllPosts = async () => {
 
 const getComments = async (id) => {
   try {
-    const [rows] = await promisePool.execute('SELECT comment, vst FROM comments WHERE postId = ?', [id]);
+    const [rows] = await promisePool.execute('SELECT comments.comment, comments.vst, users.firstname, users.lastname FROM comments INNER JOIN users ON users.userId = comments.userId WHERE postId = ?', [id]);
     return rows;
   } catch (e) {
     console.error('postModel.getComments:', e.message);
