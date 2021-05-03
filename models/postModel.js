@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
-    const [rows] = await promisePool.execute('SELECT posts.postId, title, content, image, likes, dislikes, users.firstname, users.lastname FROM posts LEFT JOIN users ON posts.userId = users.userId');
+    const [rows] = await promisePool.execute('SELECT posts.postId, posts.title, posts.content, posts.image, posts.likes, posts.dislikes, posts.vst, users.firstname, users.lastname FROM posts LEFT JOIN users ON posts.userId = users.userId ORDER BY vst DESC');
     return rows;
   } catch (e) {
     console.error('postModel:', e.message);
