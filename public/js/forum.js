@@ -158,6 +158,10 @@ const createPostView = (posts) => {
             json.errors.forEach(error => errorDisplay.innerHTML += error.msg);
         } else {
           errorDisplay.innerHTML = '';
+          const newComment = document.createElement('p');
+
+          newComment.innerHTML = data.comment;
+          commentContainer.appendChild(newComment);
         }
       } catch (e) {
         console.log('Error on commentForm submit: ', e.message);
