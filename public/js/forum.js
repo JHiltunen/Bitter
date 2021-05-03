@@ -104,6 +104,8 @@ const createPostView = (posts) => {
 
     // div for comment section
     const commentContainer = document.createElement('div');
+    const commentsList = document.createElement('div');
+    commentsList.classList.add('comments');
 
     // write a new comment form
     const commentForm = document.createElement('form');
@@ -143,9 +145,14 @@ const createPostView = (posts) => {
 
     comments.then((result) => {
       result.forEach(comment => {
+        const commentAuthor = document.createElement('h6');
+        commentAuthor.innerHTML = `${comment.firstname} ${comment.lastname}`;
         const p = document.createElement('p');
         p.innerHTML = comment.comment;
-        commentContainer.appendChild(p);
+
+        commentsList.appendChild(commentAuthor);
+        commentsList.appendChild(p);
+        commentContainer.appendChild(commentsList);
       })
     });
     
