@@ -75,16 +75,21 @@ const createPostView = (posts) => {
     article.classList.add('PostArticle')
     const card = document.createElement('div');
     card.setAttribute('id', post.postId);
-    card.classList.add('card')
+    card.classList.add('card');
     const title = document.createElement('h2');
     title.classList.add('title-text');
     title.innerHTML = `${post.title}`;
+
+    const postAuthor = document.createElement('h4');
+    title.classList.add('post-author');
+    title.innerHTML = `${post.firstname} ${post.lastname}`;
     
     const content = document.createElement('p');
     content.classList.add('content-text');
     content.innerHTML = `${post.content}`;
 
     card.appendChild(title);
+    card.appendChild(postAuthor);
     card.appendChild(content);
 
     if (post.image != 'No Image') {
