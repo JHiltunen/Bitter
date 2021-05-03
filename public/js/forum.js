@@ -74,6 +74,7 @@ const createPostView = (posts) => {
     const article = document.createElement('article')
     article.classList.add('PostArticle')
     const card = document.createElement('div');
+    card.setAttribute('id', post.postId);
     card.classList.add('card')
     const title = document.createElement('h2');
     title.classList.add('title-text');
@@ -95,9 +96,107 @@ const createPostView = (posts) => {
     }
     article.appendChild(card);
     section.appendChild(article);
+
+    // div for comment section
+    const commentContainer = document.createElement('div');
+
+    // write a new comment form
+    const commentForm = document.createElement('form');
+    commentForm.setAttribute('method', 'POST');
+    commentForm.setAttribute('action', '/user/postComment');
+    commentForm.setAttribute('class', 'commentForm');
+    commentForm.setAttribute('enctype', 'multipart/form-data');
+
+    // create textinput where user can write comment
+    const commentInput = document.createElement('input');
+    commentInput.setAttribute('type', 'text');
+    commentInput.setAttribute('name', 'comment');
+    commentInput.setAttribute('class', 'commentInput');
+
+    // create submit button for the form
+    const submitCommentFormButton = document.createElement('button');
+    submitCommentFormButton.setAttribute('type', 'submit');
+    submitCommentFormButton.innerText = 'Post comment';
+
+    // create hidden element for postid
+    const hiddenId = document.createElement('input');
+    hiddenId.setAttribute('type', 'hidden');
+    hiddenId.setAttribute('value', post.postId);
+    hiddenId.setAttribute('name', 'postId');
+
+    // create error field
+    const errorDisplay = document.createElement('span');
+    errorDisplay.classList.add('error');
+
+    // add elements to form
+    commentForm.appendChild(commentInput);
+    commentForm.appendChild(hiddenId);
+    commentForm.appendChild(submitCommentFormButton);
+    commentForm.appendChild(errorDisplay);
+
+    const comments = getComments(post.postId);
+
+    comments.then((result) => {
+      result.forEach(comment => {
+        const p = document.createElement('p');
+        p.innerHTML = comment.comment;
+        commentContainer.appendChild(p);
+      })
+    });
+    
+    commentForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      try {
+        console.log('Form object: ', commentForm);
+        const data = serializeJson(commentForm);
+        const fetchOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+          body: JSON.stringify(data),
+        };
+
+        console.log('Fetchoptions: ', fetchOptions);
+
+        const response = await fetch(url + '/user/postComment', fetchOptions);
+        console.log('Response:', response);
+        const json = await response.json();
+        
+        // if there are erros show them
+        if (json.errors !== undefined) {
+            errorDisplay.innerHTML = '';
+            json.errors.forEach(error => errorDisplay.innerHTML += error.msg);
+        } else {
+          errorDisplay.innerHTML = '';
+          const newComment = document.createElement('p');
+
+          newComment.innerHTML = data.comment;
+          commentContainer.appendChild(newComment);
+        }
+      } catch (e) {
+        console.log('Error on commentForm submit: ', e.message);
+      }
+    });
+
+    // add comment form below post
+    commentContainer.appendChild(commentForm);
+    card.appendChild(commentContainer);
   });
 };
 
+const getComments = async (id) => {
+  console.log("Get comments with postId: ", id);
+  try {
+    const response = await fetch(url + '/forum/comments/' + id);
+    console.log('Response: ', response);
+    return await response.json();
+  }
+  catch (e) {
+    console.log(e.message);
+  }
+}
 
 const getPost = async () => {
   console.log('getPost? token ', sessionStorage.getItem('token'));

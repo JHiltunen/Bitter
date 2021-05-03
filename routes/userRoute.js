@@ -3,7 +3,7 @@ const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const postController = require('../controllers/postController');
+const forumController = require('../controllers/forumController');
 const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 
@@ -13,12 +13,14 @@ router.route('/')
   });
 
 router.route('/post')
-.post(upload.single('image'), postController.make_thumbnail, [
+.post(upload.single('image'), forumController.make_thumbnail, [
   body('title', 'minimum of 1 characters').isLength({min: 1}),
   body('content', 'minimum of 1 characters').isLength({min: 1}),
-], userController.create_post);
+], forumController.create_post);
 
-
-
+router.route('/postComment')
+  .post(
+    [body('comment', 'minimum of 1 characters').isLength({min: 1}).trim().escape().blacklist(';')],
+    forumController.create_comment);
 
 module.exports = router;
