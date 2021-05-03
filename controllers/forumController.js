@@ -11,6 +11,11 @@ const post_list_get = async (req, res) => {
   res.json(posts);
 };
 
+const comment_list_get = async (req, res) => {
+  const comments = await postModel.getComments(req.params.id);
+  res.json(comments);
+};
+
 const make_thumbnail = async (req, res, next) => {
   try {
     // image is not mandatory -> handle case where there is no file
@@ -115,6 +120,7 @@ const create_comment = async (req, res, next) => {
 
 module.exports = {
   post_list_get,
+  comment_list_get,
   make_thumbnail,
   create_post,
   create_comment,

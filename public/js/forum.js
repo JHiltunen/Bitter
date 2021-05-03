@@ -122,6 +122,16 @@ const createPostView = (posts) => {
     commentForm.appendChild(submitCommentFormButton);
     commentForm.appendChild(errorDisplay);
 
+    const comments = getComments(post.postId);
+
+    comments.then((result) => {
+      result.forEach(comment => {
+        const p = document.createElement('p');
+        p.innerHTML = comment.comment;
+        commentContainer.appendChild(p);
+      })
+    });
+    
     commentForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       try {
@@ -143,7 +153,7 @@ const createPostView = (posts) => {
         const json = await response.json();
         
         // if there are erros show them
-        if (json.errors !== undefined || json.errors.length !== 0) {
+        if (json.errors !== undefined) {
             errorDisplay.innerHTML = '';
             json.errors.forEach(error => errorDisplay.innerHTML += error.msg);
         } else {
@@ -156,10 +166,21 @@ const createPostView = (posts) => {
 
     // add comment form below post
     commentContainer.appendChild(commentForm);
-
     card.appendChild(commentContainer);
   });
 };
+
+const getComments = async (id) => {
+  console.log("Get comments with postId: ", id);
+  try {
+    const response = await fetch(url + '/forum/comments/' + id);
+    console.log('Response: ', response);
+    return await response.json();
+  }
+  catch (e) {
+    console.log(e.message);
+  }
+}
 
 const getPost = async () => {
   console.log('getPost? token ', sessionStorage.getItem('token'));

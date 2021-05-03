@@ -8,4 +8,6 @@ const upload = multer({dest: 'uploads/'});
 
 router.get('/posts', forumController.post_list_get);
 
+router.get('/comments/:id', forumController.comment_list_get);
+
 module.exports = router;

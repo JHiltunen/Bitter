@@ -5,13 +5,23 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
-    const [rows] = await promisePool.execute('SELECT postId, title, content, image, likes, dislikes, users.firstname, users.lastname FROM posts INNER JOIN users ON posts.userId = users.userId');
+    const [rows] = await promisePool.execute('SELECT posts.postId, title, content, image, likes, dislikes, users.firstname, users.lastname FROM posts LEFT JOIN users ON posts.userId = users.userId');
     return rows;
   } catch (e) {
     console.error('postModel:', e.message);
     logger.error(`Error on postModel.getAllPosts function while fetching database ${e}`);
   }
 };
+
+const getComments = async (id) => {
+  try {
+    const [rows] = await promisePool.execute('SELECT comment, vst FROM comments WHERE postId = ?', [id]);
+    return rows;
+  } catch (e) {
+    console.error('postModel.getComments:', e.message);
+    logger.error(`Error on postModel.getComments function while fetching database ${e}`);
+  }
+}
 
 const createPost = async (post) => {
   try {
@@ -29,5 +39,6 @@ const createPost = async (post) => {
 
 module.exports = {
   getAllPosts,
+  getComments,
   createPost,
 };
