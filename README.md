@@ -8,7 +8,7 @@
 <p> Media sharing web application which is intended as a meeting place and discussion platform for those how are interested in coding. </p>
 
 ##
-<h3>Built whit:</h3>
+<h3>Built with:</h3>
 <ul>
   <li> HTML </li> 
   <li> CSS </li>
