@@ -81,8 +81,8 @@ const createPostView = (posts) => {
     title.innerHTML = `${post.title}`;
 
     const postAuthor = document.createElement('h4');
-    title.classList.add('post-author');
-    title.innerHTML = `${post.firstname} ${post.lastname}`;
+    postAuthor.classList.add('post-author');
+    postAuthor.innerHTML = `${post.firstname} ${post.lastname}`;
     
     const content = document.createElement('p');
     content.classList.add('content-text');
@@ -99,6 +99,13 @@ const createPostView = (posts) => {
       img.classList.add('resp');
       card.appendChild(img);
     }
+
+    const likes = document.createElement('span');
+    likes.classList.add('likes');
+    likes.innerHTML = post.likes;
+    
+    card.appendChild(likes);
+
     article.appendChild(card);
     section.appendChild(article);
 
