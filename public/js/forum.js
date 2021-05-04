@@ -275,7 +275,6 @@ const getPost = async () => {
     };
     const response = await fetch(url + '/forum/posts', options);
     const posts = await response.json();
-    console.log('Posts: ', posts);
     createPostView(posts);
   }
   catch (e) {
