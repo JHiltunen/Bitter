@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
-    const [rows] = await promisePool.execute('SELECT posts.postId, posts.title, posts.content, posts.image, posts.likes, posts.dislikes, posts.vst, users.firstname, users.lastname FROM posts LEFT JOIN users ON posts.userId = users.userId ORDER BY vst DESC');
+    const [rows] = await promisePool.execute('SELECT posts.postId, posts.title, posts.content, posts.image, posts.likes, posts.dislikes, posts.userId, posts.vst, users.firstname, users.lastname FROM posts LEFT JOIN users ON posts.userId = users.userId ORDER BY vst DESC');
     return rows;
   } catch (e) {
     console.error('postModel:', e.message);
@@ -37,8 +37,22 @@ const createPost = async (post) => {
   }
 };
 
+const updatePost = async (post) => {
+  try {
+    logger.info(`updatePost post: ${JSON.stringify(post)}`);
+    const [rows] = await promisePool.execute(
+        'UPDATE posts SET title=?, content=? WHERE postId=? AND userId=?', post);
+        logger.info(`updatePost : ${JSON.stringify(rows)}`);
+    return rows;
+  } catch (e) {
+    logger.error(`Error on userModel.updatePost function: ${e}`);
+    console.log('error', e.message);
+  }
+};
+
 module.exports = {
   getAllPosts,
   getComments,
   createPost,
+  updatePost,
 };
