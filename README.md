@@ -23,11 +23,11 @@
 
 ## Get started
 
+## Examples
+
 ```jsx
 Laita esimerkki tähän
 ```
-
-## Examples
 
 ## License
  
