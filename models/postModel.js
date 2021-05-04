@@ -44,6 +44,8 @@ const deletePost = async (id) => {
     return rows.affectedRows === 1;
   } catch (e) {
     console.error('postModel:', e.message);
+  }
+}
 
 const updatePost = async (post) => {
   try {
