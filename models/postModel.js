@@ -62,12 +62,27 @@ const updatePost = async (post) => {
 
 const addLike = async (like) => {
   try {
-    logger.info(`addLike function like: ${JSON.stringify(like)}`);
-    const [rows] = await promisePool.execute('INSERT INTO likes (postId, userId, vst) VALUES (?, ?, now())', like)
-    return rows;
+    if (await getLikes(like) == 0) {
+      logger.info(`addLike function like: ${JSON.stringify(like)}`);
+      const [rows] = await promisePool.execute('INSERT INTO likes (postId, userId, vst) VALUES (?, ?, now())', like)
+      return rows;
+    } else {
+      return 0;
+    }
   } catch (e) {
     logger.error(`Error on postModel.addLike function ${e}`);
     console.log('error on addLike: ', e.message);
+  }
+}
+
+const getLikes = async (like) => {
+  try {
+    logger.info(`addLike function like: ${JSON.stringify(like)}`);
+    const [rows] = await promisePool.execute('SELECT postId, userId FROM likes WHERE postId=? AND userId=?', like)
+    return rows;
+  } catch (e) {
+    logger.error(`Error on postModel.getLikes function ${e}`);
+    console.log('error on getLikes: ', e.message);
   }
 }
 
@@ -90,4 +105,5 @@ module.exports = {
   updatePost,
   addLike,
   deleteLike,
+  getLikes,
 };
