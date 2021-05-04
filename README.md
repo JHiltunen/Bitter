@@ -1,6 +1,8 @@
 [![GitHub liecnse](https://img.shields.io/badge/license-GNU-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/) 
 [![GitHub contributors](https://img.shields.io/github/contributors/jhiltunen/bitter?color=blue)](https://github.com/JHiltunen/Bitter/graphs/contributors)
 
+Bitter is a tech forum web aplication where you can ask and offer help with coding issues for those how are interested in coding
+
 # [Bitter](https://localhost:8001/)
 
 <p align="center">
@@ -8,7 +10,7 @@
 
 ## About the Project
 
-<p> Media sharing web application which is intended as a meeting place and discussion platform for those how are interested in coding. </p>
+A school project designed to develop a media sharing application
 
 ## Built with
 
@@ -16,7 +18,7 @@
   <li> HTML </li> 
   <li> CSS </li>
   <li> JS </li>
-   <li> Node.JS </li>
+  <li> Node.JS </li>
   <li> REST API </li>
   <li> MySQL </li>
 </ul>
