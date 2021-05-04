@@ -9,7 +9,7 @@ const upload = multer({dest: 'uploads/'});
 
 router.route('/')
   .get((req, res) => {
-    res.send('Users information and frontpage');
+    res.send({userId : req.user.userId});
   });
 
 router.route('/post')

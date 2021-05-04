@@ -11,12 +11,33 @@ const updateTitle = document.querySelector('#updateTitle');
 const updateContent = document.querySelector('#updateContent');
 const saveChanges = document.querySelector('#saveChanges');
 const deletePost = document.querySelector('#deletePost');
+let user = undefined;
 
+const getUserId = async () => {
+  try {
+    const fetchOptions = {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+
+    console.log('Fetchoptions: ', fetchOptions);
+    const response = await fetch(url + '/user/', fetchOptions);
+    console.log(response);
+    const json = await response.json();
+    console.log('UserId: ', json);    
+    user = json;
+  } catch (e) {
+    console.log('Error getting userid', e.message);
+  }
+}
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
     //loginForm.style.display = 'none';
     logOut.style.display = 'block';
+    user = getUserId();
 } else {
     logOut.style.display = 'none';
 }
@@ -172,19 +193,21 @@ const createPostView = (posts) => {
       })
     });
 
-    const editIcon = document.createElement('i');
-    editIcon.classList.add('fa');
-    editIcon.classList.add('fa-edit');
-    
-    editIcon.addEventListener('click', () => {
-      console.log('Edit post: ', post.postId);
-      updateTitle.value = post.title;
-      updateContent.value = post.content;
-      postId.value = post.postId;
-      modal.style.display = "block";
-    });
+    if (user.userId === post.userId) {
+      const editIcon = document.createElement('i');
+      editIcon.classList.add('fa');
+      editIcon.classList.add('fa-edit');
+      
+      editIcon.addEventListener('click', () => {
+        console.log('Edit post: ', post.postId);
+        updateTitle.value = post.title;
+        updateContent.value = post.content;
+        postId.value = post.postId;
+        modal.style.display = "block";
+      });
 
-    card.appendChild(editIcon);
+      card.appendChild(editIcon);
+    }
     
     commentForm.addEventListener('submit', async (event) => {
       event.preventDefault();
