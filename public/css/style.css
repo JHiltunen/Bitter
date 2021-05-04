@@ -456,6 +456,7 @@ input.login {
     border-radius: 5px;
     box-shadow: 0px 1px 4px #888;
     border: 1px solid #888;
+    cursor: pointer;
 }
 .content-text {
     font-size: 0.9em;
@@ -568,6 +569,40 @@ input.login {
 }
 #forumFooter {
     margin-top: 0.5rem;
+}
+
+/** MODAL IMAGE **/
+.hide {
+    display: none !important;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal img {
+    height: auto;
+    background: #fff;
+    border-radius: 15px;
+    width: 100%;
+}
+.close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    color: #fff;
+    text-shadow: #000;
+    font-size: 2em;
+}
+.close:hover {
+    color: #0078ff;
 }
 
 /** DESKTOP VIEW! **/
@@ -728,6 +763,29 @@ input.login {
     }
     #log-out {
         font-size: 0.6em;
+    }
+
+    /** MODAL IMAGE **/
+
+    .hide {
+        display: none !important;
+    }
+    .modal {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.5);
+    }
+    .modal img {
+        height: 60%;
+        width: auto;
+    }
+    .close {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        color: #fff;
+        text-shadow: #000;
+        font-size: 2em;
     }
 }
 
