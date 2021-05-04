@@ -3,11 +3,13 @@ const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelector('#log-out');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
+const login = document.querySelector('.login');
+const loginButton = document.querySelector('#mainLoginButton');
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
-    //loginForm.style.display = 'none';
-    logOut.style.display = 'block';
+  login.style.display = 'none';
+  loginButton.style.display = 'none';
 } else {
     logOut.style.display = 'none';
 }
@@ -27,6 +29,7 @@ logOut.addEventListener('click', async (evt) => {
       // remove token
       sessionStorage.removeItem('token');
       alert('You have logged out');
+      location.reload();
       // show/hide login form and logout
       logOut.style.display = 'none';
     }

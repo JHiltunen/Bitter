@@ -31,11 +31,13 @@ html {
 }
 .navH2 {
     align-self: center;
+    text-decoration: none;
+    color: black;
 }
 
 /** MOBILE NAVIGATION **/
 .overlay {
-    height: 0%;
+    height: 0;
     width: 100%;
     position: fixed;
     z-index: 1;
@@ -150,7 +152,6 @@ input[name=name] {
     background-color: rgba(0, 0, 0, 0);
     color: white;
     padding: 12px;
-    border: 0;
     border: 2px solid white;
     box-sizing: border-box;
 }
@@ -225,7 +226,7 @@ tr:nth-child(even) {
     flex-direction: column;
     justify-content: center;
     background-color: #e7e7e7;
-    box-shadow: 0px 1px 5px black;
+    box-shadow: 0 1px 5px black;
     height: 26rem;
     width: 24rem;
     margin: auto;
@@ -271,8 +272,8 @@ input.login {
     border: 2px solid #266DD3;
     color: #266DD3;
     padding: 12px;
-    margin: 5px 0px 10px 0px;
-}
+    margin: 5px 0 10px 0;
+ }
 .register-Btn {
     color: #266DD3;
     text-align: center;
@@ -454,7 +455,7 @@ input.login {
     height: auto;
     margin-top: 1.2em;
     border-radius: 5px;
-    box-shadow: 0px 1px 4px #888;
+    box-shadow: 0 1px 4px #888;
     border: 1px solid #888;
 }
 .content-text {
@@ -569,7 +570,9 @@ input.login {
 #forumFooter {
     margin-top: 0.5rem;
 }
-
+#log-out {
+    display: none;
+}
 /** DESKTOP VIEW! **/
 
 @media only screen and (min-width: 680px) {
@@ -640,6 +643,9 @@ input.login {
     }
     .navH2{
         margin-right: auto;
+        text-decoration: none;
+        color: black;
+        font-size: inherit;
     }
     .mainText {
     width: 680px;
@@ -727,7 +733,12 @@ input.login {
         margin-top: 4rem;
     }
     #log-out {
-        font-size: 0.6em;
+        display: flex;
+        text-decoration: none;
+        margin-right: 25px;
+        align-items: center;
+        font-size: 0.5em;
+        color: black;
     }
 }
 
