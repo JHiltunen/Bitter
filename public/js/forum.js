@@ -3,6 +3,9 @@ const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelector('#log-out');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
+const imageModal = document.querySelector('#image-modal');
+const modalImage = document.querySelector('#image-modal img');
+const close = document.querySelector('#image-modal a');
 const modal = document.querySelector('#editPostModal'); // Get the modal
 const span = document.getElementsByClassName("close")[0]; // Get the <span> element that closes the modal
 const updatePostForm = document.querySelector('#updatePost');
@@ -65,6 +68,7 @@ logOut.addEventListener('click', async (evt) => {
     }
 });
 
+
 // submit post
 post.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -101,6 +105,8 @@ const createPostView = (posts) => {
   section.innerHTML = '';
   posts.forEach((post) => {
     // create li with DOM methods
+
+
     const article = document.createElement('article')
     article.classList.add('PostArticle')
     const card = document.createElement('div');
@@ -122,22 +128,29 @@ const createPostView = (posts) => {
     card.appendChild(postAuthor);
     card.appendChild(content);
 
-    if (post.image != 'No Image') {
+    if (post.image !== 'No Image') {
       const img = document.createElement('img');
       img.src = url + '/thumbnails/' + post.image;
       img.alt = post.title;
       img.classList.add('resp');
       card.appendChild(img);
+
+      img.addEventListener('click', () => {
+        modalImage.src = url + '/' + post.image;
+        imageModal.alt = post.title;
+        imageModal.classList.toggle('hide');
+      });
     }
 
-    const likes = document.createElement('span');
-    likes.classList.add('likes');
-    likes.innerHTML = post.likes;
-    
-    card.appendChild(likes);
+      const likes = document.createElement('span');
+      likes.classList.add('likes');
+      likes.innerHTML = post.likes;
 
-    article.appendChild(card);
-    section.appendChild(article);
+      card.appendChild(likes);
+
+      article.appendChild(card);
+      section.appendChild(article);
+
 
     // div for comment section
     const commentContainer = document.createElement('div');
@@ -252,6 +265,10 @@ const createPostView = (posts) => {
     card.appendChild(commentContainer);
   });
 };
+close.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  imageModal.classList.toggle('hide');
+});
 
 const getComments = async (id) => {
   console.log("Get comments with postId: ", id);

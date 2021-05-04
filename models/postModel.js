@@ -37,6 +37,14 @@ const createPost = async (post) => {
   }
 };
 
+const deletePost = async (id) => {
+  try {
+    console.log('postModel deletePost', id);
+    const [rows] = await promisePool.execute('DELETE FROM posts WHERE postId = ?', [id]);
+    return rows.affectedRows === 1;
+  } catch (e) {
+    console.error('postModel:', e.message);
+
 const updatePost = async (post) => {
   try {
     logger.info(`updatePost post: ${JSON.stringify(post)}`);
@@ -54,5 +62,6 @@ module.exports = {
   getAllPosts,
   getComments,
   createPost,
+  deletePost,
   updatePost,
 };

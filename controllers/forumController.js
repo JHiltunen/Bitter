@@ -153,6 +153,11 @@ const create_comment = async (req, res, next) => {
   }
 };
 
+const post_delete = async (req, res) => {
+  const deleteOk = await postModel.deletePost(req.params.id);
+  res.json(deleteOk);
+};
+
 module.exports = {
   post_list_get,
   comment_list_get,
@@ -160,4 +165,5 @@ module.exports = {
   create_post,
   edit_post,
   create_comment,
+  post_delete,
 };
