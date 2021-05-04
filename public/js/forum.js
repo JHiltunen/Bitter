@@ -193,20 +193,22 @@ const createPostView = (posts) => {
       })
     });
 
-    if (user.userId === post.userId) {
-      const editIcon = document.createElement('i');
-      editIcon.classList.add('fa');
-      editIcon.classList.add('fa-edit');
-      
-      editIcon.addEventListener('click', () => {
-        console.log('Edit post: ', post.postId);
-        updateTitle.value = post.title;
-        updateContent.value = post.content;
-        postId.value = post.postId;
-        modal.style.display = "block";
-      });
-
-      card.appendChild(editIcon);
+    if (user !== undefined) {
+      if (user.userId === post.userId) {
+        const editIcon = document.createElement('i');
+        editIcon.classList.add('fa');
+        editIcon.classList.add('fa-edit');
+        
+        editIcon.addEventListener('click', () => {
+          console.log('Edit post: ', post.postId);
+          updateTitle.value = post.title;
+          updateContent.value = post.content;
+          postId.value = post.postId;
+          modal.style.display = "block";
+        });
+  
+        card.appendChild(editIcon);
+      }
     }
     
     commentForm.addEventListener('submit', async (event) => {
