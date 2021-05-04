@@ -25,5 +25,11 @@ router.route('/postComment')
 
 router.route('/update-post/:id')
   .put(forumController.edit_post);
+
 router.delete('/delete-post/:id', forumController.post_delete);
+
+router.route('/likes/:id')
+  .post(forumController.insert_like)
+  .delete(forumController.delete_like);
+
 module.exports = router;

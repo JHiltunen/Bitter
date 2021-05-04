@@ -101,6 +101,7 @@ post.addEventListener('submit', async (evt) => {
 
 // create post view
 const createPostView = (posts) => {
+  console.log('Posts: ', posts);
   // clear article
   section.innerHTML = '';
   posts.forEach((post) => {
@@ -206,6 +207,19 @@ const createPostView = (posts) => {
       })
     });
 
+    const likeIcon = document.createElement('i');
+    likeIcon.classList.add('fa');
+    console.log('UserId: ', user.userId);
+    console.log('post.liked: ', post.liked);
+
+    if (user.userId === post.liked) {
+      likeIcon.classList.add('fa-heart');
+    } else {
+      likeIcon.classList.add('fa-heart-o');
+    }
+
+    card.appendChild(likeIcon);
+
     if (user !== undefined) {
       if (user.userId === post.userId) {
         const editIcon = document.createElement('i');
@@ -222,6 +236,70 @@ const createPostView = (posts) => {
   
         card.appendChild(editIcon);
       }
+
+      likeIcon.addEventListener('click', async (event) => {
+        // add like
+        if (likeIcon.classList.contains('fa-heart-o')) {
+          event.preventDefault();
+          console.log('click');
+          try {
+            const data = {postId: post.postId, userId: user.userId};
+            const fetchOptions = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            console.log('Fetchoptions: ', fetchOptions);
+  
+            const response = await fetch(url + '/user/likes/' + post.postId, fetchOptions);
+            console.log('Response:', response);
+            const json = await response.json();
+            console.log('Response: ', json);
+  
+            if (response.status == 200) {
+              likeIcon.classList.remove('fa-heart-o');
+              likeIcon.classList.add('fa-heart');
+            }
+          } catch (e) {
+            console.log('Error on addLike submit: ', e.message);
+          }
+          return;
+        } 
+        
+        // delete like
+        if (likeIcon.classList.contains('fa-heart')) {
+          event.preventDefault();
+          console.log('click');
+          try {
+            const data = {postId: post.postId, userId: user.userId};
+            const fetchOptions = {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            console.log('Fetchoptions: ', fetchOptions);
+  
+            const response = await fetch(url + '/user/likes/' + post.postId, fetchOptions);
+            console.log('Response:', response);
+            const json = await response.json();
+            console.log('Response: ', json);
+  
+            if (response.status == 200) {
+              likeIcon.classList.remove('fa-heart');
+              likeIcon.classList.add('fa-heart-o');
+            }
+          } catch (e) {
+            console.log('Error on addLike submit: ', e.message);
+          }
+          return;
+        }
+      });
     }
     
     commentForm.addEventListener('submit', async (event) => {
