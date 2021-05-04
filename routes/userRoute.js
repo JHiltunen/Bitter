@@ -9,7 +9,7 @@ const upload = multer({dest: 'uploads/'});
 
 router.route('/')
   .get((req, res) => {
-    res.send('Users information and frontpage');
+    res.send({userId : req.user.userId});
   });
 
 router.route('/post')
@@ -22,5 +22,8 @@ router.route('/postComment')
   .post(
     [body('comment', 'minimum of 1 characters').isLength({min: 1}).trim().escape().blacklist(';')],
     forumController.create_comment);
+
+router.route('/update-post/:id')
+  .put(forumController.edit_post);    
 
 module.exports = router;
