@@ -1,3 +1,6 @@
+[![GitHub liecnse](https://img.shields.io/badge/license-GNU-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/) 
+[![GitHub contributors](https://img.shields.io/github/contributors/jhiltunen/bitter?color=blue)](https://github.com/JHiltunen/Bitter/graphs/contributors)
+
 # Bitter
 
 <p align="center">
