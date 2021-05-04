@@ -4,7 +4,7 @@
 # [Bitter](https://localhost:8001/)
 
 <p align="center">
-<img src = "https://user-images.githubusercontent.com/71440030/116994222-1bdcb400-ace1-11eb-9005-1925187f58a2.JPG"  alt="Screenshot of the page" width="450" height="437"/>
+<img src = "https://user-images.githubusercontent.com/71440030/116994222-1bdcb400-ace1-11eb-9005-1925187f58a2.JPG"  alt="Screenshot of the page" width="500" height="437"/>
 
 ## About the Project
 
