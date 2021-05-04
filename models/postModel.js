@@ -62,7 +62,7 @@ const updatePost = async (post) => {
 
 const addLike = async (like) => {
   try {
-    if (await getLikes(like) == 0) {
+    if (await userLikeOnPostExists(like) == 0) {
       logger.info(`addLike function like: ${JSON.stringify(like)}`);
       const [rows] = await promisePool.execute('INSERT INTO likes (postId, userId, vst) VALUES (?, ?, now())', like)
       return rows;
@@ -75,7 +75,7 @@ const addLike = async (like) => {
   }
 }
 
-const getLikes = async (like) => {
+const userLikeOnPostExists = async (like) => {
   try {
     logger.info(`addLike function like: ${JSON.stringify(like)}`);
     const [rows] = await promisePool.execute('SELECT postId, userId FROM likes WHERE postId=? AND userId=?', like)
@@ -105,5 +105,5 @@ module.exports = {
   updatePost,
   addLike,
   deleteLike,
-  getLikes,
+  userLikeOnPostExists,
 };
