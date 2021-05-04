@@ -9,5 +9,5 @@ const upload = multer({dest: 'uploads/'});
 router.get('/posts', forumController.post_list_get);
 
 router.get('/comments/:id', forumController.comment_list_get);
-router.delete('/delete-post/:id', forumController.post_delete);
+
 module.exports = router;

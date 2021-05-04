@@ -361,9 +361,26 @@ const closeModal = () => {
   modal.style.display = "none";
 }
 
-deletePost.addEventListener('click', (event) => {
+deletePost.addEventListener('click', async (event) => {
+  const postId = document.querySelector('#postId').value;
+  const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    try {
+      const response = await fetch(url + '/user/delete-post/' + postId, fetchOptions);
+      const json = await response.json();
+      console.log('delete response', json);
+      getPost();
+      closeModal();
+    }
+    catch (e) {
 
-});
+    }
+  });
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.addEventListener('click', (event) => {

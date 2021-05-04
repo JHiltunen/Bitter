@@ -24,6 +24,6 @@ router.route('/postComment')
     forumController.create_comment);
 
 router.route('/update-post/:id')
-  .put(forumController.edit_post);    
-
+  .put(forumController.edit_post);
+router.delete('/delete-post/:id', forumController.post_delete);
 module.exports = router;
