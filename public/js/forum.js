@@ -3,6 +3,15 @@ const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelector('#log-out');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
+const modal = document.querySelector('#editPostModal'); // Get the modal
+const span = document.getElementsByClassName("close")[0]; // Get the <span> element that closes the modal
+const updatePostForm = document.querySelector('#updatePost');
+const postId = document.querySelector('#postId');
+const updateTitle = document.querySelector('#updateTitle');
+const updateContent = document.querySelector('#updateContent');
+const saveChanges = document.querySelector('#saveChanges');
+const deletePost = document.querySelector('#deletePost');
+
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
@@ -162,6 +171,20 @@ const createPostView = (posts) => {
         commentContainer.appendChild(commentsList);
       })
     });
+
+    const editIcon = document.createElement('i');
+    editIcon.classList.add('fa');
+    editIcon.classList.add('fa-edit');
+    
+    editIcon.addEventListener('click', () => {
+      console.log('Edit post: ', post.postId);
+      updateTitle.value = post.title;
+      updateContent.value = post.content;
+      postId.value = post.postId;
+      modal.style.display = "block";
+    });
+
+    card.appendChild(editIcon);
     
     commentForm.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -263,4 +286,51 @@ image.addEventListener("change", function() {
   }
 });
 
+// handle update for edit post form
+updatePostForm.addEventListener('submit', async (event) => {
+  try {
+    event.preventDefault();
+    const data = serializeJson(updatePostForm);
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: JSON.stringify(data),
+    };
 
+    console.log('Fetchoptions: ', fetchOptions);
+    const response = await fetch(url + '/user/update-post/' + data.postId, fetchOptions);
+    console.log(response);
+    const json = await response.json();
+    if (response.status === 200) {
+      closeModal();
+      getPost();
+    }
+    
+    
+  } catch (e) {
+    console.log('Error on update post', e.message);
+  }
+});
+
+const closeModal = () => {
+  modal.style.display = "none";
+}
+
+deletePost.addEventListener('click', (event) => {
+
+});
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', (event) => {
+  if (event.target == modal) {
+    closeModal();
+  }
+});
+
+// When the user clicks on <span> (x), close the modal
+span.addEventListener('click', (event) => {
+  closeModal();
+});

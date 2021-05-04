@@ -23,4 +23,7 @@ router.route('/postComment')
     [body('comment', 'minimum of 1 characters').isLength({min: 1}).trim().escape().blacklist(';')],
     forumController.create_comment);
 
+router.route('/update-post/:id')
+  .put(forumController.edit_post);    
+
 module.exports = router;

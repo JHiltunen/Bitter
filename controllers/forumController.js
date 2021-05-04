@@ -80,6 +80,41 @@ const create_post = async (req, res, next) => {
   }
 };
 
+const edit_post = async (req, res, next) => {
+  console.log('User on edit_post:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> Edit post function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> Edit post function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> Edit post function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create post object to store data
+        const post = [
+          req.body.title,
+          req.body.content,
+          req.body.postId,
+          req.user.userId,
+        ];
+        logger.info(`Edit to be created: ${JSON.stringify(post)}`);
+        // update post
+        const response = await postModel.updatePost(post);
+        logger.info(`Edit post response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('Edit_post error', e.message);
+    }
+  } else {
+    res.status(401).send('You are not logged in!');
+  }
+};
+
 const create_comment = async (req, res, next) => {
   logger.info(`User on create_comment at forumController: ${JSON.stringify(req.user)}`)
   logger.info(`Body on create_comment at forumController: ${JSON.stringify(req.body)}`)
@@ -123,5 +158,6 @@ module.exports = {
   comment_list_get,
   make_thumbnail,
   create_post,
+  edit_post,
   create_comment,
 };

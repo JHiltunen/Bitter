@@ -37,8 +37,22 @@ const createPost = async (post) => {
   }
 };
 
+const updatePost = async (post) => {
+  try {
+    logger.info(`updatePost post: ${JSON.stringify(post)}`);
+    const [rows] = await promisePool.execute(
+        'UPDATE posts SET title=?, content=? WHERE postId=? AND userId=?', post);
+        logger.info(`updatePost : ${JSON.stringify(rows)}`);
+    return rows;
+  } catch (e) {
+    logger.error(`Error on userModel.updatePost function: ${e}`);
+    console.log('error', e.message);
+  }
+};
+
 module.exports = {
   getAllPosts,
   getComments,
   createPost,
+  updatePost,
 };
