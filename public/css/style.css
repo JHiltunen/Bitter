@@ -784,6 +784,11 @@ input.login {
     #post-btn {
         width: 6em;
     }
+
+    .modal-content {
+        margin: 10% auto;
+    }
+
     /** ABOUT **/
 
     .aboutArticle {
