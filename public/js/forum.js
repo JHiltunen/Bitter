@@ -70,6 +70,7 @@ if (sessionStorage.getItem('token')) {
     }
 } else {
     logOut.style.display = 'none';
+
 }
 
 // logout

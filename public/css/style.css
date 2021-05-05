@@ -294,7 +294,8 @@ input.login {
 #mail {
     margin-right: 7px;
     color: #266DD3;
-    font-size: 38px
+    font-size: 38px;
+    margin-top: 2px;
 }
 
 /** REGISTRATION FORM **/
@@ -328,111 +329,104 @@ input.login {
     text-decoration: underline;
 }
 .names {
-    align-self: center;
+    align-self: flex-start;
 }
 .bDate {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    margin-left: 30px;
     align-self: start;
 }
 .date {
     height: 2rem;
-    width: 8.8rem;
+    width: 9.8rem;
     margin-bottom: 13px;
     margin-top: 3px;
-    margin-left: 8px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
     color: #757575;
+    padding: 0 0 0 6px;
 }
 
 .gender {
     width: 7rem;
     height: 2rem;
-    margin-left: 8px;
     margin-bottom: 9px;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #266DD3;
     color: #757575;
     cursor: pointer;
+
+    padding: 0 0 0 8px;
 }
 .names {
     display: flex;
     flex-direction: row-reverse;
-    align-self: center;
+    align-self: flex-start;
 }
 .pass {
     display: flex;
     flex-direction: row-reverse;
-    margin-right: 15px;
+
 }
 #email-box {
-    margin-left: 2px;
+
 }
 /** DATE ICON **/
 #dateIcon {
-    height: 47px;
-    font-size: 34px;
-    margin-right: 1px;
+    font-size: xx-large;
     color: #266DD3;
+    margin-bottom: 12px;
 }
 /** EMAIL ICON **/
 #emailIcon {
-    height: 41px;
-    font-size: 35px;
-    margin-right: 7px;
+    font-size: xx-large;
     color: #266DD3;
+    margin-top: 4px;
 }
 /** FIRSTNAME ICON **/
 #name {
-    font-size: 42px;
-    margin-right: 8px;
-    margin-top: 3px;
+    font-size: xx-large;
     color: #266DD3;
+    margin-top: 6px;
 }
 /** LASTNAME ICON **/
 #lName {
-    font-size: 38px;
-    margin-right: 9px;
-    margin-top: 5px;
+    font-size: xx-large;
     color: #266DD3;
+    margin-top: 5px;
 }
 /** PASSWORD ICON **/
 #pass {
     color: #266DD3;
-    font-size: 37px;
-    margin-top: 5px;
-    margin-right: 13px;
+    font-size: xx-large;
+    margin-top: 8px;
 }
 /** GENDER ICON **/
 .mars-venus {
     flex-direction: row-reverse;
     display: flex;
     align-self: flex-start;
-    margin-left: 25px;
 }
 #mars-venus {
     color: #266DD3;
-    font-size: 31px;
-    margin-top: 4px;
+    font-size: xx-large;
 }
 /** ID'S FOR EVERY TEXT BOX **/
 #reg-1 {
-    margin-right: 20px;
+
 }
 #reg-2 {
-    margin-right: 22px;
+
 }
 #reg-3 {
-    margin-right: 23px;
+
 }
 #reg-4 {
-    margin-left: 27px;
+
 }
 #reg-5 {
-    align-self: center;
+    align-self: flex-start;
 }
 
 /** DISCUSSION FORUM  **/
@@ -672,14 +666,35 @@ input.login {
     color: #0078ff;
 }
 
-/** DESKTOP VIEW! **/
+.reg-flex {
+    display: flex;
+    flex-direction: column;
+    color: #c60606;
+    align-self: auto;
+    text-align: center;
+}
+.fa {
+    font-size: xx-large;
+}
 
+/** DESKTOP VIEW! **/
 @media only screen and (min-width: 680px) {
     * {
         font-size: 120%;
     }
     html {
         background: #266DD3;
+    }
+    .gender {
+        width: 7rem;
+        height: 2rem;
+        margin-bottom: 9px;
+        background-color: rgba(0, 0, 0, 0);
+        border: 2px solid #266DD3;
+        color: #757575;
+        cursor: pointer;
+        margin-left: 11px;
+        padding: 0 0 0 8px;
     }
     .navbar {
         top: 0;
@@ -858,6 +873,69 @@ input.login {
         color: #fff;
         text-shadow: #000;
         font-size: 2em;
+    }
+    .error {
+        font-size: 0.6em;
+    }
+    #mail {
+        font-size: 1em;
+        margin-top: 6px;
+    }
+    #user {
+
+    }
+    /** register **/
+    /** DATE ICON **/
+    #dateIcon {
+        font-size: inherit;
+        color: #266DD3;
+    }
+    /** EMAIL ICON **/
+    #emailIcon {
+        font-size: inherit;
+        color: #266DD3;
+        margin: 0;
+    }
+    /** FIRSTNAME ICON **/
+    #name {
+        font-size: inherit;
+        color: #266DD3;
+        margin: 0;
+    }
+    /** LASTNAME ICON **/
+    #lName {
+        font-size: inherit;
+        color: #266DD3;
+        margin: 0;
+    }
+    /** PASSWORD ICON **/
+    #pass {
+        color: #266DD3;
+        font-size: inherit;
+        margin: 0;
+    }
+    /** GENDER ICON **/
+
+    #mars-venus {
+        color: #266DD3;
+        font-size: inherit;
+        margin: 0;
+    }
+    /** ID'S FOR EVERY TEXT BOX **/
+    #reg-1 {
+
+    }
+    #reg-2 {
+
+    }
+    #reg-3 {
+
+    }
+    #reg-4 {
+
+    }
+    #reg-5 {
+        align-self: flex-start;
     }
 }
 

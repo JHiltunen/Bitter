@@ -18,7 +18,7 @@
             <a href="forum.html" class="headLinks">Forum</a>
             <a href="about.html" class="headLinks">About</a>
             <a href="" class="headLinks">Contact</a>
-<!--            <a href="editInfo.html" class="headLinks">Edit user Info</a>-->
+            <!--            <a href="editInfo.html" class="headLinks">Edit user Info</a>-->
             <a href="logout" id="log-out">Logout</a>
             <div id="myNav" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -52,23 +52,39 @@
         <button class="login-Btn" type="submit">Login</button>
         <a class="register-Btn" href="#" id="register-now">Register now</a>
     </form>
+    <div>
+
+
+    </div>
     <form id="register-form" action="/auth/register" method="POST" enctype="multipart/form-data" class="login-form">
         <p class="register-Text" >Registration</p>
-        <div class="names" id="reg-1">
-            <input class="login" type="text" name="firstname" placeholder="Firstname" required>
-            <i class="fa fa-user" id="name"></i>
+        <div class="reg-flex">
+            <div class="names" id="reg-1">
+                <input class="login" type="text" name="firstname" placeholder="Firstname" required>
+                <i class="fa fa-user fa-fw" id="name"></i>
+            </div>
+            <span class="error" id="firstname-error"></span>
         </div>
-        <div class="names" id="reg-2">
-            <input class="login" type="text" name="lastname" placeholder="Lastname" required>
-            <i class="fa fa-user-o" id="lName"></i>
+        <div class="reg-flex">
+            <div class="names" id="reg-2">
+                <input class="login" type="text" name="lastname" placeholder="Lastname" required>
+                <i class="fa fa-user-o fa-fw" id="lName"></i>
+            </div>
+            <span class="error" id="lastname-error"></span>
         </div>
-        <div class="names" id="reg-3">
-            <input id="email-box" class="login" type="text" name="username" placeholder="Email" required>
-            <i id="emailIcon" class="fa fa-envelope"></i>
+        <div class="reg-flex">
+            <div class="names" id="reg-3">
+                <input id="email-box" class="login" type="text" name="username" placeholder="Email" required>
+                <i id="emailIcon" class="fa fa-envelope fa-fw"></i>
+            </div>
+            <span class="error" id="email-error"></span>
         </div>
-        <div class="bDate">
-            <input class="date" type="date" name="dateOfBirth" id="dateOfBirth" required>
-            <i id="dateIcon" class="fa fa-calendar"></i>
+        <div class="reg-flex">
+            <div class="bDate">
+                <input class="date" type="date" name="dateOfBirth" id="dateOfBirth" required>
+                <i id="dateIcon" class="fa fa-calendar fa-fw"></i>
+            </div>
+            <span class="error" id="date-error"></span>
         </div>
         <div class="mars-venus">
             <select class="gender" name="gender" id="gender" required>
@@ -76,11 +92,14 @@
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-            <i class="fa fa-venus-mars" id="mars-venus"></i>
+            <i class="fa fa-venus-mars fa-fw" id="mars-venus"></i>
         </div>
-        <div class="pass" id="reg-5">
-            <input class="login" type="password" name="password" id="password" placeholder="Password" required>
-            <i class="fa fa-unlock-alt" id="pass"></i>
+        <div class="reg-flex">
+            <div class="pass" id="reg-5">
+                <input class="login" type="password" name="password" id="password" placeholder="Password" required>
+                <i class="fa fa-unlock-alt fa-fw" id="pass"></i>
+            </div>
+            <span class="error" id="password-error"></span>
         </div>
         <button class="registerFormBtn" type="submit">Register</button>
         <a href="#" id="login-now">Login now</a>
