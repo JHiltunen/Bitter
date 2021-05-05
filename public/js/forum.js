@@ -243,8 +243,8 @@ const createPostView = async (posts) => {
             console.log("Response: ", json);
 
             if (response.status == 200) {
-              likeIcon.classList.remove("fa-thumbs-o-up");
-              likeIcon.classList.add("fa-thumbs-up");
+              likeIcon.classList.remove("fa-thumbs-up");
+              likeIcon.classList.add("fa-thumbs-o-up");
               getPost();
             }
           } catch (e) {
@@ -256,10 +256,9 @@ const createPostView = async (posts) => {
       });
 
       dislikeIcon.addEventListener('click', async (event) => {
+        event.preventDefault();
         // add dislike
         if (dislikeIcon.classList.contains("fa-thumbs-o-down")) {
-          event.preventDefault();
-          console.log("click");
           try {
             const data = { postId: post.postId, userId: user.userId };
             const fetchOptions = {
@@ -290,7 +289,39 @@ const createPostView = async (posts) => {
           }
           return;
         }
-      })
+
+        if (dislikeIcon.classList.contains("fa-thumbs-down")) {
+          try {
+            const data = { postId: post.postId, userId: user.userId };
+            const fetchOptions = {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+              body: JSON.stringify(data),
+            };
+            console.log("Fetchoptions: ", fetchOptions);
+
+            const response = await fetch(
+              url + "/forum/post/" + post.postId + "/dislikes/",
+              fetchOptions
+            );
+            console.log("Response:", response);
+            const json = await response.json();
+            console.log("Response: ", json);
+
+            if (response.status == 200) {
+              dislikeIcon.classList.remove("fa-thumbs-down");
+              dislikeIcon.classList.add("fa-thumbs-o-down");
+              getPost();
+            }
+          } catch (e) {
+            console.log("Error on addLike submit: ", e.message);
+          }
+          return;
+        }
+      });
 
       const editIcon = document.createElement("i");
       editIcon.classList.add("fa");
