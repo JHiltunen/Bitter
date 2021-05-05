@@ -97,6 +97,43 @@ const deleteLike = async (like) => {
   }
 }
 
+const addDislike = async (dislike) => {
+  try {
+    if (await userDislikeOnPostExists(dislike) == 0) {
+      logger.info(`addDislike function dislike: ${JSON.stringify(dislike)}`);
+      const [rows] = await promisePool.execute('INSERT INTO dislikes (postId, userId, vst) VALUES (?, ?, now())', dislike)
+      return rows;
+    } else {
+      return 0;
+    }
+  } catch (e) {
+    logger.error(`Error on postModel.addDislike function ${e}`);
+    console.log('error on addDislike: ', e.message);
+  }
+}
+
+const userDislikeOnPostExists = async (dislike) => {
+  try {
+    logger.info(`userDislikeOnPostExists function dislike: ${JSON.stringify(dislike)}`);
+    const [rows] = await promisePool.execute('SELECT postId, userId FROM likes WHERE postId=? AND userId=?', dislike)
+    return rows;
+  } catch (e) {
+    logger.error(`Error on postModel.userDislikeOnPostExists function ${e}`);
+    console.log('error on userDisLikeOnPostExists: ', e.message);
+  }
+}
+
+const deleteDislike = async (dislike) => {
+  try {
+    logger.info(`deleteDislike function dislike: ${JSON.stringify(dislike)}`);
+    const [rows] = await promisePool.execute('DELETE FROM dislikes WHERE postId=? AND userId=?', dislike);
+    return rows;
+  } catch (e) {
+    logger.error(`Error on postModel.deleteDislike function ${e}`);
+    console.log('error on addLike: ', e.message);
+  }
+}
+
 module.exports = {
   getAllPosts,
   getComments,
@@ -106,4 +143,7 @@ module.exports = {
   addLike,
   deleteLike,
   userLikeOnPostExists,
+  addDislike,
+  userDislikeOnPostExists,
+  deleteDislike,
 };

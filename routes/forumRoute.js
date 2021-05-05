@@ -26,6 +26,10 @@ router.route('/post/:id/likes/')
     .post(passport.authenticate('jwt', {session: false}), postController.insert_like)
     .delete(passport.authenticate('jwt', {session: false}), postController.delete_like);
 
+router.route('/post/:id/dislikes/')
+  .post(passport.authenticate('jwt', {session: false}), postController.insert_dislike)
+  .delete(passport.authenticate('jwt', {session: false}), postController.delete_dislike);
+
 router.route('/postComment')
   .post(passport.authenticate('jwt', {session: false}),
     [body('comment', 'minimum of 1 characters').isLength({min: 1}).trim().escape().blacklist(';')],

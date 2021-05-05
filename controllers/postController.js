@@ -171,6 +171,72 @@ const insert_like = async (req, res, next) => {
   }
 };
 
+const insert_dislike = async (req, res, next) => {
+  console.log('User on insert_dislike:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> insert_dislike function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> insert_dislike function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> insert_dislike function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create dislike object that will be inserted
+        const dislike = [
+          req.body.postId,
+          req.user.userId,
+        ];
+        logger.info(`Dislike to be inserted: ${JSON.stringify(dislike)}`);
+        // update dislikes
+        const response = await postModel.addDislike(dislike);
+        logger.info(`Dislike insert response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('insert_dislike error: ', e.message);
+    }
+  } else {
+    res.status(401).send('You are not logged in!');
+  }
+};
+
+const delete_dislike = async (req, res, next) => {
+  console.log('User on delete_dislike:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> delete_dislike function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> delete_dislike function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> delete_dislike function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create post object to store data
+        const dislike = [
+          req.body.postId,
+          req.user.userId,
+        ];
+        logger.info(`Dislike to be deleted: ${JSON.stringify(dislike)}`);
+        // delete likes
+        const response = await postModel.deleteDislike(dislike);
+        logger.info(`Dislike delete response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('delete_like error: ', e.message);
+    }
+  } else {
+    res.status(401).send('You are not logged in!');
+  }
+};
+
 const create_comment = async (req, res, next) => {
   logger.info(`User on create_comment at forumController: ${JSON.stringify(req.user)}`)
   logger.info(`Body on create_comment at forumController: ${JSON.stringify(req.body)}`)
@@ -222,4 +288,6 @@ module.exports = {
   post_delete,
   insert_like,
   delete_like,
+  insert_dislike,
+  delete_dislike,
 };
