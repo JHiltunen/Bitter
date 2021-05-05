@@ -235,6 +235,7 @@ const createPostView = async (posts) => {
           }
           return;
         }
+        return;
       });
 
       const editIcon = document.createElement("i");
