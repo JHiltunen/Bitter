@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
-    const [rows] = await promisePool.execute('SELECT posts.postId, posts.title, posts.content, posts.image, posts.userId, posts.vst, users.firstname, users.lastname, COUNT(likes.postId) AS likes, likes.userId AS liked FROM posts LEFT JOIN users ON posts.userId = users.userId LEFT JOIN likes ON posts.postId = likes.postId GROUP BY posts.postID ORDER BY posts.vst DESC');
+    const [rows] = await promisePool.execute(`SELECT posts.postId, posts.title, posts.content, posts.image, posts.userId, posts.vst, users.firstname, users.lastname, COUNT(likes.postId) AS likes, GROUP_CONCAT(likes.userId SEPARATOR ',') AS liked, COUNT(dislikes.postId) AS dislikes, GROUP_CONCAT(dislikes.userId SEPARATOR ',') AS disliked FROM posts LEFT JOIN users ON posts.userId = users.userId LEFT JOIN likes ON posts.postId = likes.postId LEFT JOIN dislikes ON posts.postId = dislikes.postId GROUP BY posts.postID ORDER BY posts.vst DESC`);
     return rows;
   } catch (e) {
     console.error('postModel:', e.message);
@@ -99,6 +99,7 @@ const deleteLike = async (like) => {
 
 const addDislike = async (dislike) => {
   try {
+    // insert dislike
     if (await userDislikeOnPostExists(dislike) == 0) {
       logger.info(`addDislike function dislike: ${JSON.stringify(dislike)}`);
       const [rows] = await promisePool.execute('INSERT INTO dislikes (postId, userId, vst) VALUES (?, ?, now())', dislike)
@@ -115,7 +116,7 @@ const addDislike = async (dislike) => {
 const userDislikeOnPostExists = async (dislike) => {
   try {
     logger.info(`userDislikeOnPostExists function dislike: ${JSON.stringify(dislike)}`);
-    const [rows] = await promisePool.execute('SELECT postId, userId FROM likes WHERE postId=? AND userId=?', dislike)
+    const [rows] = await promisePool.execute('SELECT postId, userId FROM dislikes WHERE postId=? AND userId=?', dislike)
     return rows;
   } catch (e) {
     logger.error(`Error on postModel.userDislikeOnPostExists function ${e}`);

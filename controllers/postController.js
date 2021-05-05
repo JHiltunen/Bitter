@@ -158,6 +158,14 @@ const insert_like = async (req, res, next) => {
           req.user.userId,
         ];
         logger.info(`Like to be inserted: ${JSON.stringify(like)}`);
+        // check if there is already dislike on database -> then delete it
+        const dislikeIsOnDatabaseResponse = await postModel.userDislikeOnPostExists(like);
+        if (dislikeIsOnDatabaseResponse !== 0) {
+          logger.info(`User want's to like post --> Deleting dislike`);
+          const deleteDislikeResponse = await postModel.deleteDislike(like);
+        } else {
+          logger.info('There were no dislike to delete on database');
+        }
         // update likes
         const response = await postModel.addLike(like);
         logger.info(`Like insert response: ${JSON.stringify(response)}`);
@@ -191,6 +199,13 @@ const insert_dislike = async (req, res, next) => {
           req.user.userId,
         ];
         logger.info(`Dislike to be inserted: ${JSON.stringify(dislike)}`);
+        const likeIsOnDatabaseResponse = await postModel.userDislikeOnPostExists(dislike);
+        if (likeIsOnDatabaseResponse !== 0) {
+          logger.info(`User want's to dislike post --> Deleting like`);
+          const deleteLikeResponse = await postModel.deleteLike(dislike);
+        } else {
+          logger.info('There were no like to delete on database');
+        }
         // update dislikes
         const response = await postModel.addDislike(dislike);
         logger.info(`Dislike insert response: ${JSON.stringify(response)}`);

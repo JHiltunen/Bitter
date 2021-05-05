@@ -437,6 +437,10 @@ input.login {
 }
 
 /** DISCUSSION FORUM  **/
+i:hover {
+    cursor: pointer;
+}
+
 .forumArticle {
     background: #a8bee2;
 }
