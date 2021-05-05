@@ -64,5 +64,5 @@ app.use('/thumbnails', express.static('thumbnails'));
 app.use('/contact', contactRoute);
 app.use('/forum', forumRoute);
 app.use('/auth', authRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), needsGroup('User'), userRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/admin', passport.authenticate('jwt', {session: false}), needsGroup('Admin'), adminRoute);
