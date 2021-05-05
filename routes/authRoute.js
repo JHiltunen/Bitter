@@ -5,6 +5,11 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const currentDate = new Date();
 
+router.route('/')
+  .get((req, res) => {
+    res.send({userId : req.user.userId});
+});
+
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 

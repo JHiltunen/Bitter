@@ -5,6 +5,11 @@ const router = express.Router();
 const adminController = require('../controllers/adminController');
 
 router.route('/')
+  .get((req, res) => {
+    res.send({userId : req.user.userId});
+  });
+  
+router.route('/users/')  
   .get(adminController.user_list_get);
 
 module.exports = router;

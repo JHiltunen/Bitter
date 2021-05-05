@@ -16,7 +16,7 @@ const saveChanges = document.querySelector('#saveChanges');
 const deletePost = document.querySelector('#deletePost');
 let user = undefined;
 
-const getUserId = async () => {
+const getUserUserId = async () => {
   try {
     const fetchOptions = {
       method: 'GET',
@@ -24,9 +24,10 @@ const getUserId = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-
     console.log('Fetchoptions: ', fetchOptions);
+
     const response = await fetch(url + '/user/', fetchOptions);
+
     console.log(response);
     const json = await response.json();
     console.log('UserId: ', json);    
@@ -36,11 +37,37 @@ const getUserId = async () => {
   }
 }
 
+const getAdminUserId =  async() => {
+  try {
+      const fetchOptions = {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      console.log('Fetchoptions: ', fetchOptions);
+
+      const response = await fetch(url + '/admin/', fetchOptions);
+      
+      console.log(response);
+      const json = await response.json();
+      console.log('UserId: ', json);    
+      user = json;
+    } catch (e) {
+      console.log('Error getting userid', e.message);
+    }
+} 
+
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
     //loginForm.style.display = 'none';
     logOut.style.display = 'block';
-    user = getUserId();
+
+    if (getUserUserId().status == 401) {
+      user = getAdminUserId();
+    } else {
+      user = getUserUserId();
+    }
 } else {
     logOut.style.display = 'none';
 }
@@ -80,7 +107,7 @@ post.addEventListener('submit', async (evt) => {
     },
     body: pd,
   };
-  const response = await fetch(url + '/user/post', fetchOptions);
+  const response = await fetch(url + '/forum/post', fetchOptions);
   console.log(response);
   const json = await response.json();
   if (response.status === 200) {
@@ -254,7 +281,7 @@ const createPostView = (posts) => {
             };
             console.log('Fetchoptions: ', fetchOptions);
   
-            const response = await fetch(url + '/user/likes/' + post.postId, fetchOptions);
+            const response = await fetch(url + '/forum/post/' + post.postId +'/likes/', fetchOptions);
             console.log('Response:', response);
             const json = await response.json();
             console.log('Response: ', json);
@@ -262,6 +289,7 @@ const createPostView = (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-heart-o');
               likeIcon.classList.add('fa-heart');
+              getPost();
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -285,7 +313,7 @@ const createPostView = (posts) => {
             };
             console.log('Fetchoptions: ', fetchOptions);
   
-            const response = await fetch(url + '/user/likes/' + post.postId, fetchOptions);
+            const response = await fetch(url + '/forum/post/' + post.postId +'/likes/', fetchOptions);
             console.log('Response:', response);
             const json = await response.json();
             console.log('Response: ', json);
@@ -293,6 +321,7 @@ const createPostView = (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-heart');
               likeIcon.classList.add('fa-heart-o');
+              getPost();
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -318,7 +347,7 @@ const createPostView = (posts) => {
 
         console.log('Fetchoptions: ', fetchOptions);
 
-        const response = await fetch(url + '/user/postComment', fetchOptions);
+        const response = await fetch(url + '/forum/postComment', fetchOptions);
         console.log('Response:', response);
         const json = await response.json();
         
@@ -421,7 +450,7 @@ updatePostForm.addEventListener('submit', async (event) => {
     };
 
     console.log('Fetchoptions: ', fetchOptions);
-    const response = await fetch(url + '/user/update-post/' + data.postId, fetchOptions);
+    const response = await fetch(url + '/forum/post/:id' + data.postId, fetchOptions);
     console.log(response);
     const json = await response.json();
     if (response.status === 200) {
@@ -448,7 +477,7 @@ deletePost.addEventListener('click', async (event) => {
       },
     };
     try {
-      const response = await fetch(url + '/user/delete-post/' + postId, fetchOptions);
+      const response = await fetch(url + '/forum/post/:id' + postId, fetchOptions);
       const json = await response.json();
       console.log('delete response', json);
       getPost();
