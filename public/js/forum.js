@@ -16,7 +16,7 @@ const saveChanges = document.querySelector('#saveChanges');
 const deletePost = document.querySelector('#deletePost');
 let user = undefined;
 
-const getUserId = async () => {
+const getUserUserId = async () => {
   try {
     const fetchOptions = {
       method: 'GET',
@@ -24,9 +24,10 @@ const getUserId = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-
     console.log('Fetchoptions: ', fetchOptions);
+
     const response = await fetch(url + '/user/', fetchOptions);
+
     console.log(response);
     const json = await response.json();
     console.log('UserId: ', json);    
@@ -36,11 +37,37 @@ const getUserId = async () => {
   }
 }
 
+const getAdminUserId =  async() => {
+  try {
+      const fetchOptions = {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      console.log('Fetchoptions: ', fetchOptions);
+
+      const response = await fetch(url + '/admin/', fetchOptions);
+      
+      console.log(response);
+      const json = await response.json();
+      console.log('UserId: ', json);    
+      user = json;
+    } catch (e) {
+      console.log('Error getting userid', e.message);
+    }
+} 
+
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
     //loginForm.style.display = 'none';
     logOut.style.display = 'block';
-    user = getUserId();
+
+    if (getUserUserId().status == 401) {
+      user = getAdminUserId();
+    } else {
+      user = getUserUserId();
+    }
 } else {
     logOut.style.display = 'none';
 }
@@ -262,6 +289,7 @@ const createPostView = (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-heart-o');
               likeIcon.classList.add('fa-heart');
+              getPost();
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -293,6 +321,7 @@ const createPostView = (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-heart');
               likeIcon.classList.add('fa-heart-o');
+              getPost();
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);

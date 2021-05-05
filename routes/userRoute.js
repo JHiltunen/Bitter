@@ -10,6 +10,6 @@ const upload = multer({dest: 'uploads/'});
 router.route('/')
   .get((req, res) => {
     res.send({userId : req.user.userId});
-  });
+});
 
 module.exports = router;
