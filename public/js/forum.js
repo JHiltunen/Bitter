@@ -245,7 +245,7 @@ const createPostView = (posts) => {
         console.log('Response:', response);
         const json = await response.json();
         
-        // if there are erros show them
+        // if there are errors show them
         if (json.errors !== undefined) {
             errorDisplay.innerHTML = '';
             json.errors.forEach(error => errorDisplay.innerHTML += error.msg);
