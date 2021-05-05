@@ -1,23 +1,22 @@
 'use strict';
 const url = 'https://localhost:8001'; // change url when uploading to server
-const logOut = document.querySelector('#log-out');
+const logOut = document.querySelectorAll('.log-out');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
-const login = document.querySelector('.login');
-const out = document.querySelector('.log-out')
-const loggedIn= document.querySelector('.in')
+const login = document.querySelectorAll('.login');
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
-    login.style.display = 'none';
-    loggedIn.style.display = 'none';
+    login[0].style.display = 'none';
+    login[1].style.display = 'none';
   } else {
-    logOut.style.display = 'none';
-    out.style.display = 'none';
+    logOut[0].style.display = 'none';
+    logOut[1].style.display = 'none';
 }
 
 // logout
-logOut.addEventListener('click', async (evt) => {
+for (let i = 0; i < logOut.length; i++) {
+  logOut[i].addEventListener('click', async (evt) => {
     evt.preventDefault();
     try {
       const options = {
@@ -37,8 +36,9 @@ logOut.addEventListener('click', async (evt) => {
     }
     catch (e) {
       console.log(e.message);
-    }
-});
+    } 
+  });
+}
 
 // submit post
 post.addEventListener('submit', async (evt) => {

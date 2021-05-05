@@ -570,9 +570,7 @@ input.login {
 #forumFooter {
     margin-top: 0.5rem;
 }
-#log-out {
-    display: none;
-}
+
 /** DESKTOP VIEW! **/
 
 @media only screen and (min-width: 680px) {
