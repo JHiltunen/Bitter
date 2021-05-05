@@ -1,18 +1,37 @@
-# Bitter
+[![GitHub liecnse](https://img.shields.io/badge/license-GNU-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/) 
+[![GitHub contributors](https://img.shields.io/github/contributors/jhiltunen/bitter?color=blue)](https://github.com/JHiltunen/Bitter/graphs/contributors)
+
+Bitter is a tech forum web aplication where you can ask and offer help with coding issues for those how are interested in coding
+
+# [Bitter](https://localhost:8001/)
 
 <p align="center">
-<img src = "https://user-images.githubusercontent.com/71440030/116530288-87d8aa00-a8e6-11eb-955d-0f94d73c32af.JPG" alt="Screenshot of the page" width="450" height="437"/>
+<img src = "https://user-images.githubusercontent.com/71440030/116994222-1bdcb400-ace1-11eb-9005-1925187f58a2.JPG"  alt="Screenshot of the page" width="500" height="437"/>
 
-<h3>About the Project:</h3>
-<p> Media sharing web application which is intended as a meeting place and discussion platform for those how are interested in coding. </p>
+## About the Project
 
-<h3>Built whit</h3>
+A school project designed to develop a media sharing application
+
+## Built with
+
 <ul>
   <li> HTML </li> 
   <li> CSS </li>
   <li> JS </li>
-   <li> Node.JS </li>
+  <li> Node.JS </li>
   <li> REST API </li>
   <li> MySQL </li>
 </ul>
+
+## Get started
+
+## Examples
+
+```jsx
+Laita esimerkki tähän
+```
+
+## License
+ 
+[GNU](https://choosealicense.com/licenses/gpl-3.0/)
 
