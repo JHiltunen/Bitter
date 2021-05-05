@@ -115,6 +115,72 @@ const edit_post = async (req, res, next) => {
   }
 };
 
+const delete_like = async (req, res, next) => {
+  console.log('User on delete_like:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> delete_like function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> delete_like function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> delete_like function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create post object to store data
+        const like = [
+          req.body.postId,
+          req.user.userId,
+        ];
+        logger.info(`Like to be deleted: ${JSON.stringify(like)}`);
+        // delete likes
+        const response = await postModel.deleteLike(like);
+        logger.info(`Like delete response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('delete_like error: ', e.message);
+    }
+  } else {
+    res.status(401).send('You are not logged in!');
+  }
+};
+
+const insert_like = async (req, res, next) => {
+  console.log('User on insert_like:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> insert_like function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> insert_like function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> insert_like function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create like object that will be inserted
+        const like = [
+          req.body.postId,
+          req.user.userId,
+        ];
+        logger.info(`Like to be inserted: ${JSON.stringify(like)}`);
+        // update likes
+        const response = await postModel.addLike(like);
+        logger.info(`Like insert response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('insert_like error: ', e.message);
+    }
+  } else {
+    res.status(401).send('You are not logged in!');
+  }
+};
+
 const create_comment = async (req, res, next) => {
   logger.info(`User on create_comment at forumController: ${JSON.stringify(req.user)}`)
   logger.info(`Body on create_comment at forumController: ${JSON.stringify(req.body)}`)
@@ -166,4 +232,6 @@ module.exports = {
   edit_post,
   create_comment,
   post_delete,
+  insert_like,
+  delete_like,
 };
