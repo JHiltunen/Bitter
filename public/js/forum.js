@@ -80,7 +80,7 @@ post.addEventListener('submit', async (evt) => {
     },
     body: pd,
   };
-  const response = await fetch(url + '/user/post', fetchOptions);
+  const response = await fetch(url + '/forum/post', fetchOptions);
   console.log(response);
   const json = await response.json();
   if (response.status === 200) {
@@ -254,7 +254,7 @@ const createPostView = (posts) => {
             };
             console.log('Fetchoptions: ', fetchOptions);
   
-            const response = await fetch(url + '/user/likes/' + post.postId, fetchOptions);
+            const response = await fetch(url + '/forum/post/' + post.postId +'/likes/', fetchOptions);
             console.log('Response:', response);
             const json = await response.json();
             console.log('Response: ', json);
@@ -285,7 +285,7 @@ const createPostView = (posts) => {
             };
             console.log('Fetchoptions: ', fetchOptions);
   
-            const response = await fetch(url + '/user/likes/' + post.postId, fetchOptions);
+            const response = await fetch(url + '/forum/post/' + post.postId +'/likes/', fetchOptions);
             console.log('Response:', response);
             const json = await response.json();
             console.log('Response: ', json);
@@ -318,7 +318,7 @@ const createPostView = (posts) => {
 
         console.log('Fetchoptions: ', fetchOptions);
 
-        const response = await fetch(url + '/user/postComment', fetchOptions);
+        const response = await fetch(url + '/forum/postComment', fetchOptions);
         console.log('Response:', response);
         const json = await response.json();
         
@@ -421,7 +421,7 @@ updatePostForm.addEventListener('submit', async (event) => {
     };
 
     console.log('Fetchoptions: ', fetchOptions);
-    const response = await fetch(url + '/user/update-post/' + data.postId, fetchOptions);
+    const response = await fetch(url + '/forum/post/:id' + data.postId, fetchOptions);
     console.log(response);
     const json = await response.json();
     if (response.status === 200) {
@@ -448,7 +448,7 @@ deletePost.addEventListener('click', async (event) => {
       },
     };
     try {
-      const response = await fetch(url + '/user/delete-post/' + postId, fetchOptions);
+      const response = await fetch(url + '/forum/post/:id' + postId, fetchOptions);
       const json = await response.json();
       console.log('delete response', json);
       getPost();
