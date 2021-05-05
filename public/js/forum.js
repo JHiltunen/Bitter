@@ -4,12 +4,16 @@ const logOut = document.querySelector('#log-out');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
 const login = document.querySelector('.login');
+const out = document.querySelector('.log-out')
+const loggedIn= document.querySelector('.in')
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
     login.style.display = 'none';
+    loggedIn.style.display = 'none';
   } else {
     logOut.style.display = 'none';
+    out.style.display = 'none';
 }
 
 // logout
