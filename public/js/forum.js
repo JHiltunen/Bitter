@@ -1,6 +1,7 @@
 'use strict';
 const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelector('#log-out');
+const login = document.querySelector('#login-button');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
 const imageModal = document.querySelector('#image-modal');

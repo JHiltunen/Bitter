@@ -63,7 +63,9 @@
             <i class="fa fa-user-o" id="lName"></i>
         </div>
         <div class="names" id="reg-3">
-            <input id="email-box" class="login" type="text" name="username" placeholder="Email" required>
+            <input id="email-box" class="login" type="text" name="username" placeholder="Email"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{0,}$" required
+                   oninvalid="setCustomValidity('Please enter an email address')" />
             <i id="emailIcon" class="fa fa-envelope"></i>
         </div>
         <div class="bDate">
@@ -79,7 +81,8 @@
             <i class="fa fa-venus-mars" id="mars-venus"></i>
         </div>
         <div class="pass" id="reg-5">
-            <input class="login" type="password" name="password" id="password" placeholder="Password" required>
+            <input class="login" type="password" name="password" id="password" pattern="(?=.*[A-Z]).{8,}" placeholder="Password" required
+            oninvalid="setCustomValidity('Please use at least 8 letters with 1 uppercase letter and 1 number ')" >
             <i class="fa fa-unlock-alt" id="pass"></i>
         </div>
         <button class="registerFormBtn" type="submit">Register</button>
