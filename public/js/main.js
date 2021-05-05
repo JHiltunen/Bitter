@@ -6,6 +6,12 @@ const loginError = document.querySelector('#login-error');
 const logOut = document.querySelector('#log-out');
 const registerNow = document.querySelector('#register-now');
 const registerForm = document.querySelector('#register-form');
+const firstnameError = document.querySelector('#firstname-error');
+const lastnameError = document.querySelector('#lastname-error');
+const emailError = document.querySelector('#email-error');
+const dateError = document.querySelector('#date-error');
+const passwordError = document.querySelector('#password-error');
+
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
@@ -16,9 +22,6 @@ if (sessionStorage.getItem('token')) {
     loginForm.style.display = 'flex';
 }
 
-function checkIfLoggedIn() {
-  
-}
 
 registerNow.addEventListener('click', showRegistration);
 loginNow.addEventListener('click', showLogin);
@@ -47,14 +50,38 @@ registerForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
   console.log('user add response', json);
-  if (json.errors === undefined || json.errors.length == 0) {
+  if (json.errors === undefined || json.errors.length === 0) {
     // save token
     sessionStorage.setItem('token', json.token);
     logOut.style.display = 'block';
     window.location.href = url + "/forum.html";
   } else {
-    loginError.innerHTML = JSON.stringify(json.errors);
-  } 
+    firstnameError.innerHTML = "";
+    lastnameError.innerHTML = "";
+    emailError.innerHTML = "";
+    dateError.innerHTML = "";
+    passwordError.innerHTML = "";
+    for (let i = 0; i < json.errors.length; i++) {
+      const param = json.errors[i].param;
+      const msg = json.errors[i].msg;
+
+       if (param === "firstname") {
+         firstnameError.innerHTML = msg;
+       }
+      if (param === "lastname") {
+        lastnameError.innerHTML = msg;
+      }
+      if (param === "username") {
+        emailError.innerHTML = msg;
+      }
+      if (param === "dateOfBirth") {
+        dateError.innerHTML = msg;
+      }
+      if (param === "password") {
+        passwordError.innerHTML = msg;
+      }
+  }
+}
 });
 
 // login
