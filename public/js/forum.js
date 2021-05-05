@@ -186,15 +186,46 @@ const createPostView = async (posts) => {
       }
 
       likeIcon.addEventListener("click", async (event) => {
+        event.preventDefault();
         console.log(event);
         // add like
         if (likeIcon.classList.contains("fa-thumbs-o-up")) {
-          event.preventDefault();
-          console.log("click");
           try {
             const data = { postId: post.postId, userId: user.userId };
             const fetchOptions = {
               method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+              body: JSON.stringify(data),
+            };
+            console.log("Fetchoptions: ", fetchOptions);
+
+            const response = await fetch(
+              url + "/forum/post/" + post.postId + "/likes/",
+              fetchOptions
+            );
+            console.log("Response:", response);
+            const json = await response.json();
+            console.log("Response: ", json);
+
+            if (response.status == 200) {
+              likeIcon.classList.remove("fa-thumbs-o-up");
+              likeIcon.classList.add("fa-thumbs-up");
+              getPost();
+            }
+          } catch (e) {
+            console.log("Error on addLike submit: ", e.message);
+          }
+          return;
+        }
+
+        if (likeIcon.classList.contains("fa-thumbs-up")) {
+          try {
+            const data = { postId: post.postId, userId: user.userId };
+            const fetchOptions = {
+              method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + sessionStorage.getItem("token"),
