@@ -3,7 +3,7 @@
 
 Bitter is a tech forum web aplication where you can ask and offer help with coding issues for those how are interested in coding
 
-# [Bitter](https://localhost:8001/)
+# Bitter
 
 <p align="center">
 <img src = "https://user-images.githubusercontent.com/71440030/116994222-1bdcb400-ace1-11eb-9005-1925187f58a2.JPG"  alt="Screenshot of the page" width="500" height="437"/>
