@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
 }
+
 html {
     background: #266DD3;
 }
@@ -18,17 +19,21 @@ html {
     background: #ffffff;
     padding: 17px;
 }
+
 .navHead {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
+
 .headLinks {
     display: none;
 }
+
 #openBtn {
     display: flex;
 }
+
 .navH2 {
     align-self: center;
     text-decoration: none;
@@ -43,8 +48,8 @@ html {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
     overflow-y: hidden;
     transition: 0.5s;
 }
@@ -65,9 +70,11 @@ html {
     display: block;
     transition: 0.3s;
 }
+
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
 }
+
 .overlay .closebtn {
     position: absolute;
     top: 20px;
@@ -84,6 +91,7 @@ html {
     align-items: center;
     flex-direction: column;
 }
+
 .mainText {
     text-shadow: 1px 1px #000000;
     color: white;
@@ -91,6 +99,7 @@ html {
     padding: 20px;
     text-align: center;
 }
+
 .mainButton {
     padding: 12px 16px 12px 16px;
     width: 11rem;
@@ -102,10 +111,12 @@ html {
     transition-duration: 0.4s;
     position: relative;
 }
+
 .mainButton:hover {
     border: 0;
     background-color: #14366f;
 }
+
 .mainButton:after {
     content: "";
     background: #f1f1f1;
@@ -118,6 +129,7 @@ html {
     opacity: 0;
     transition: all 0.8s
 }
+
 .mainButton:active:after {
     padding: 0;
     margin: 0;
@@ -135,17 +147,20 @@ html {
     height: 30rem;
 
 }
+
 .footerP {
     font-size: 1.4rem;
     color: white;
     margin-top: 20px;
 }
+
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
+
 input[name=name] {
     width: 18rem;
     height: 2rem;
@@ -168,6 +183,7 @@ input[name=email] {
     border: 2px solid white;
     color: white;
 }
+
 textarea[name=message] {
     margin-top: 14px;
     height: 8rem;
@@ -179,6 +195,7 @@ textarea[name=message] {
     color: white;
     resize: none;
 }
+
 input[type=submit] {
     margin-top: 14px;
     width: 18rem;
@@ -187,6 +204,7 @@ input[type=submit] {
     background-color: white;
     border: 0;
 }
+
 input[type=submit]:hover {
     background-color: #266DD3;
     color: white;
@@ -206,7 +224,7 @@ table {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px ;
+    padding: 20px;
     letter-spacing: 2px;
 }
 
@@ -225,12 +243,13 @@ tr:nth-child(even) {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #e7e7e7;
+    background-color: #f5f5f5;
     box-shadow: 0 1px 5px black;
     height: 26rem;
     width: 24rem;
     margin: auto;
 }
+
 .login-Text {
     display: flex;
     align-self: center;
@@ -239,16 +258,19 @@ tr:nth-child(even) {
     color: #266DD3;
     text-shadow: 1px 1px #000000;
 }
+
 .loginArticle {
     height: 29rem;
     display: flex;
     justify-content: center;
 }
+
 .login-icons {
     display: flex;
     justify-content: center;
     margin-right: 11px;
 }
+
 .login-Btn {
     align-self: center;
     width: 6rem;
@@ -259,6 +281,7 @@ tr:nth-child(even) {
     cursor: pointer;
     text-align: center;
 }
+
 .login-Btn:hover {
     background-color: #e7e7e7;
     color: #266DD3;
@@ -273,25 +296,30 @@ input.login {
     color: #266DD3;
     padding: 12px;
     margin: 5px 0 10px 0;
- }
+}
+
 .register-Btn {
     color: #266DD3;
     text-align: center;
     text-decoration: none;
     margin-top: 7px;
 }
+
 #login-user {
     margin-right: 3px;
 }
+
 #login-now {
     display: none;
 }
+
 /** LOGIN SCREEN ICONS **/
 #user {
     margin-right: 7px;
     color: #266DD3;
     font-size: 38px
 }
+
 #mail {
     margin-right: 7px;
     color: #266DD3;
@@ -311,13 +339,16 @@ input.login {
     text-align: center;
     margin-top: 10px;
 }
+
 .registerFormBtn:hover {
     background-color: #e7e7e7;
     color: #266DD3;
 }
+
 #register-form {
     display: none;
 }
+
 .register-Text {
     display: flex;
     align-self: center;
@@ -325,12 +356,15 @@ input.login {
     color: #266DD3;
     margin-bottom: 4px;
 }
+
 .register-Btn:hover {
     text-decoration: underline;
 }
+
 .names {
     align-self: center;
 }
+
 .bDate {
     display: flex;
     align-items: center;
@@ -338,6 +372,7 @@ input.login {
     margin-left: 30px;
     align-self: start;
 }
+
 .date {
     height: 2rem;
     width: 8.8rem;
@@ -359,19 +394,23 @@ input.login {
     color: #757575;
     cursor: pointer;
 }
+
 .names {
     display: flex;
     flex-direction: row-reverse;
     align-self: center;
 }
+
 .pass {
     display: flex;
     flex-direction: row-reverse;
     margin-right: 15px;
 }
+
 #email-box {
     margin-left: 2px;
 }
+
 /** DATE ICON **/
 #dateIcon {
     height: 47px;
@@ -379,6 +418,7 @@ input.login {
     margin-right: 1px;
     color: #266DD3;
 }
+
 /** EMAIL ICON **/
 #emailIcon {
     height: 41px;
@@ -386,6 +426,7 @@ input.login {
     margin-right: 7px;
     color: #266DD3;
 }
+
 /** FIRSTNAME ICON **/
 #name {
     font-size: 42px;
@@ -393,6 +434,7 @@ input.login {
     margin-top: 3px;
     color: #266DD3;
 }
+
 /** LASTNAME ICON **/
 #lName {
     font-size: 38px;
@@ -400,6 +442,7 @@ input.login {
     margin-top: 5px;
     color: #266DD3;
 }
+
 /** PASSWORD ICON **/
 #pass {
     color: #266DD3;
@@ -407,6 +450,7 @@ input.login {
     margin-top: 5px;
     margin-right: 13px;
 }
+
 /** GENDER ICON **/
 .mars-venus {
     flex-direction: row-reverse;
@@ -414,24 +458,30 @@ input.login {
     align-self: flex-start;
     margin-left: 25px;
 }
+
 #mars-venus {
     color: #266DD3;
     font-size: 31px;
     margin-top: 4px;
 }
+
 /** ID'S FOR EVERY TEXT BOX **/
 #reg-1 {
     margin-right: 20px;
 }
+
 #reg-2 {
     margin-right: 22px;
 }
+
 #reg-3 {
     margin-right: 23px;
 }
+
 #reg-4 {
     margin-left: 27px;
 }
+
 #reg-5 {
     align-self: center;
 }
@@ -450,6 +500,7 @@ input.login {
     margin-left: auto;
     margin-right: auto;
 }
+
 .resp {
     width: 100%;
     height: auto;
@@ -459,13 +510,16 @@ input.login {
     border: 1px solid #888;
     cursor: pointer;
 }
+
 .content-text {
     font-size: 0.9em;
 }
+
 .title-text {
     margin-bottom: 1em;
     font-size: 1em;
 }
+
 /* Add a card effect for articles */
 .card {
     background-color: #f5f5f5;
@@ -475,9 +529,11 @@ input.login {
     border-left: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
 }
+
 .icons {
     margin-top: 15px;
 }
+
 .post-article {
     display: flex;
     flex-direction: column;
@@ -485,14 +541,13 @@ input.login {
 
 /** MAKING POST **/
 .post {
-    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-top: 2px solid #dfdfdf;
     background: #f5f5f5;
-
 }
+
 .post-title {
     resize: none;
     align-self: center;
@@ -536,60 +591,68 @@ input.login {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* The Close Button */
-  .close {
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* The Close Button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
 /* Modal Header */
 .modal-header {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
-  }
-  
-  /* Modal Body */
-  .modal-body {padding: 2px 16px;}
-  
-  /* Modal Footer */
-  .modal-footer {
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 2px 16px;
+}
+
+/* Modal Footer */
+.modal-footer {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
-  }
-  
-  /* Modal Content */
-  .modal-content {
+}
+
+/* Modal Content */
+.modal-content {
     position: relative;
     background-color: #fefefe;
     margin: 50% auto;
     padding: 0;
     border: 1px solid #888;
     width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
-  }
-  
-  /* Add Animation */
-  @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-  }
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
 
 .attachments-send {
     display: flex;
@@ -599,6 +662,7 @@ input.login {
     border-top: 1px solid #bbb;
     padding: 0.6em 0 0.6em 0;
 }
+
 #post-btn {
     color: white;
     background: #266DD3;
@@ -608,13 +672,16 @@ input.login {
     border-radius: 15px;
 
 }
+
 #post-btn:hover {
     background: #14366f;
     color: #f8f8f8;
 }
+
 .post-file {
     align-self: center;
 }
+
 /** Preview Image **/
 .image-preview {
     width: 300px;
@@ -628,13 +695,16 @@ input.login {
     font-weight: bold;
     color: #cccccc;
 }
+
 .image-preview-image {
     display: none;
     width: 100%;
 }
+
 #myVideo {
     display: none;
 }
+
 #forumFooter {
     margin-top: 0.5rem;
 }
@@ -643,24 +713,27 @@ input.login {
 .hide {
     display: none !important;
 }
+
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .modal img {
     height: auto;
     background: #fff;
     border-radius: 15px;
     width: 100%;
 }
+
 .close {
     position: absolute;
     top: 1em;
@@ -669,6 +742,7 @@ input.login {
     text-shadow: #000;
     font-size: 2em;
 }
+
 .close:hover {
     color: #0078ff;
 }
@@ -679,9 +753,11 @@ input.login {
     * {
         font-size: 120%;
     }
+
     html {
         background: #266DD3;
     }
+
     .navbar {
         top: 0;
         z-index: 100;
@@ -689,6 +765,7 @@ input.login {
         width: 100%;
         padding: 0.3em;
     }
+
     #myVideo {
         display: block;
         position: fixed;
@@ -698,24 +775,29 @@ input.login {
         min-height: 100%;
         z-index: -1;
     }
+
     .mainArticle {
         height: 38rem;
         margin-top: 1rem;
     }
+
     .mainText {
         font-size: 2.5em;
     }
+
     .mainButton {
         transition: all 0.5s;
         cursor: pointer;
         font-size: 0.5em;
     }
+
     .mainButton span {
         cursor: pointer;
         display: inline-block;
         position: relative;
         transition: 0.5s;
     }
+
     .mainButton span:after {
         content: '\00bb';
         position: absolute;
@@ -724,16 +806,20 @@ input.login {
         right: -20px;
         transition: 0.5s;
     }
+
     .mainButton:hover span {
         padding-right: 25px;
     }
+
     .mainButton:hover span:after {
         opacity: 1;
         right: 0;
     }
+
     #openBtn {
         display: none;
     }
+
     .navHead {
         display: flex;
         flex-direction: row;
@@ -741,15 +827,18 @@ input.login {
         margin: auto;
         justify-content: flex-end;
     }
-    .navH2{
+
+    .navH2 {
         margin-right: auto;
         text-decoration: none;
         color: black;
         font-size: inherit;
     }
+
     .mainText {
-    width: 680px;
+        width: 680px;
     }
+
     .headLinks {
         display: flex;
         text-decoration: none;
@@ -758,68 +847,84 @@ input.login {
         font-size: 0.5em;
         color: black;
     }
+
     .headLinks:hover {
         color: #266DD3;
     }
+
     input[name="name"] {
         font-size: 0.6em;
     }
+
     input[name="email"] {
         font-size: 0.6em;
     }
-    textarea[name="message"]{
+
+    textarea[name="message"] {
         font-size: 0.6em;
         resize: none;
     }
+
     input[type="submit"] {
         font-size: 0.6em;
         cursor: pointer;
     }
 
     /** FORUM **/
-
     .forumArticle {
         width: 680px;
         margin: auto;
     }
+
     .loginArticle {
         margin-top: 4rem;
     }
+
     .login-Btn {
         font-size: 0.6em;
     }
+
     input.login {
         font-size: 0.6em;
     }
+
     .register-Btn {
         font-size: 0.6em;
     }
+
     .gender {
         font-size: 0.6em;
     }
+
     .date {
         width: 8.8em;
         font-size: 0.6em;
         padding: 0 0 0 10px;
     }
+
     .registerFormBtn {
         font-size: 0.6em;
     }
+
     /** POSTS **/
     .post {
         margin-top: 4.5rem;
         font-size: 0.6em;
 
     }
+
     .post-file {
         font-size: 0.6em;
     }
-    .card{
+
+    .card {
         font-size: 0.6em;
     }
+
     .attachments-send {
         justify-content: space-between;
     }
+
     #post-btn {
         width: 6em;
     }
@@ -829,14 +934,15 @@ input.login {
     }
 
     /** ABOUT **/
-
     .aboutArticle {
         margin-top: 4rem;
     }
+
     /** edit user info **/
     .editArticle {
         margin-top: 4rem;
     }
+
     #log-out {
         display: flex;
         text-decoration: none;
@@ -847,19 +953,21 @@ input.login {
     }
 
     /** MODAL IMAGE **/
-
     .hide {
         display: none !important;
     }
+
     .modal {
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0, 0, 0, .5);
     }
+
     .modal img {
         height: 60%;
         width: auto;
     }
+
     .close {
         position: absolute;
         top: 1em;

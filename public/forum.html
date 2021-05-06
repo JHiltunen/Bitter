@@ -16,7 +16,6 @@
             <a href="index.html" class="navH2"><h2>Bitter</h2></a>
             <a href="index.html" class="headLinks">Home</a>
             <a href="forum.html" class="headLinks">Forum</a>
-            <a href="about.html" class="headLinks">About</a>
             <a href="login.html" class="headLinks login">Login</a>
             <a href="#" class="headLinks log-out">Logout</a>
             <div id="myNav" class="overlay">
@@ -25,7 +24,6 @@
                     <a href="login.html" class="login">Login</a>
                     <a href="index.html">Home</a>
                     <a href="forum.html">Forum</a>
-                    <a href="about.html">About</a>
                     <a href="#" class="log-out">Logout</a>
                     <footer class="navFooter">
                         <p>Bitter © 2021 </p>
@@ -63,11 +61,12 @@
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>Edit post</h2>
+            <span class="close">&times;</span>
+            <h2>Edit post</h2>
         </div>
+
         <div class="modal-body">
-        <form id="updatePost" action="/update-post/" method="PUT" name="updatePostForm" enctype="multipart/form-data">
+            <form id="updatePost" action="/update-post/" method="PUT" name="updatePostForm" enctype="multipart/form-data">
             <input type="text" name="title" id="updateTitle">
             <input type="text" name="content" id="updateContent">
             <input type="hidden" name="postId" id="postId">
@@ -78,7 +77,6 @@
         </form>
         </div>
     </div>
-
     </div>
 </div>
 
