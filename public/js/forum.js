@@ -7,7 +7,7 @@ const mostCommented = document.querySelector('#most-commented');
 const getAll = document.querySelector('#getAll');
 const forumArticle = document.querySelector('.forumArticle');
 const post = document.querySelector('#forum-post');
-const section = document.querySelector('section');
+const section = document.querySelector('.post-article');
 const imageModal = document.querySelector('#image-modal');
 const modalImage = document.querySelector('#image-modal img');
 const close = document.querySelector('#image-modal a');
@@ -90,7 +90,7 @@ if (sessionStorage.getItem('token')) {
       previewDefaultText.style.display = '';
       previewImage.style.display = '';
     }
-    getPost();
+    getPost('/forum/posts/');
   });
 } else {
   logOut[0].style.display = 'none';
@@ -122,39 +122,10 @@ for (let i = 0; i < logOut.length; i++) {
   });
 }
 
-// submit post
-post.addEventListener("submit", async (evt) => {
-  evt.preventDefault();
-  const pd = new FormData(post);
-  const fetchOptions = {
-    method: "POST",
-    headers: {
-      Authorization: "Bearer " + sessionStorage.getItem("token"),
-    },
-    body: pd,
-  };
-  const response = await fetch(url + "/forum/post", fetchOptions);
-  console.log(response);
-  const json = await response.json();
-  if (response.status === 200) {
-    document.querySelector(".post-title").value = "";
-    document.querySelector(".post-content").value = "";
-    document.getElementById("image").value = "";
-    document.getElementById("imagePreview").value = "";
-    document.getElementById("imagePreview").setAttribute("src", "");
-    document.querySelector(".image-preview-image").value = "";
-    document.querySelector(".image-preview-default-text").value = "";
-
-    previewContainer.style.display = "";
-    previewDefaultText.style.display = "";
-    previewImage.style.display = "";
-  }
-  getPost('/forum/posts');
-});
-
 /** Post View **/
 // create post view
 const createPostView = async (posts) => {
+  section.innerHTML = '';
   console.log("Posts: ", posts);
   posts.forEach((post) => {
     const article = document.createElement('article');
@@ -221,7 +192,7 @@ const createPostView = async (posts) => {
 
     if (sessionStorage.getItem('token')) {
       console.log('User: ', user);
-
+      
       if (post.userId === user.userId) {
         const editIcon = document.createElement('i');
         editIcon.classList.add('fa');
@@ -243,10 +214,7 @@ const createPostView = async (posts) => {
         likeIcon.classList.add('fa-thumbs-up');
       }
 
-      if (
-        post.userDisliked !== null &&
-        post.userDisliked.includes(user.userId)
-      ) {
+      if (post.userDisliked !== null && post.userDisliked.includes(user.userId)) {
         dislikeIcon.classList.remove('fa-thumbs-o-down');
         dislikeIcon.classList.add('fa-thumbs-down');
       }
@@ -283,7 +251,7 @@ const createPostView = async (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-thumbs-o-up');
               likeIcon.classList.add('fa-thumbs-up');
-              getPost('/forum/posts');
+              await getPost('/forum/posts');
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -313,7 +281,7 @@ const createPostView = async (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-thumbs-up');
               likeIcon.classList.add('fa-thumbs-o-up');
-              getPost('/forum/posts');
+              await getPost('/forum/posts');
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -350,7 +318,7 @@ const createPostView = async (posts) => {
             if (response.status == 200) {
               dislikeIcon.classList.remove('fa-thumbs-o-down');
               dislikeIcon.classList.add('fa-thumbs-down');
-              getPost();
+              await getPost('/forum/posts/');
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -380,7 +348,7 @@ const createPostView = async (posts) => {
             if (response.status == 200) {
               dislikeIcon.classList.remove('fa-thumbs-down');
               dislikeIcon.classList.add('fa-thumbs-o-down');
-              getPost();
+              await getPost('/forum/posts/');
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -411,8 +379,8 @@ const createPostView = async (posts) => {
           console.log(response);
           const json = await response.json();
           if (response.status === 200) {
+            await getPost('/forum/posts');
             closeModal();
-            getPost('/forum/posts');
           }
         } catch (e) {
           console.log('Error on update post', e.message);
@@ -420,7 +388,6 @@ const createPostView = async (posts) => {
       });
 
       deletePost.addEventListener('click', async (event) => {
-        const postId = document.querySelector('#postId').value;
         const fetchOptions = {
           method: 'DELETE',
           headers: {
@@ -429,13 +396,13 @@ const createPostView = async (posts) => {
         };
         try {
           const response = await fetch(
-            url + '/forum/post/:id' + postId,
+            url + '/forum/post/' + postId.value,
             fetchOptions
           );
           const json = await response.json();
           console.log("delete response", json);
-          getPost('/forum/posts');
           closeModal();
+          getPost('/forum/posts');
         } catch (e) {
           console.log(e.message);
         }
@@ -506,10 +473,7 @@ const createPostView = async (posts) => {
             );
           } else {
             errorDisplay.innerHTML = '';
-            const newComment = document.createElement('p');
-
-            newComment.innerHTML = data.comment;
-            commentContainer.appendChild(newComment);
+            await getPost('/forum/posts/')
           }
         } catch (e) {
           console.log('Error on commentForm submit: ', e.message);
@@ -520,10 +484,8 @@ const createPostView = async (posts) => {
     } // loggedin ends
 
     // get comments for specific post
-    const comments = getComments(post.postId);
-
     // loop trough comments and create elements for them
-    comments.then((result) => {
+    getComments(post.postId).then((result) => {
       result.forEach((comment) => {
         const commentAuthor = document.createElement('h6');
         commentAuthor.innerHTML = `${comment.firstname} ${comment.lastname}`;
@@ -556,14 +518,14 @@ const getComments = async (id) => {
   try {
     const response = await fetch(url + '/forum/comments/' + id);
     console.log('Response: ', response);
-    return await response.json();
+    const comments = await response.json();
+    return comments;
   } catch (e) {
     console.log(e.message);
   }
 };
 
 const getPost = async (path) => {
-  section.innerHTML = '';
   console.log("getPost? token ", sessionStorage.getItem("token"));
   try {
     const options = {
@@ -573,7 +535,7 @@ const getPost = async (path) => {
     };
     const response = await fetch(url + path, options);
     const posts = await response.json();
-    await createPostView(posts);
+    createPostView(posts);
   } catch (e) {
     console.log(e.message);
   }

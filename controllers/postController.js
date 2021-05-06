@@ -267,8 +267,24 @@ const create_comment = async (req, res, next) => {
 };
 
 const post_delete = async (req, res) => {
-  const deleteOk = await postModel.deletePost(req.params.id);
-  res.json(deleteOk);
+  logger.info(`User on post_delete at forumController: ${JSON.stringify(req.user)}`)
+  logger.info(`Body on post_delete at forumController: ${JSON.stringify(req.body)}`)
+  console.log('User on post_delete:', req.body);
+  if (req.user !== undefined) {
+    try {
+      // post to store data
+      const post = [
+        req.params.id
+      ];
+      // delete
+      const response = await postModel.deletePost(post);
+      logger.info(`Post_delete response: ${JSON.stringify(response)}`)
+      res.json(response);
+    } catch (e) {
+      console.log('post_delete error', e.message);
+      logger.error(`post_delete error: ${e.message}`);
+    }
+  }
 };
 
 module.exports = {
