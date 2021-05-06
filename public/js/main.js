@@ -3,25 +3,20 @@ const url = 'https://localhost:8001'; // change url when uploading to server
 const loginNow = document.querySelector('#login-now');
 const loginForm = document.querySelector('#login-form');
 const loginError = document.querySelector('#login-error');
-const logOut = document.querySelector('#log-out');
+const logOut = document.querySelectorAll('.log-out');
 const registerNow = document.querySelector('#register-now');
 const registerForm = document.querySelector('#register-form');
-const firstnameError = document.querySelector('#firstname-error');
-const lastnameError = document.querySelector('#lastname-error');
-const emailError = document.querySelector('#email-error');
-const dateError = document.querySelector('#date-error');
-const passwordError = document.querySelector('#password-error');
-
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
+    window.location.href = url + "/forum.html";
     loginForm.style.display = 'none';
     logOut.style.display = 'block';
 } else {
-    logOut.style.display = 'none';
+    logOut[0].style.display = 'none';
+    logOut[1].style.display = 'none';
     loginForm.style.display = 'flex';
 }
-
 
 registerNow.addEventListener('click', showRegistration);
 loginNow.addEventListener('click', showLogin);
@@ -50,38 +45,14 @@ registerForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
   console.log('user add response', json);
-  if (json.errors === undefined || json.errors.length === 0) {
+  if (json.errors === undefined || json.errors.length == 0) {
     // save token
     sessionStorage.setItem('token', json.token);
     logOut.style.display = 'block';
     window.location.href = url + "/forum.html";
   } else {
-    firstnameError.innerHTML = "";
-    lastnameError.innerHTML = "";
-    emailError.innerHTML = "";
-    dateError.innerHTML = "";
-    passwordError.innerHTML = "";
-    for (let i = 0; i < json.errors.length; i++) {
-      const param = json.errors[i].param;
-      const msg = json.errors[i].msg;
-
-       if (param === "firstname") {
-         firstnameError.innerHTML = msg;
-       }
-      if (param === "lastname") {
-        lastnameError.innerHTML = msg;
-      }
-      if (param === "username") {
-        emailError.innerHTML = msg;
-      }
-      if (param === "dateOfBirth") {
-        dateError.innerHTML = msg;
-      }
-      if (param === "password") {
-        passwordError.innerHTML = msg;
-      }
-  }
-}
+    loginError.innerHTML = JSON.stringify(json.errors);
+  } 
 });
 
 // login
@@ -112,7 +83,8 @@ loginForm.addEventListener('submit', async (evt) => {
 });
 
 // logout
-logOut.addEventListener('click', async (evt) => {
+for (let i = 0; i < logOut.length; i++) {
+  logOut[i].addEventListener('click', async (evt) => {
     evt.preventDefault();
     try {
       const options = {
@@ -126,6 +98,7 @@ logOut.addEventListener('click', async (evt) => {
       // remove token
       sessionStorage.removeItem('token');
       alert('You have logged out');
+      location.reload();
       // show/hide login form and logout
       loginForm.style.display = 'block';
       logOut.style.display = 'none';
@@ -133,5 +106,6 @@ logOut.addEventListener('click', async (evt) => {
     }
     catch (e) {
       console.log(e.message);
-    }
-});
+    } 
+  });
+}
