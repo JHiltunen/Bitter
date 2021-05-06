@@ -23,8 +23,6 @@ A school project designed to develop a media sharing application
   <li> MySQL </li>
 </ul>
 
-## Get started
-
 ## Examples
 
 ```jsx
