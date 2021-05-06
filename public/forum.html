@@ -36,17 +36,17 @@
     </nav>
 </header>
 <div class="forumArticle">
-    <form novalidate class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
+    <form class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
         <textarea name="title" class="post-title" placeholder="Title" required></textarea>
         <textarea name="content" class="post-content" placeholder="Type your message here..." required></textarea>
         <div class="attachments-send">
             <input type="file" name="image" id="image" class="post-file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime,video/webm">
             <input type="submit" class="post-button" id="post-btn" value="Send">
-            </div>
-            <div class="image-preview" id="imagePreview">
-                <img src="" alt="Image preview" class="image-preview-image">
-                <span class="image-preview-default-text">Image Preview</span>
-            </div>
+        </div>
+        <div class="image-preview" id="imagePreview">
+            <img src="" alt="Image preview" class="image-preview-image">
+            <span class="image-preview-default-text">Image Preview</span>
+        </div>
     </form>
     <div class="hide modal" id="image-modal">
         <a href="#" class="close">Close</a>

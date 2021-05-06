@@ -1,7 +1,8 @@
 "use strict";
 const url = "https://localhost:8001"; // change url when uploading to server
-const logOut = document.querySelectorAll('.log-out');
-const login = document.querySelectorAll('.login');
+const logOut = document.querySelectorAll(".log-out");
+const login = document.querySelectorAll(".login");
+const forumArticle = document.querySelector(".forumArticle");
 const post = document.querySelector("#forum-post");
 const section = document.querySelector("section");
 const imageModal = document.querySelector("#image-modal");
@@ -40,70 +41,135 @@ const getUserId = async () => {
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem("token")) {
-  login[0].style.display = 'none';
-  login[1].style.display = 'none';
+  login[0].style.display = "none";
+  login[1].style.display = "none";
 
   user = getUserId();
+
+  post.style.display = 'block';
+
+  // submit post
+  post.addEventListener("submit", async (evt) => {
+    evt.preventDefault();
+    const pd = new FormData(post);
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+      body: pd,
+    };
+    const response = await fetch(url + "/forum/post", fetchOptions);
+    console.log(response);
+    const json = await response.json();
+    if (response.status === 200) {
+      document.querySelector(".post-title").value = "";
+      document.querySelector(".post-content").value = "";
+      document.getElementById("image").value = "";
+      document.getElementById("imagePreview").value = "";
+      document.getElementById("imagePreview").setAttribute("src", "");
+      document.querySelector(".image-preview-image").value = "";
+      document.querySelector(".image-preview-default-text").value = "";
+
+      previewContainer.style.display = "";
+      previewDefaultText.style.display = "";
+      previewImage.style.display = "";
+    }
+    getPost();
+  });
 } else {
-  logOut[0].style.display = 'none';
-  logOut[1].style.display = 'none';
+  logOut[0].style.display = "none";
+  logOut[1].style.display = "none";
 }
+
+const createPostForm = () => {
+  const postForm = document.createElement("form");
+  postForm.classList.add("post");
+  postForm.id = "forum-post";
+  postForm.action = "/user/post";
+  postForm.method = "POST";
+  postForm.enctype = "multipart/form-data";
+
+  const titleTextArea = document.createElement("textarea");
+  titleTextArea.name = "title";
+  titleTextArea.classList.add("post-title");
+  titleTextArea.placeholder = "Title";
+  titleTextArea.required = true;
+
+  const contentTextArea = document.createElement("textarea");
+  contentTextArea.name = "content";
+  contentTextArea.classList.add("post-content");
+  contentTextArea.placeholder = "Type your message here...";
+  contentTextArea.required = true;
+
+  const attachmentsSend = document.createElement("div");
+  attachmentsSend.classList.add("attachments-send");
+
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.name = "image";
+  fileInput.id = "image";
+  fileInput.accept =
+    "image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime,video/webm";
+  fileInput.classList.add("post-file");
+
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.classList.add("post-button");
+  submitButton.id = "post-btn";
+  submitButton.value = "Send";
+
+  const imagePreview = document.createElement("div");
+  imagePreview.id = "imagePreview";
+  imagePreview.classList.add("image-preview");
+
+  const img = document.createElement("img");
+  img.src = "";
+  img.alt = "Image preview";
+  img.classList.add("image-preview-image");
+
+  const span = document.createElement("span");
+  span.classList.add("image-preview-default-text");
+  span.innerHTML = "Image Preview";
+
+  postForm.appendChild(titleTextArea);
+  postForm.appendChild(contentTextArea);
+
+  attachmentsSend.appendChild(fileInput);
+  attachmentsSend.appendChild(submitButton);
+
+  imagePreview.appendChild(img);
+  imagePreview.appendChild(span);
+
+  postForm.appendChild(imagePreview);
+
+  forumArticle.appendChild(postForm);
+};
 
 // logout
 for (let i = 0; i < logOut.length; i++) {
-  logOut[i].addEventListener('click', async (evt) => {
+  logOut[i].addEventListener("click", async (evt) => {
     evt.preventDefault();
     try {
       const options = {
         headers: {
-          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
       };
-      const response = await fetch(url + '/auth/logout', options);
+      const response = await fetch(url + "/auth/logout", options);
       const json = await response.json();
       console.log(json);
       // remove token
-      sessionStorage.removeItem('token');
-      alert('You have logged out');
+      sessionStorage.removeItem("token");
+      alert("You have logged out");
       location.reload();
       // show/hide login form and logout
-      logOut.style.display = 'none';
-    }
-    catch (e) {
+      logOut.style.display = "none";
+    } catch (e) {
       console.log(e.message);
-    } 
+    }
   });
 }
-
-// submit post
-post.addEventListener("submit", async (evt) => {
-  evt.preventDefault();
-  const pd = new FormData(post);
-  const fetchOptions = {
-    method: "POST",
-    headers: {
-      Authorization: "Bearer " + sessionStorage.getItem("token"),
-    },
-    body: pd,
-  };
-  const response = await fetch(url + "/forum/post", fetchOptions);
-  console.log(response);
-  const json = await response.json();
-  if (response.status === 200) {
-    document.querySelector(".post-title").value = "";
-    document.querySelector(".post-content").value = "";
-    document.getElementById("image").value = "";
-    document.getElementById("imagePreview").value = "";
-    document.getElementById("imagePreview").setAttribute("src", "");
-    document.querySelector(".image-preview-image").value = "";
-    document.querySelector(".image-preview-default-text").value = "";
-
-    previewContainer.style.display = "";
-    previewDefaultText.style.display = "";
-    previewImage.style.display = "";
-  }
-  getPost();
-});
 
 // create post view
 const createPostView = async (posts) => {
@@ -175,12 +241,32 @@ const createPostView = async (posts) => {
 
     if (sessionStorage.getItem("token")) {
       console.log("User: ", user);
+
+      if (post.userId === user.userId) {
+        const editIcon = document.createElement("i");
+        editIcon.classList.add("fa");
+        editIcon.classList.add("fa-edit");
+
+        editIcon.addEventListener("click", () => {
+          console.log("Edit post: ", post.postId);
+          updateTitle.value = post.title;
+          updateContent.value = post.content;
+          postId.value = post.postId;
+          modal.style.display = "block";
+        });
+
+        card.appendChild(editIcon);
+      }
+
       if (post.userLiked !== null && post.userLiked.includes(user.userId)) {
         likeIcon.classList.remove("fa-thumbs-o-up");
         likeIcon.classList.add("fa-thumbs-up");
       }
 
-      if (post.userDisliked !== null && post.userDisliked.includes(user.userId)) {
+      if (
+        post.userDisliked !== null &&
+        post.userDisliked.includes(user.userId)
+      ) {
         dislikeIcon.classList.remove("fa-thumbs-o-down");
         dislikeIcon.classList.add("fa-thumbs-down");
       }
@@ -191,7 +277,11 @@ const createPostView = async (posts) => {
         // add like
         if (likeIcon.classList.contains("fa-thumbs-o-up")) {
           try {
-            const data = { postId: post.postId, userId: user.userId, liked: true};
+            const data = {
+              postId: post.postId,
+              userId: user.userId,
+              liked: true,
+            };
             const fetchOptions = {
               method: "POST",
               headers: {
@@ -253,7 +343,7 @@ const createPostView = async (posts) => {
         return;
       });
 
-      dislikeIcon.addEventListener('click', async (event) => {
+      dislikeIcon.addEventListener("click", async (event) => {
         event.preventDefault();
         // add dislike
         if (dislikeIcon.classList.contains("fa-thumbs-o-down")) {
@@ -319,18 +409,6 @@ const createPostView = async (posts) => {
         }
       });
 
-      const editIcon = document.createElement("i");
-      editIcon.classList.add("fa");
-      editIcon.classList.add("fa-edit");
-
-      editIcon.addEventListener("click", () => {
-        console.log("Edit post: ", post.postId);
-        updateTitle.value = post.title;
-        updateContent.value = post.content;
-        postId.value = post.postId;
-        modal.style.display = "block";
-      });
-
       // handle update for edit post form
       updatePostForm.addEventListener("submit", async (event) => {
         try {
@@ -382,8 +460,6 @@ const createPostView = async (posts) => {
           console.log(e.message);
         }
       });
-    
-      card.appendChild(editIcon);
 
       // write a new comment form
       const commentForm = document.createElement("form");
