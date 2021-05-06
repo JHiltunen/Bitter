@@ -61,7 +61,7 @@ if (sessionStorage.getItem('token')) {
 
   user = getUserId();
 
-  post.style.display = 'block';
+  post.style.display = 'flex';
 
   // submit post
   post.addEventListener('submit', async (evt) => {
