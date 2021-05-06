@@ -613,22 +613,46 @@ input.login {
 /* Modal Header */
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+    background-color: white;
 }
 
 /* Modal Body */
 .modal-body {
     padding: 2px 16px;
+    background: #266DD3;
+}
+#deletePost, #saveChanges {
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#deletePost, #saveChanges{
+    width: 4em;
+    border-radius: 15px;
+    height: 1.5em;
+}
+#deletePost:hover {
+    background: red;
+}
+#saveChanges:hover {
+    background: lawngreen;
+}
+#updateContent, #updateTitle {
+    margin: 5px;
 }
 
 /* Modal Footer */
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+    background-color: #266DD3;
 }
-
+.postCommentButton {
+    border-radius: 15px;
+    width: 7.5em;
+    margin: 5px;
+    font-size: 0.6em;
+    height: 1.8em;
+}
 /* Modal Content */
 .modal-content {
     position: relative;
@@ -640,6 +664,7 @@ input.login {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
+
 }
 
 /* Add Animation */
@@ -974,7 +999,14 @@ input.login {
         right: 1em;
         color: #fff;
         text-shadow: #000;
-        font-size: 2em;
+        font-size: 1em;
+    }
+
+    /** EDIT POST MODAL **/
+
+    .modal-content {
+        width: 680px;
+        font-size: 0.6em;
     }
 }
 

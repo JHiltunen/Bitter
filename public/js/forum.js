@@ -325,6 +325,7 @@ const createPostView = async (posts) => {
 
       // create submit button for the form
       const submitCommentFormButton = document.createElement("button");
+      submitCommentFormButton.classList.add('postCommentButton');
       submitCommentFormButton.setAttribute("type", "submit");
       submitCommentFormButton.innerText = "Post comment";
 
