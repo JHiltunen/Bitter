@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
 }
-
 html {
     background: #266DD3;
 }
@@ -19,21 +18,17 @@ html {
     background: #ffffff;
     padding: 17px;
 }
-
 .navHead {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
-
 .headLinks {
     display: none;
 }
-
 #openBtn {
     display: flex;
 }
-
 .navH2 {
     align-self: center;
     text-decoration: none;
@@ -48,8 +43,8 @@ html {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
     overflow-y: hidden;
     transition: 0.5s;
 }
@@ -70,11 +65,9 @@ html {
     display: block;
     transition: 0.3s;
 }
-
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
 }
-
 .overlay .closebtn {
     position: absolute;
     top: 20px;
@@ -91,7 +84,6 @@ html {
     align-items: center;
     flex-direction: column;
 }
-
 .mainText {
     text-shadow: 1px 1px #000000;
     color: white;
@@ -99,7 +91,6 @@ html {
     padding: 20px;
     text-align: center;
 }
-
 .mainButton {
     padding: 12px 16px 12px 16px;
     width: 11rem;
@@ -111,12 +102,10 @@ html {
     transition-duration: 0.4s;
     position: relative;
 }
-
 .mainButton:hover {
     border: 0;
     background-color: #14366f;
 }
-
 .mainButton:after {
     content: "";
     background: #f1f1f1;
@@ -129,7 +118,6 @@ html {
     opacity: 0;
     transition: all 0.8s
 }
-
 .mainButton:active:after {
     padding: 0;
     margin: 0;
@@ -147,20 +135,17 @@ html {
     height: 30rem;
 
 }
-
 .footerP {
     font-size: 1.4rem;
     color: white;
     margin-top: 20px;
 }
-
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
-
 input[name=name] {
     width: 18rem;
     height: 2rem;
@@ -183,7 +168,6 @@ input[name=email] {
     border: 2px solid white;
     color: white;
 }
-
 textarea[name=message] {
     margin-top: 14px;
     height: 8rem;
@@ -195,7 +179,6 @@ textarea[name=message] {
     color: white;
     resize: none;
 }
-
 input[type=submit] {
     margin-top: 14px;
     width: 18rem;
@@ -204,7 +187,6 @@ input[type=submit] {
     background-color: white;
     border: 0;
 }
-
 input[type=submit]:hover {
     background-color: #266DD3;
     color: white;
@@ -224,7 +206,7 @@ table {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 20px ;
     letter-spacing: 2px;
 }
 
@@ -243,13 +225,12 @@ tr:nth-child(even) {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f5f5f5;
+    background-color: #e7e7e7;
     box-shadow: 0 1px 5px black;
     height: 26rem;
     width: 24rem;
     margin: auto;
 }
-
 .login-Text {
     display: flex;
     align-self: center;
@@ -258,19 +239,16 @@ tr:nth-child(even) {
     color: #266DD3;
     text-shadow: 1px 1px #000000;
 }
-
 .loginArticle {
     height: 29rem;
     display: flex;
     justify-content: center;
 }
-
 .login-icons {
     display: flex;
     justify-content: center;
     margin-right: 11px;
 }
-
 .login-Btn {
     align-self: center;
     width: 6rem;
@@ -281,7 +259,6 @@ tr:nth-child(even) {
     cursor: pointer;
     text-align: center;
 }
-
 .login-Btn:hover {
     background-color: #e7e7e7;
     color: #266DD3;
@@ -296,30 +273,25 @@ input.login {
     color: #266DD3;
     padding: 12px;
     margin: 5px 0 10px 0;
-}
-
+ }
 .register-Btn {
     color: #266DD3;
     text-align: center;
     text-decoration: none;
     margin-top: 7px;
 }
-
 #login-user {
     margin-right: 3px;
 }
-
 #login-now {
     display: none;
 }
-
 /** LOGIN SCREEN ICONS **/
 #user {
     margin-right: 7px;
     color: #266DD3;
     font-size: 38px
 }
-
 #mail {
     margin-right: 7px;
     color: #266DD3;
@@ -340,16 +312,13 @@ input.login {
     text-align: center;
     margin-top: 10px;
 }
-
 .registerFormBtn:hover {
     background-color: #e7e7e7;
     color: #266DD3;
 }
-
 #register-form {
     display: none;
 }
-
 .register-Text {
     display: flex;
     align-self: center;
@@ -357,22 +326,18 @@ input.login {
     color: #266DD3;
     margin-bottom: 4px;
 }
-
 .register-Btn:hover {
     text-decoration: underline;
 }
-
 .names {
     align-self: flex-start;
 }
-
 .bDate {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
     align-self: start;
 }
-
 .date {
     height: 2rem;
     width: 9.8rem;
@@ -395,102 +360,79 @@ input.login {
 
     padding: 0 0 0 8px;
 }
-
 .names {
     display: flex;
     flex-direction: row-reverse;
     align-self: flex-start;
 }
-
 .pass {
     display: flex;
     flex-direction: row-reverse;
 
 }
-
 #email-box {
 
 }
-
 /** DATE ICON **/
 #dateIcon {
     font-size: xx-large;
     color: #266DD3;
     margin-bottom: 12px;
 }
-
 /** EMAIL ICON **/
 #emailIcon {
     font-size: xx-large;
     color: #266DD3;
     margin-top: 4px;
 }
-
 /** FIRSTNAME ICON **/
 #name {
     font-size: xx-large;
     color: #266DD3;
     margin-top: 6px;
 }
-
 /** LASTNAME ICON **/
 #lName {
     font-size: xx-large;
     color: #266DD3;
     margin-top: 5px;
 }
-
 /** PASSWORD ICON **/
 #pass {
     color: #266DD3;
     font-size: xx-large;
     margin-top: 8px;
 }
-
 /** GENDER ICON **/
 .mars-venus {
     flex-direction: row-reverse;
     display: flex;
     align-self: flex-start;
 }
-
 #mars-venus {
     color: #266DD3;
     font-size: xx-large;
 }
-
 /** ID'S FOR EVERY TEXT BOX **/
 #reg-1 {
 
 }
-
 #reg-2 {
 
 }
-
 #reg-3 {
 
 }
-
 #reg-4 {
 
 }
-
 #reg-5 {
     align-self: flex-start;
 }
 
 /** DISCUSSION FORUM  **/
-i:hover {
-    cursor: pointer;
-}
-
 .forumArticle {
     background: #266DD3;
-}
-
-#forum-post {
-    display: none;
 }
 
 /** POSTS LAYOUT **/
@@ -502,7 +444,6 @@ i:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
 .resp {
     width: 100%;
     height: auto;
@@ -512,16 +453,13 @@ i:hover {
     border: 1px solid #888;
     cursor: pointer;
 }
-
 .content-text {
     font-size: 0.9em;
 }
-
 .title-text {
     margin-bottom: 1em;
     font-size: 1em;
 }
-
 /* Add a card effect for articles */
 .card {
     background-color: #f5f5f5;
@@ -531,11 +469,9 @@ i:hover {
     border-left: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
 }
-
 .icons {
     margin-top: 15px;
 }
-
 .post-article {
     display: flex;
     flex-direction: column;
@@ -543,13 +479,14 @@ i:hover {
 
 /** MAKING POST **/
 .post {
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-top: 2px solid #dfdfdf;
     background: #f5f5f5;
-}
 
+}
 .post-title {
     resize: none;
     align-self: center;
@@ -593,93 +530,60 @@ i:hover {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* The Close Button */
-.close {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* The Close Button */
+  .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
+  }
 
 /* Modal Header */
 .modal-header {
     padding: 2px 16px;
-    background-color: white;
-}
-
-/* Modal Body */
-.modal-body {
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;}
+  
+  /* Modal Footer */
+  .modal-footer {
     padding: 2px 16px;
-    background: #266DD3;
-}
-#deletePost, #saveChanges {
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-#deletePost, #saveChanges{
-    width: 4em;
-    border-radius: 15px;
-    height: 1.5em;
-}
-#deletePost:hover {
-    background: red;
-}
-#saveChanges:hover {
-    background: lawngreen;
-}
-#updateContent, #updateTitle {
-    margin: 5px;
-}
-
-/* Modal Footer */
-.modal-footer {
-    padding: 2px 16px;
-    background-color: #266DD3;
-}
-.postCommentButton {
-    border-radius: 15px;
-    width: 7.5em;
-    margin: 5px;
-    font-size: 0.6em;
-    height: 1.8em;
-}
-/* Modal Content */
-.modal-content {
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+  /* Modal Content */
+  .modal-content {
     position: relative;
     background-color: #fefefe;
     margin: 50% auto;
     padding: 0;
     border: 1px solid #888;
     width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
-
-}
-
-/* Add Animation */
-@keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-    to {
-        top: 0;
-        opacity: 1
-    }
-}
+  }
+  
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
 
 .attachments-send {
     display: flex;
@@ -689,7 +593,6 @@ i:hover {
     border-top: 1px solid #bbb;
     padding: 0.6em 0 0.6em 0;
 }
-
 #post-btn {
     color: white;
     background: #266DD3;
@@ -699,16 +602,13 @@ i:hover {
     border-radius: 15px;
 
 }
-
 #post-btn:hover {
     background: #14366f;
     color: #f8f8f8;
 }
-
 .post-file {
     align-self: center;
 }
-
 /** Preview Image **/
 .image-preview {
     width: 300px;
@@ -722,16 +622,13 @@ i:hover {
     font-weight: bold;
     color: #cccccc;
 }
-
 .image-preview-image {
     display: none;
     width: 100%;
 }
-
 #myVideo {
     display: none;
 }
-
 #forumFooter {
     margin-top: 0.5rem;
 }
@@ -740,27 +637,24 @@ i:hover {
 .hide {
     display: none !important;
 }
-
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0,0,0,.5);
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .modal img {
     height: auto;
     background: #fff;
     border-radius: 15px;
     width: 100%;
 }
-
 .close {
     position: absolute;
     top: 1em;
@@ -769,7 +663,6 @@ i:hover {
     text-shadow: #000;
     font-size: 2em;
 }
-
 .close:hover {
     color: #0078ff;
 }
@@ -784,7 +677,6 @@ i:hover {
 .fa {
     font-size: xx-large;
 }
-
 .aside {
     height: 2.5em;
     width: 100%;
@@ -810,50 +702,19 @@ i:hover {
     border-right: 2px solid black;
 }
 
-.main-page-container {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
 /** DESKTOP VIEW! **/
 @media only screen and (min-width: 680px) {
     * {
         font-size: 120%;
     }
-
     html {
         background: #266DD3;
     }
-
     .main-page-container {
         display: flex;
         flex-direction: row-reverse;
         justify-content: center;
     }
-
-    .aside {
-        height: 10em;
-        width: 11em;
-        background-color: #f5f5f5;
-        position: sticky;
-        position: -webkit-sticky;
-        color: black;
-        top: 2.6em;
-        margin-right: -2em;
-        margin-left: 1em;
-        flex-direction: row;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-size: 1.6em;
-    }
-    .tabs {
-
-    }
-    .tabs:nth-child(2) {
-
-    }
-  
     .gender {
         width: 7rem;
         height: 2rem;
@@ -865,7 +726,6 @@ i:hover {
         margin-left: 11px;
         padding: 0 0 0 8px;
     }
-  
     .navbar {
         top: 0;
         z-index: 100;
@@ -873,7 +733,6 @@ i:hover {
         width: 100%;
         padding: 0.3em;
     }
-
     #myVideo {
         display: block;
         position: fixed;
@@ -883,29 +742,24 @@ i:hover {
         min-height: 100%;
         z-index: -1;
     }
-
     .mainArticle {
         height: 38rem;
         margin-top: 1rem;
     }
-
     .mainText {
         font-size: 2.5em;
     }
-
     .mainButton {
         transition: all 0.5s;
         cursor: pointer;
         font-size: 0.5em;
     }
-
     .mainButton span {
         cursor: pointer;
         display: inline-block;
         position: relative;
         transition: 0.5s;
     }
-
     .mainButton span:after {
         content: '\00bb';
         position: absolute;
@@ -914,40 +768,33 @@ i:hover {
         right: -20px;
         transition: 0.5s;
     }
-
     .mainButton:hover span {
         padding-right: 25px;
     }
-
     .mainButton:hover span:after {
         opacity: 1;
         right: 0;
     }
-
     #openBtn {
         display: none;
     }
-
     .navHead {
         display: flex;
         flex-direction: row;
         width: 620px;
         margin: auto;
         justify-content: flex-end;
-        margin: auto 0 0 11.58em;
-    }
 
-    .navH2 {
+    }
+    .navH2{
         margin-right: auto;
         text-decoration: none;
         color: black;
         font-size: inherit;
     }
-
     .mainText {
-        width: 680px;
+    width: 680px;
     }
-
     .headLinks {
         display: flex;
         text-decoration: none;
@@ -956,84 +803,68 @@ i:hover {
         font-size: 0.5em;
         color: black;
     }
-
     .headLinks:hover {
         color: #266DD3;
     }
-
     input[name="name"] {
         font-size: 0.6em;
     }
-
     input[name="email"] {
         font-size: 0.6em;
     }
-
-    textarea[name="message"] {
+    textarea[name="message"]{
         font-size: 0.6em;
         resize: none;
     }
-
     input[type="submit"] {
         font-size: 0.6em;
         cursor: pointer;
     }
 
     /** FORUM **/
+
     .forumArticle {
         width: 620px;
-        margin: auto;
-    }
 
+    }
     .loginArticle {
         margin-top: 4rem;
     }
-
     .login-Btn {
         font-size: 0.6em;
     }
-
     input.login {
         font-size: 0.6em;
     }
-
     .register-Btn {
         font-size: 0.6em;
     }
-
     .gender {
         font-size: 0.6em;
     }
-
     .date {
         width: 8.8em;
         font-size: 0.6em;
         padding: 0 0 0 10px;
     }
-
     .registerFormBtn {
         font-size: 0.6em;
     }
-
     /** POSTS **/
     .post {
         margin-top: 4.5rem;
         font-size: 0.6em;
 
     }
-
     .post-file {
         font-size: 0.6em;
     }
-
-    .card {
+    .card{
         font-size: 0.6em;
     }
-
     .attachments-send {
         justify-content: space-between;
     }
-
     #post-btn {
         width: 6em;
     }
@@ -1043,15 +874,14 @@ i:hover {
     }
 
     /** ABOUT **/
+
     .aboutArticle {
         margin-top: 4rem;
     }
-
     /** edit user info **/
     .editArticle {
         margin-top: 4rem;
     }
-
     #log-out {
         display: flex;
         text-decoration: none;
@@ -1062,35 +892,26 @@ i:hover {
     }
 
     /** MODAL IMAGE **/
+
     .hide {
         display: none !important;
     }
-
     .modal {
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0,0,0,.5);
     }
-
     .modal img {
         height: 60%;
         width: auto;
     }
-
     .close {
         position: absolute;
         top: 1em;
         right: 1em;
         color: #fff;
         text-shadow: #000;
-        font-size: 1em;
-    }
-
-    /** EDIT POST MODAL **/
-
-    .modal-content {
-        width: 680px;
-        font-size: 0.6em;
+        font-size: 2em;
     }
     .error {
         font-size: 0.6em;
@@ -1155,5 +976,26 @@ i:hover {
     #reg-5 {
         align-self: flex-start;
     }
-}
+    .aside {
+        height: 10em;
+        width: 11em;
+        background-color: #f5f5f5;
+        position: sticky;
+        position: -webkit-sticky;
+        color: black;
+        top: 2.6em;
+        margin-right: -2em;
+        margin-left: 1em;
+        flex-direction: row;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1.6em;
+    }
+    .tabs {
 
+    }
+    .tabs:nth-child(2) {
+        
+    }
+}
