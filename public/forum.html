@@ -16,6 +16,7 @@
             <a href="index.html" class="navH2"><h2>Bitter</h2></a>
             <a href="index.html" class="headLinks">Home</a>
             <a href="forum.html" class="headLinks">Forum</a>
+            <a href="about.html" class="headLinks">About</a>
             <a href="login.html" class="headLinks login">Login</a>
             <a href="#" class="headLinks log-out">Logout</a>
             <div id="myNav" class="overlay">
@@ -24,6 +25,7 @@
                     <a href="login.html" class="login">Login</a>
                     <a href="index.html">Home</a>
                     <a href="forum.html">Forum</a>
+                    <a href="about.html">About</a>
                     <a href="#" class="log-out">Logout</a>
                     <footer class="navFooter">
                         <p>Bitter © 2021 </p>
@@ -34,57 +36,58 @@
     </nav>
 </header>
 <div class="main-page-container">
-<aside class="aside" id="tab">
-    <h2>Sort posts</h2>
-    <div class="tabs" id="most-liked">5 most liked </div>
-    <div class="tabs" id="most-commented">5 most commented</div>
-    <div class="tabs" id="getAll">Get all</div>
-</aside>
-<div class="forumArticle">
-    <form class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
-        <textarea name="title" class="post-title" placeholder="Title" required></textarea>
-        <textarea name="content" class="post-content" placeholder="Type your message here..." required></textarea>
-        <div class="attachments-send">
-            <input type="file" name="image" id="image" class="post-file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime,video/webm">
-            <input type="submit" class="post-button" id="post-btn" value="Send">
+    <aside class="aside" id="tab">
+        <h2>Sort posts</h2>
+        <div class="tabs" id="most-liked">5 most liked </div>
+        <div class="tabs" id="most-commented">5 most commented</div>
+        <div class="tabs" id="getAll">Get all</div>
+    </aside>
+    <div class="forumArticle">
+        <form class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
+            <textarea name="title" class="post-title" placeholder="Title" required></textarea>
+            <textarea name="content" class="post-content" placeholder="Type your message here..." required></textarea>
+            <div class="attachments-send">
+                <input type="file" name="image" id="image" class="post-file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime,video/webm">
+                <input type="submit" class="post-button" id="post-btn" value="Send">
+            </div>
+            <div class="image-preview" id="imagePreview">
+                <img src="" alt="Image preview" class="image-preview-image">
+                <span class="image-preview-default-text">Image Preview</span>
+            </div>
+        </form>
+        <div class="hide modal" id="image-modal">
+            <a href="#" class="close">Close</a>
+            <img src="" alt="">
         </div>
-        <div class="image-preview" id="imagePreview">
-            <img src="" alt="Image preview" class="image-preview-image">
-            <span class="image-preview-default-text">Image Preview</span>
+
+        <section class="post-article">
+
+            <!-- Posts comes here!    -->
+
+        </section>
+        <!-- The Modal -->
+        <div id="editPostModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Edit post</h2>
+                </div>
+                <div class="modal-body">
+                    <form id="updatePost" action="/update-post/" method="PUT" name="updatePostForm" enctype="multipart/form-data">
+                        <input type="text" name="title" id="updateTitle">
+                        <input type="text" name="content" id="updateContent">
+                        <input type="hidden" name="postId" id="postId">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="deletePost">Delete post</button>
+                    <button type="submit" id="saveChanges">Save changes</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
-    <div class="hide modal" id="image-modal">
-        <a href="#" class="close">Close</a>
-        <img src="" alt="">
     </div>
-
-    <section class="post-article">
-
-        <!-- Posts comes here!    -->
-
-    </section>
-    <!-- The Modal -->
-    <div id="editPostModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Edit post</h2>
-            </div>
-            <div class="modal-body">
-                <form id="updatePost" action="/update-post/" method="PUT" name="updatePostForm" enctype="multipart/form-data">
-                    <input type="text" name="title" id="updateTitle" placeholder="Title...">
-                    <input type="text" name="content" id="updateContent" placeholder="Comment...">
-                    <input type="hidden" name="postId" id="postId">
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="deletePost">Delete</button>
-                <button type="submit" id="saveChanges">Save</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 <footer class="mainFooter" id="forumFooter">
     <p class="footerP">© 2021 by Bitter</p>
