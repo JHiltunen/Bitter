@@ -650,10 +650,10 @@ i:hover {
 }
 .postCommentButton {
     border-radius: 15px;
-    width: 7.5em;
+    width: 3.5em;
     margin: 5px;
-    font-size: 0.6em;
-    height: 1.8em;
+    height: 1.2em;
+    border: 1px solid black;
 }
 /* Modal Content */
 .modal-content {
@@ -813,14 +813,18 @@ aside {
 #aside-h2 {
     display: none;
 }
-
+.commentInput {
+    font-size: 0.6em;
+}
 
 /** DESKTOP VIEW! **/
 @media only screen and (min-width: 680px) {
     * {
         font-size: 120%;
     }
-
+    .postCommentButton {
+        font-size: 0.6em;
+    }
     html {
         background: #266DD3;
     }

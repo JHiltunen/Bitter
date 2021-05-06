@@ -425,7 +425,8 @@ const createPostView = async (posts) => {
       const submitCommentFormButton = document.createElement('button');
       submitCommentFormButton.classList.add('postCommentButton');
       submitCommentFormButton.setAttribute('type', 'submit');
-      submitCommentFormButton.innerText = 'Post comment';
+      submitCommentFormButton.innerText = 'Post';
+
 
       // create hidden element for postid
       const hiddenId = document.createElement('input');
