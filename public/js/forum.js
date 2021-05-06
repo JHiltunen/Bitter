@@ -191,7 +191,7 @@ const createPostView = async (posts) => {
         // add like
         if (likeIcon.classList.contains("fa-thumbs-o-up")) {
           try {
-            const data = { postId: post.postId, userId: user.userId };
+            const data = { postId: post.postId, userId: user.userId, liked: true};
             const fetchOptions = {
               method: "POST",
               headers: {

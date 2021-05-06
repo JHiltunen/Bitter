@@ -118,7 +118,7 @@ const delete_like = async (req, res, next) => {
         logger.error(`Forum controller -> delete_like function -> There are erros: ${JSON.stringify(errors.array())}`);  
         return res.status(400).json({ errors: errors.array() });
       } else {
-        logger.info('req: ', req)
+        logger.info('req: ', req);
         // create post object to store data
         const like = [
           req.body.postId,
@@ -134,8 +134,6 @@ const delete_like = async (req, res, next) => {
     } catch (e) {
       console.log('delete_like error: ', e.message);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
@@ -157,17 +155,8 @@ const insert_like = async (req, res, next) => {
         const like = [
           req.body.postId,
           req.user.userId,
-          true,
         ];
         logger.info(`Like to be inserted: ${JSON.stringify(like)}`);
-        // check if there is already dislike on database -> then delete it
-        const dislikeIsOnDatabaseResponse = await postModel.userDislikeOnPostExists(like);
-        if (dislikeIsOnDatabaseResponse == 0) {
-          logger.info(`User want's to like post --> Deleting dislike`);
-          const deleteDislikeResponse = await postModel.deleteDislike(like);
-        } else {
-          logger.info('There were no dislike to delete on database');
-        }
         // update likes
         const response = await postModel.addLike(like);
         logger.info(`Like insert response: ${JSON.stringify(response)}`);
@@ -176,8 +165,6 @@ const insert_like = async (req, res, next) => {
     } catch (e) {
       console.log('insert_like error: ', e.message);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
@@ -199,16 +186,7 @@ const insert_dislike = async (req, res, next) => {
         const dislike = [
           req.body.postId,
           req.user.userId,
-          true,
         ];
-        logger.info(`Dislike to be inserted: ${JSON.stringify(dislike)}`);
-        const likeIsOnDatabaseResponse = await postModel.userLikeOnPostExists(dislike);
-        if (likeIsOnDatabaseResponse == 0) {
-          logger.info(`User want's to dislike post --> Deleting like`);
-          const deleteLikeResponse = await postModel.deleteLike(dislike);
-        } else {
-          logger.info('There were no like to delete on database');
-        }
         // update dislikes
         const response = await postModel.addDislike(dislike);
         logger.info(`Dislike insert response: ${JSON.stringify(response)}`);
@@ -217,8 +195,6 @@ const insert_dislike = async (req, res, next) => {
     } catch (e) {
       console.log('insert_dislike error: ', e.message);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
@@ -251,8 +227,6 @@ const delete_dislike = async (req, res, next) => {
     } catch (e) {
       console.log('delete_like error: ', e.message);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
@@ -289,8 +263,6 @@ const create_comment = async (req, res, next) => {
       console.log('Create_comment error', e.message);
       logger.error(`Create_comment error: ${e.message}`);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
