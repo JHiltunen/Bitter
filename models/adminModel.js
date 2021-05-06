@@ -28,7 +28,19 @@ const getAllUsersSort = async (order) => {
   }
 };
 
+const updateUser = async (user) => {
+  try {
+    const [rows] = await promisePool.execute(`UPDATE users SET firstname=?, lastname=?, email=?, dateOfBirth=?, gender=? WHERE users.userId=?`, user);
+    logger.info(`Update user on database: ${JSON.stringify(rows)}`);
+    return rows;
+  } catch (e) {
+    logger.error(`Error on adminModel.updateUser function while fetching database: ${e}`);
+    console.error('error', e.message);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getAllUsersSort,
+  updateUser,
 };

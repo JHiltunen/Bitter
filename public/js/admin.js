@@ -4,11 +4,13 @@ const infoTable = document.querySelector('#dataTable');
 const tbody = document.querySelector('tbody');
 const modal = document.querySelector('#editUserModal'); // Get the modal
 // edit
+const updateUserForm = document.querySelector('#updateUser');
 const updateFirstname = document.querySelector('#updateFirstname');
 const updateLastname = document.querySelector('#updateLastname');
 const updateEmail = document.querySelector('#updateEmail');
 const updateGender = document.querySelector('#updateGender');
 const updateDateOfBirth = document.querySelector('#updateDateOfBirth');
+const userId = document.querySelector('#userId');
 
 const getInfo = async () => {
   try {
@@ -27,6 +29,7 @@ const getInfo = async () => {
 };
 
 const createTable = (users) => {
+  tbody.innerHTML = '';
   users.forEach((user) => {
     const firstname = document.createElement('td');
     firstname.classList.add('td');
@@ -55,6 +58,7 @@ const createTable = (users) => {
       updateEmail.value = user.email;
       updateGender.value = user.gender;
       updateDateOfBirth.value = user.dateOfBirth.split('T')[0];
+      userId.value = user.userId;
     });
 
     const deleteField = document.createElement('td');
@@ -87,5 +91,34 @@ const closeModal = () => {
 window.addEventListener('click', (event) => {
   if (event.target == modal) {
     closeModal();
+  }
+});
+
+updateUserForm.addEventListener('submit', async (event) => {
+  try {
+    event.preventDefault();
+    const data = serializeJson(updateUserForm);
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: JSON.stringify(data),
+    };
+
+    console.log('Fetchoptions: ', fetchOptions);
+    const response = await fetch(
+      url + '/admin/update-user/' + data.userId,
+      fetchOptions
+    );
+    console.log(response);
+    const json = await response.json();
+    if (response.status === 200) {
+      await getInfo();
+      closeModal();
+    }
+  } catch (e) {
+    console.log('Error on update post', e.message);
   }
 });
