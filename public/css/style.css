@@ -431,8 +431,16 @@ input.login {
 }
 
 /** DISCUSSION FORUM  **/
+i:hover {
+    cursor: pointer;
+}
+
 .forumArticle {
     background: #266DD3;
+}
+
+#forum-post {
+    display: none;
 }
 
 /** POSTS LAYOUT **/
