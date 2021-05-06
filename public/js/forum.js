@@ -2,6 +2,9 @@
 const url = 'https://localhost:8001'; // change url when uploading to server
 const logOut = document.querySelectorAll('.log-out');
 const login = document.querySelectorAll('.login');
+const mostLiked = document.querySelector('#most-liked');
+const mostCommented = document.querySelector('#most-commented');
+const getAll = document.querySelector('#getAll');
 const forumArticle = document.querySelector('.forumArticle');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('section');
@@ -38,6 +41,18 @@ const getUserId = async () => {
     console.log('Error getting userid', e.message);
   }
 };
+
+mostLiked.addEventListener('click', () => {
+  getPost('/forum/posts/mostliked');
+});
+
+mostCommented.addEventListener('click', () => {
+  getPost('/forum/posts/mostcommented');
+});
+
+getAll.addEventListener('click', () => {
+  getPost('/forum/posts/');
+});
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
@@ -107,11 +122,40 @@ for (let i = 0; i < logOut.length; i++) {
   });
 }
 
+// submit post
+post.addEventListener("submit", async (evt) => {
+  evt.preventDefault();
+  const pd = new FormData(post);
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
+    },
+    body: pd,
+  };
+  const response = await fetch(url + "/forum/post", fetchOptions);
+  console.log(response);
+  const json = await response.json();
+  if (response.status === 200) {
+    document.querySelector(".post-title").value = "";
+    document.querySelector(".post-content").value = "";
+    document.getElementById("image").value = "";
+    document.getElementById("imagePreview").value = "";
+    document.getElementById("imagePreview").setAttribute("src", "");
+    document.querySelector(".image-preview-image").value = "";
+    document.querySelector(".image-preview-default-text").value = "";
+
+    previewContainer.style.display = "";
+    previewDefaultText.style.display = "";
+    previewImage.style.display = "";
+  }
+  getPost('/forum/posts');
+});
+
+/** Post View **/
 // create post view
 const createPostView = async (posts) => {
-  console.log('Posts: ', posts);
-  // clear article
-  section.innerHTML = '';
+  console.log("Posts: ", posts);
   posts.forEach((post) => {
     const article = document.createElement('article');
     article.classList.add('PostArticle');
@@ -239,7 +283,7 @@ const createPostView = async (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-thumbs-o-up');
               likeIcon.classList.add('fa-thumbs-up');
-              getPost();
+              getPost('/forum/posts');
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -269,7 +313,7 @@ const createPostView = async (posts) => {
             if (response.status == 200) {
               likeIcon.classList.remove('fa-thumbs-up');
               likeIcon.classList.add('fa-thumbs-o-up');
-              getPost();
+              getPost('/forum/posts');
             }
           } catch (e) {
             console.log('Error on addLike submit: ', e.message);
@@ -368,7 +412,7 @@ const createPostView = async (posts) => {
           const json = await response.json();
           if (response.status === 200) {
             closeModal();
-            getPost();
+            getPost('/forum/posts');
           }
         } catch (e) {
           console.log('Error on update post', e.message);
@@ -389,8 +433,8 @@ const createPostView = async (posts) => {
             fetchOptions
           );
           const json = await response.json();
-          console.log('delete response', json);
-          getPost();
+          console.log("delete response", json);
+          getPost('/forum/posts');
           closeModal();
         } catch (e) {
           console.log(e.message);
@@ -518,15 +562,16 @@ const getComments = async (id) => {
   }
 };
 
-const getPost = async () => {
-  console.log('getPost? token ', sessionStorage.getItem('token'));
+const getPost = async (path) => {
+  section.innerHTML = '';
+  console.log("getPost? token ", sessionStorage.getItem("token"));
   try {
     const options = {
       headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/forum/posts', options);
+    const response = await fetch(url + path, options);
     const posts = await response.json();
     await createPostView(posts);
   } catch (e) {
@@ -534,7 +579,7 @@ const getPost = async () => {
   }
 };
 
-getPost();
+getPost('/forum/posts');
 
 const image = document.getElementById('image');
 const previewContainer = document.getElementById('imagePreview');

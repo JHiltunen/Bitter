@@ -9,6 +9,8 @@ const upload = multer({dest: 'uploads/'});
 
 
 router.get('/posts', forumController.post_list_get);
+router.get('/posts/mostliked', forumController.get_five_most_liked_posts);
+router.get('/posts/mostcommented', forumController.get_five_most_commented_posts);
 
 router.get('/comments/:id', forumController.comment_list_get);
 
