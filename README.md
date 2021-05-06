@@ -28,7 +28,26 @@ A school project designed to develop a media sharing application
 ## Examples
 
 ```jsx
-Laita esimerkki tähän
+const getUserId = async () => {
+  try {
+    const fetchOptions = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    };
+    console.log("Fetchoptions: ", fetchOptions);
+
+    const response = await fetch(url + "/user/", fetchOptions);
+
+    console.log(response);
+    const json = await response.json();
+    console.log("UserId: ", json);
+    user = json;
+  } catch (e) {
+    console.log("Error getting userid", e.message);
+  }
+};
 ```
 
 ## License
