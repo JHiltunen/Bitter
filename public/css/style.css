@@ -815,6 +815,7 @@ aside {
     font-size: 0.6em;
 }
 
+
 /** DESKTOP VIEW! **/
 @media only screen and (min-width: 680px) {
     * {
@@ -856,22 +857,22 @@ aside {
     .tabs:nth-child(3) {
         border-top: none;
         border-bottom: none;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border-left: 1px solid #bbb;
+        border-right: 1px solid #bbb;
     }
     #aside-h2 {
         display: flex;
         font-size: 0.9em;
         align-self: start;
         padding: 0.1em 0 0.1em 0.6em;
-        border-top: 1px solid black;
+        border-top: 1px solid #bbb;
         width: 100%;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border-left: 1px solid #bbb;
+        border-right: 1px solid #bbb;
     }
     .tabs {
         width: 100%;
-        border: 1px solid black;
+        border: 1px solid #bbb;
         display: flex;
         flex-direction: row-reverse;
         font-size: 0.5em;
@@ -1190,4 +1191,56 @@ aside {
         align-self: flex-start;
     }
 }
+/** MEDIA FOR FOR ASIDE CHANGE **/
+@media only screen and (max-width: 1110px) {
+    .main-page-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .forumArticle {
+        margin: auto;
+    }
+    .aside {
+
+        height: 2.5em;
+        width: 620px;
+        color: black;
+        top: 2em;
+        flex-direction: row;
+        display: flex;
+        font-size: 1.6em;
+        margin: auto;
+        position: relative;
+        border: 1px solid #bbb;
+    }
+    #aside-h2 {
+        display: none;
+    }
+    .tabs:nth-child(3) {
+        border-top: none;
+        border-bottom: none;
+        border-left: 1px solid #bbb;
+        border-right: 1px solid #bbb;
+    }
+    #most-liked {
+        display: none;
+    }
+    #most-commented {
+        display: none;
+    }
+    #getAll {
+        display: none;
+    }
+    .tabs {
+        justify-content: center;
+        font-size: 1em;
+        height: 100%;
+        border: none;
+    }
+    .aside-icons {
+
+    }
+}
+
 
