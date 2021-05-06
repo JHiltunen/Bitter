@@ -123,6 +123,7 @@ const delete_like = async (req, res, next) => {
         const like = [
           req.body.postId,
           req.user.userId,
+          true,
         ];
         logger.info(`Like to be deleted: ${JSON.stringify(like)}`);
         // delete likes
@@ -156,11 +157,12 @@ const insert_like = async (req, res, next) => {
         const like = [
           req.body.postId,
           req.user.userId,
+          true,
         ];
         logger.info(`Like to be inserted: ${JSON.stringify(like)}`);
         // check if there is already dislike on database -> then delete it
         const dislikeIsOnDatabaseResponse = await postModel.userDislikeOnPostExists(like);
-        if (dislikeIsOnDatabaseResponse !== 0) {
+        if (dislikeIsOnDatabaseResponse == 0) {
           logger.info(`User want's to like post --> Deleting dislike`);
           const deleteDislikeResponse = await postModel.deleteDislike(like);
         } else {
@@ -197,10 +199,11 @@ const insert_dislike = async (req, res, next) => {
         const dislike = [
           req.body.postId,
           req.user.userId,
+          true,
         ];
         logger.info(`Dislike to be inserted: ${JSON.stringify(dislike)}`);
-        const likeIsOnDatabaseResponse = await postModel.userDislikeOnPostExists(dislike);
-        if (likeIsOnDatabaseResponse !== 0) {
+        const likeIsOnDatabaseResponse = await postModel.userLikeOnPostExists(dislike);
+        if (likeIsOnDatabaseResponse == 0) {
           logger.info(`User want's to dislike post --> Deleting like`);
           const deleteLikeResponse = await postModel.deleteLike(dislike);
         } else {
@@ -237,9 +240,10 @@ const delete_dislike = async (req, res, next) => {
         const dislike = [
           req.body.postId,
           req.user.userId,
+          true,
         ];
         logger.info(`Dislike to be deleted: ${JSON.stringify(dislike)}`);
-        // delete likes
+        // delete dislike
         const response = await postModel.deleteDislike(dislike);
         logger.info(`Dislike delete response: ${JSON.stringify(response)}`);
         res.json(response);

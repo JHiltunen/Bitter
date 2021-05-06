@@ -175,12 +175,12 @@ const createPostView = async (posts) => {
 
     if (sessionStorage.getItem("token")) {
       console.log("User: ", user);
-      if (post.liked !== null && post.liked.includes(user.userId)) {
+      if (post.userLiked !== null && post.userLiked.includes(user.userId)) {
         likeIcon.classList.remove("fa-thumbs-o-up");
         likeIcon.classList.add("fa-thumbs-up");
       }
 
-      if (post.disliked !== null && post.disliked.includes(user.userId)) {
+      if (post.userDisliked !== null && post.userDisliked.includes(user.userId)) {
         dislikeIcon.classList.remove("fa-thumbs-o-down");
         dislikeIcon.classList.add("fa-thumbs-down");
       }
@@ -219,9 +219,7 @@ const createPostView = async (posts) => {
             console.log("Error on addLike submit: ", e.message);
           }
           return;
-        }
-
-        if (likeIcon.classList.contains("fa-thumbs-up")) {
+        } else if (likeIcon.classList.contains("fa-thumbs-up")) {
           try {
             const data = { postId: post.postId, userId: user.userId };
             const fetchOptions = {
@@ -288,9 +286,7 @@ const createPostView = async (posts) => {
             console.log("Error on addLike submit: ", e.message);
           }
           return;
-        }
-
-        if (dislikeIcon.classList.contains("fa-thumbs-down")) {
+        } else if (dislikeIcon.classList.contains("fa-thumbs-down")) {
           try {
             const data = { postId: post.postId, userId: user.userId };
             const fetchOptions = {

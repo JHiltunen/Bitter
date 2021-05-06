@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
-    const [rows] = await promisePool.execute(`SELECT posts.postId, posts.title, posts.content, posts.image, posts.userId, posts.vst, users.firstname, users.lastname, COUNT(likes.postId) AS likes, GROUP_CONCAT(likes.userId SEPARATOR ',') AS liked, COUNT(dislikes.postId) AS dislikes, GROUP_CONCAT(dislikes.userId SEPARATOR ',') AS disliked FROM posts LEFT JOIN users ON posts.userId = users.userId LEFT JOIN likes ON posts.postId = likes.postId LEFT JOIN dislikes ON posts.postId = dislikes.postId GROUP BY posts.postID ORDER BY posts.vst DESC`);
+    const [rows] = await promisePool.execute(`SELECT posts.postId, posts.title, posts.content, posts.image, posts.userId, posts.vst, users.firstname, users.lastname, COUNT(CASE WHEN liked = 1 THEN 1 END) AS likes, GROUP_CONCAT(CASE WHEN liked=true THEN likes.userId END SEPARATOR ',') AS userLiked, COUNT(CASE WHEN disliked = 1 THEN 1 END) AS dislikes, GROUP_CONCAT(CASE WHEN disliked=true THEN likes.userId END SEPARATOR ',') AS userDisliked FROM posts LEFT JOIN users ON posts.userId = users.userId LEFT JOIN likes ON posts.postId = likes.postId GROUP BY posts.postID ORDER BY posts.vst DESC`);
     return rows;
   } catch (e) {
     console.error('postModel:', e.message);
@@ -64,7 +64,7 @@ const addLike = async (like) => {
   try {
     if (await userLikeOnPostExists(like) == 0) {
       logger.info(`addLike function like: ${JSON.stringify(like)}`);
-      const [rows] = await promisePool.execute('INSERT INTO likes (postId, userId, vst) VALUES (?, ?, now())', like)
+      const [rows] = await promisePool.execute('INSERT INTO likes (postId, userId, liked, disliked, vst) VALUES (?, ?, ?, \'false\', now())', like)
       return rows;
     } else {
       return 0;
@@ -78,7 +78,7 @@ const addLike = async (like) => {
 const userLikeOnPostExists = async (like) => {
   try {
     logger.info(`addLike function like: ${JSON.stringify(like)}`);
-    const [rows] = await promisePool.execute('SELECT postId, userId FROM likes WHERE postId=? AND userId=?', like)
+    const [rows] = await promisePool.execute('SELECT postId, userId, liked FROM likes WHERE postId=? AND userId=? AND liked=?', like)
     return rows;
   } catch (e) {
     logger.error(`Error on postModel.getLikes function ${e}`);
@@ -89,7 +89,7 @@ const userLikeOnPostExists = async (like) => {
 const deleteLike = async (like) => {
   try {
     logger.info(`addLike function like: ${JSON.stringify(like)}`);
-    const [rows] = await promisePool.execute('DELETE FROM likes WHERE postId=? AND userId=?', like);
+    const [rows] = await promisePool.execute('DELETE FROM likes WHERE postId=? AND userId=? AND liked=?', like);
     return rows;
   } catch (e) {
     logger.error(`Error on postModel.addLike function ${e}`);
@@ -102,7 +102,7 @@ const addDislike = async (dislike) => {
     // insert dislike
     if (await userDislikeOnPostExists(dislike) == 0) {
       logger.info(`addDislike function dislike: ${JSON.stringify(dislike)}`);
-      const [rows] = await promisePool.execute('INSERT INTO dislikes (postId, userId, vst) VALUES (?, ?, now())', dislike)
+      const [rows] = await promisePool.execute('INSERT INTO likes (postId, userId, liked, disliked, vst) VALUES (?, ?,  \'false\', ?, now())', dislike)
       return rows;
     } else {
       return 0;
@@ -116,7 +116,7 @@ const addDislike = async (dislike) => {
 const userDislikeOnPostExists = async (dislike) => {
   try {
     logger.info(`userDislikeOnPostExists function dislike: ${JSON.stringify(dislike)}`);
-    const [rows] = await promisePool.execute('SELECT postId, userId FROM dislikes WHERE postId=? AND userId=?', dislike)
+    const [rows] = await promisePool.execute('SELECT postId, userId, disliked FROM likes WHERE postId=? AND userId=? AND disliked=?', dislike)
     return rows;
   } catch (e) {
     logger.error(`Error on postModel.userDislikeOnPostExists function ${e}`);
@@ -127,7 +127,7 @@ const userDislikeOnPostExists = async (dislike) => {
 const deleteDislike = async (dislike) => {
   try {
     logger.info(`deleteDislike function dislike: ${JSON.stringify(dislike)}`);
-    const [rows] = await promisePool.execute('DELETE FROM dislikes WHERE postId=? AND userId=?', dislike);
+    const [rows] = await promisePool.execute('DELETE FROM likes WHERE postId=? AND userId=? AND disliked=?', dislike);
     return rows;
   } catch (e) {
     logger.error(`Error on postModel.deleteDislike function ${e}`);
