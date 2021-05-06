@@ -3,21 +3,19 @@ const url = 'https://localhost:8001'; // change url when uploading to server
 const loginNow = document.querySelector('#login-now');
 const loginForm = document.querySelector('#login-form');
 const loginError = document.querySelector('#login-error');
-const logOut = document.querySelector('#log-out');
+const logOut = document.querySelectorAll('.log-out');
 const registerNow = document.querySelector('#register-now');
 const registerForm = document.querySelector('#register-form');
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
 if (sessionStorage.getItem('token')) {
+    window.location.href = url + "/forum.html";
     loginForm.style.display = 'none';
     logOut.style.display = 'block';
 } else {
-    logOut.style.display = 'none';
+    logOut[0].style.display = 'none';
+    logOut[1].style.display = 'none';
     loginForm.style.display = 'flex';
-}
-
-function checkIfLoggedIn() {
-  
 }
 
 registerNow.addEventListener('click', showRegistration);
@@ -85,7 +83,8 @@ loginForm.addEventListener('submit', async (evt) => {
 });
 
 // logout
-logOut.addEventListener('click', async (evt) => {
+for (let i = 0; i < logOut.length; i++) {
+  logOut[i].addEventListener('click', async (evt) => {
     evt.preventDefault();
     try {
       const options = {
@@ -99,6 +98,7 @@ logOut.addEventListener('click', async (evt) => {
       // remove token
       sessionStorage.removeItem('token');
       alert('You have logged out');
+      location.reload();
       // show/hide login form and logout
       loginForm.style.display = 'block';
       logOut.style.display = 'none';
@@ -106,5 +106,6 @@ logOut.addEventListener('click', async (evt) => {
     }
     catch (e) {
       console.log(e.message);
-    }
-});
+    } 
+  });
+}

@@ -9,6 +9,8 @@ const upload = multer({dest: 'uploads/'});
 
 
 router.get('/posts', forumController.post_list_get);
+router.get('/posts/mostliked', forumController.get_five_most_liked_posts);
+router.get('/posts/mostcommented', forumController.get_five_most_commented_posts);
 
 router.get('/comments/:id', forumController.comment_list_get);
 
@@ -19,12 +21,16 @@ router.route('/post')
 ], postController.create_post);
 
 router.route('/post/:id')
-    .put(passport.authenticate('jwt', {session: false}), postController.edit_post)
-    .delete(passport.authenticate('jwt', {session: false}), postController.post_delete);
+  .put(passport.authenticate('jwt', {session: false}), postController.edit_post)
+  .delete(passport.authenticate('jwt', {session: false}), postController.post_delete);
 
 router.route('/post/:id/likes/')
-    .post(passport.authenticate('jwt', {session: false}), postController.insert_like)
-    .delete(passport.authenticate('jwt', {session: false}), postController.delete_like);
+  .post(passport.authenticate('jwt', {session: false}), postController.insert_like)
+  .delete(passport.authenticate('jwt', {session: false}), postController.delete_like);
+
+router.route('/post/:id/dislikes/')
+  .post(passport.authenticate('jwt', {session: false}), postController.insert_dislike)
+  .delete(passport.authenticate('jwt', {session: false}), postController.delete_dislike);
 
 router.route('/postComment')
   .post(passport.authenticate('jwt', {session: false}),

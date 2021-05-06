@@ -118,11 +118,12 @@ const delete_like = async (req, res, next) => {
         logger.error(`Forum controller -> delete_like function -> There are erros: ${JSON.stringify(errors.array())}`);  
         return res.status(400).json({ errors: errors.array() });
       } else {
-        logger.info('req: ', req)
+        logger.info('req: ', req);
         // create post object to store data
         const like = [
           req.body.postId,
           req.user.userId,
+          true,
         ];
         logger.info(`Like to be deleted: ${JSON.stringify(like)}`);
         // delete likes
@@ -133,8 +134,6 @@ const delete_like = async (req, res, next) => {
     } catch (e) {
       console.log('delete_like error: ', e.message);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
@@ -166,8 +165,68 @@ const insert_like = async (req, res, next) => {
     } catch (e) {
       console.log('insert_like error: ', e.message);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
+  }
+};
+
+const insert_dislike = async (req, res, next) => {
+  console.log('User on insert_dislike:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> insert_dislike function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> insert_dislike function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> insert_dislike function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create dislike object that will be inserted
+        const dislike = [
+          req.body.postId,
+          req.user.userId,
+        ];
+        // update dislikes
+        const response = await postModel.addDislike(dislike);
+        logger.info(`Dislike insert response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('insert_dislike error: ', e.message);
+    }
+  }
+};
+
+const delete_dislike = async (req, res, next) => {
+  console.log('User on delete_dislike:', req.user);
+  if (req.user !== undefined) {
+    try {
+      // Extract the validation errors from a request.
+      logger.info('Forum controller -> delete_dislike function');
+      const errors = validationResult(req);
+      logger.info(`Forum controller -> delete_dislike function -> Erros array: ${JSON.stringify(errors.array)}`);
+      // if errors array isn't empty
+      if (!errors.isEmpty()) {
+        logger.error(`Forum controller -> delete_dislike function -> There are erros: ${JSON.stringify(errors.array())}`);  
+        return res.status(400).json({ errors: errors.array() });
+      } else {
+        logger.info('req: ', req)
+        // create post object to store data
+        const dislike = [
+          req.body.postId,
+          req.user.userId,
+          true,
+        ];
+        logger.info(`Dislike to be deleted: ${JSON.stringify(dislike)}`);
+        // delete dislike
+        const response = await postModel.deleteDislike(dislike);
+        logger.info(`Dislike delete response: ${JSON.stringify(response)}`);
+        res.json(response);
+      }
+    } catch (e) {
+      console.log('delete_like error: ', e.message);
+    }
   }
 };
 
@@ -204,14 +263,28 @@ const create_comment = async (req, res, next) => {
       console.log('Create_comment error', e.message);
       logger.error(`Create_comment error: ${e.message}`);
     }
-  } else {
-    res.status(401).send('You are not logged in!');
   }
 };
 
 const post_delete = async (req, res) => {
-  const deleteOk = await postModel.deletePost(req.params.id);
-  res.json(deleteOk);
+  logger.info(`User on post_delete at forumController: ${JSON.stringify(req.user)}`)
+  logger.info(`Body on post_delete at forumController: ${JSON.stringify(req.body)}`)
+  console.log('User on post_delete:', req.body);
+  if (req.user !== undefined) {
+    try {
+      // post to store data
+      const post = [
+        req.params.id
+      ];
+      // delete
+      const response = await postModel.deletePost(post);
+      logger.info(`Post_delete response: ${JSON.stringify(response)}`)
+      res.json(response);
+    } catch (e) {
+      console.log('post_delete error', e.message);
+      logger.error(`post_delete error: ${e.message}`);
+    }
+  }
 };
 
 module.exports = {
@@ -222,4 +295,6 @@ module.exports = {
   post_delete,
   insert_like,
   delete_like,
+  insert_dislike,
+  delete_dislike,
 };

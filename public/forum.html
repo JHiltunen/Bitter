@@ -33,8 +33,15 @@
         </div>
     </nav>
 </header>
+<div class="main-page-container">
+<aside class="aside" id="tab">
+    <h2>Sort posts</h2>
+    <div class="tabs" id="most-liked">5 most liked </div>
+    <div class="tabs" id="most-commented">5 most commented</div>
+    <div class="tabs" id="getAll">Get all</div>
+</aside>
 <div class="forumArticle">
-    <form novalidate class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
+    <form class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
         <textarea name="title" class="post-title" placeholder="Title" required></textarea>
         <textarea name="content" class="post-content" placeholder="Type your message here..." required></textarea>
         <div class="attachments-send">
@@ -50,6 +57,7 @@
         <a href="#" class="close">Close</a>
         <img src="" alt="">
     </div>
+
     <section class="post-article">
 
         <!-- Posts comes here!    -->
@@ -77,7 +85,7 @@
         </div>
     </div>
 </div>
-
+</div>
 <footer class="mainFooter" id="forumFooter">
     <p class="footerP">© 2021 by Bitter</p>
     <p class="footerP">Need help? Please fill the form to Contact Us!</p>
@@ -87,7 +95,6 @@
         <textarea name="message" placeholder="Type your message here..." required></textarea>
         <input type="submit" value="Submit">
     </form>
-
 </footer>
 <script src="js/nav.js"></script>
 <script src="js/serialize.js"></script>
