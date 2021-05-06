@@ -4,6 +4,7 @@ const logOut = document.querySelectorAll('.log-out');
 const login = document.querySelectorAll('.login');
 const mostLiked = document.querySelector('#most-liked');
 const mostCommented = document.querySelector('#most-commented');
+const getAll = document.querySelector('#getAll');
 const forumArticle = document.querySelector('.forumArticle');
 const post = document.querySelector("#forum-post");
 const section = document.querySelector("section");
@@ -47,6 +48,10 @@ mostLiked.addEventListener('click', () => {
 
 mostCommented.addEventListener('click', () => {
   getPost('/forum/posts/mostcommented');
+});
+
+getAll.addEventListener('click', () => {
+  getPost('/forum/posts/');
 });
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
