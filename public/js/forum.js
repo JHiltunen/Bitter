@@ -152,7 +152,15 @@ const createPostView = async (posts) => {
 
     const likeIcon = document.createElement("i");
     likeIcon.classList.add("fa");
-    likeIcon.classList.add("fa-heart-o");
+    likeIcon.classList.add("fa-thumbs-o-up");
+
+    const dislikes = document.createElement("span");
+    dislikes.classList.add("dislikes");
+    dislikes.innerHTML = post.dislikes;
+
+    const dislikeIcon = document.createElement("i");
+    dislikeIcon.classList.add("fa");
+    dislikeIcon.classList.add("fa-thumbs-o-down");
 
     // div for comment section
     const commentContainer = document.createElement("div");
@@ -160,24 +168,30 @@ const createPostView = async (posts) => {
     commentsList.classList.add("comments");
 
     // add like icon and number of likes to post
-    card.appendChild(likeIcon);
     card.appendChild(likes);
+    card.appendChild(likeIcon);
+    card.appendChild(dislikes);
+    card.appendChild(dislikeIcon);
 
     if (sessionStorage.getItem("token")) {
       console.log("User: ", user);
-      if (user.userId === post.liked) {
-        likeIcon.classList.remove("fa-heart-o");
-        likeIcon.classList.add("fa-heart");
+      if (post.userLiked !== null && post.userLiked.includes(user.userId)) {
+        likeIcon.classList.remove("fa-thumbs-o-up");
+        likeIcon.classList.add("fa-thumbs-up");
+      }
+
+      if (post.userDisliked !== null && post.userDisliked.includes(user.userId)) {
+        dislikeIcon.classList.remove("fa-thumbs-o-down");
+        dislikeIcon.classList.add("fa-thumbs-down");
       }
 
       likeIcon.addEventListener("click", async (event) => {
+        event.preventDefault();
         console.log(event);
         // add like
-        if (likeIcon.classList.contains("fa-heart-o")) {
-          event.preventDefault();
-          console.log("click");
+        if (likeIcon.classList.contains("fa-thumbs-o-up")) {
           try {
-            const data = { postId: post.postId, userId: user.userId };
+            const data = { postId: post.postId, userId: user.userId, liked: true};
             const fetchOptions = {
               method: "POST",
               headers: {
@@ -197,20 +211,15 @@ const createPostView = async (posts) => {
             console.log("Response: ", json);
 
             if (response.status == 200) {
-              likeIcon.classList.remove("fa-heart-o");
-              likeIcon.classList.add("fa-heart");
+              likeIcon.classList.remove("fa-thumbs-o-up");
+              likeIcon.classList.add("fa-thumbs-up");
               getPost();
             }
           } catch (e) {
             console.log("Error on addLike submit: ", e.message);
           }
           return;
-        }
-
-        // delete like
-        if (likeIcon.classList.contains("fa-heart")) {
-          event.preventDefault();
-          console.log("click");
+        } else if (likeIcon.classList.contains("fa-thumbs-up")) {
           try {
             const data = { postId: post.postId, userId: user.userId };
             const fetchOptions = {
@@ -232,8 +241,8 @@ const createPostView = async (posts) => {
             console.log("Response: ", json);
 
             if (response.status == 200) {
-              likeIcon.classList.remove("fa-heart");
-              likeIcon.classList.add("fa-heart-o");
+              likeIcon.classList.remove("fa-thumbs-up");
+              likeIcon.classList.add("fa-thumbs-o-up");
               getPost();
             }
           } catch (e) {
@@ -242,6 +251,72 @@ const createPostView = async (posts) => {
           return;
         }
         return;
+      });
+
+      dislikeIcon.addEventListener('click', async (event) => {
+        event.preventDefault();
+        // add dislike
+        if (dislikeIcon.classList.contains("fa-thumbs-o-down")) {
+          try {
+            const data = { postId: post.postId, userId: user.userId };
+            const fetchOptions = {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+              body: JSON.stringify(data),
+            };
+            console.log("Fetchoptions: ", fetchOptions);
+
+            const response = await fetch(
+              url + "/forum/post/" + post.postId + "/dislikes/",
+              fetchOptions
+            );
+            console.log("Response:", response);
+            const json = await response.json();
+            console.log("Response: ", json);
+
+            if (response.status == 200) {
+              dislikeIcon.classList.remove("fa-thumbs-o-down");
+              dislikeIcon.classList.add("fa-thumbs-down");
+              getPost();
+            }
+          } catch (e) {
+            console.log("Error on addLike submit: ", e.message);
+          }
+          return;
+        } else if (dislikeIcon.classList.contains("fa-thumbs-down")) {
+          try {
+            const data = { postId: post.postId, userId: user.userId };
+            const fetchOptions = {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+              body: JSON.stringify(data),
+            };
+            console.log("Fetchoptions: ", fetchOptions);
+
+            const response = await fetch(
+              url + "/forum/post/" + post.postId + "/dislikes/",
+              fetchOptions
+            );
+            console.log("Response:", response);
+            const json = await response.json();
+            console.log("Response: ", json);
+
+            if (response.status == 200) {
+              dislikeIcon.classList.remove("fa-thumbs-down");
+              dislikeIcon.classList.add("fa-thumbs-o-down");
+              getPost();
+            }
+          } catch (e) {
+            console.log("Error on addLike submit: ", e.message);
+          }
+          return;
+        }
       });
 
       const editIcon = document.createElement("i");

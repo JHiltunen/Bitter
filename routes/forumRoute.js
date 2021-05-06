@@ -19,12 +19,16 @@ router.route('/post')
 ], postController.create_post);
 
 router.route('/post/:id')
-    .put(passport.authenticate('jwt', {session: false}), postController.edit_post)
-    .delete(passport.authenticate('jwt', {session: false}), postController.post_delete);
+  .put(passport.authenticate('jwt', {session: false}), postController.edit_post)
+  .delete(passport.authenticate('jwt', {session: false}), postController.post_delete);
 
 router.route('/post/:id/likes/')
-    .post(passport.authenticate('jwt', {session: false}), postController.insert_like)
-    .delete(passport.authenticate('jwt', {session: false}), postController.delete_like);
+  .post(passport.authenticate('jwt', {session: false}), postController.insert_like)
+  .delete(passport.authenticate('jwt', {session: false}), postController.delete_like);
+
+router.route('/post/:id/dislikes/')
+  .post(passport.authenticate('jwt', {session: false}), postController.insert_dislike)
+  .delete(passport.authenticate('jwt', {session: false}), postController.delete_dislike);
 
 router.route('/postComment')
   .post(passport.authenticate('jwt', {session: false}),
