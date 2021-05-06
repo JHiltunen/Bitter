@@ -401,8 +401,8 @@ const createPostView = async (posts) => {
           );
           const json = await response.json();
           console.log("delete response", json);
-          closeModal();
           getPost('/forum/posts');
+          closeModal();
         } catch (e) {
           console.log(e.message);
         }
