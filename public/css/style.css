@@ -698,11 +698,29 @@ input.login {
 @media only screen and (max-width: 1780px) {
     .main-page-container {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: column;
+        align-items: center;
     }
-
     .aside {
         background: #5cb85c;
+        height: 2em;
+        width: 620px;
+        position: sticky;
+        position: -webkit-sticky;
+        color: black;
+        top: 2.6em;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .tabs:nth-child(2) {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+    .tabs {
+        padding: 20px;
     }
 }
 
