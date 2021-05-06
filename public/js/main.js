@@ -48,7 +48,8 @@ registerForm.addEventListener('submit', async (evt) => {
   if (json.errors === undefined || json.errors.length == 0) {
     // save token
     sessionStorage.setItem('token', json.token);
-    logOut.style.display = 'block';
+    logOut[0].style.display = 'none';
+    logOut[1].style.display = 'none';
     window.location.href = url + "/forum.html";
   } else {
     loginError.innerHTML = JSON.stringify(json.errors);
