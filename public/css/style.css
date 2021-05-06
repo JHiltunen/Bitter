@@ -439,6 +439,10 @@ i:hover {
     background: #a8bee2;
 }
 
+#forum-post {
+    display: none;
+}
+
 /** POSTS LAYOUT **/
 .img {
     background-color: #aaa;
