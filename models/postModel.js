@@ -13,6 +13,16 @@ const getAllPosts = async () => {
   }
 };
 
+const getFiveMostLikedPosts = async () => {
+  try {
+    const [rows] = await promisePool.execute('SELECT posts.postId, posts.title, posts.content, posts.image, posts.userId, posts.vst, users.firstname, users.lastname, COUNT(CASE WHEN liked = 1 THEN 1 END) AS likes, GROUP_CONCAT(CASE WHEN liked=true THEN likes.userId END SEPARATOR \',\') AS userLiked, COUNT(CASE WHEN disliked = 1 THEN 1 END) AS dislikes, GROUP_CONCAT(CASE WHEN disliked=true THEN likes.userId END SEPARATOR \',\') AS userDisliked FROM posts LEFT JOIN users ON posts.userId = users.userId LEFT JOIN likes ON posts.postId = likes.postId GROUP BY posts.postID ORDER BY likes DESC LIMIT 5;');
+    return rows;
+  } catch (e) {
+    console.error('postModel:', e.message);
+    logger.error(`Error on postModel.getFiveMostLikedPosts function while fetching database ${e}`);
+  }
+}
+
 const getComments = async (id) => {
   try {
     const [rows] = await promisePool.execute('SELECT comments.comment, comments.vst, users.firstname, users.lastname FROM comments INNER JOIN users ON users.userId = comments.userId WHERE postId = ?', [id]);
@@ -99,6 +109,7 @@ const deleteLike = async (like) => {
 
 module.exports = {
   getAllPosts,
+  getFiveMostLikedPosts,
   getComments,
   createPost,
   deletePost,

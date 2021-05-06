@@ -722,6 +722,10 @@ input.login {
     .tabs {
         padding: 20px;
     }
+
+    .tabs:hover {
+        cursor: pointer;
+    }
 }
 
 
