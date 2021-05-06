@@ -36,9 +36,18 @@
 <div class="main-page-container">
 <aside class="aside" id="tab">
     <h2 id="aside-h2">Sort posts</h2>
-    <div class="tabs" id="most-liked">Most liked </div>
-    <div class="tabs" id="most-commented">Most commented</div>
-    <div class="tabs" id="getAll">Get all</div>
+    <div class="tabs">
+        <div id="most-liked">Most liked</div>
+        <i class="fa fa-thumbs-up fa-fw aside-icons"></i>
+    </div>
+    <div class="tabs">
+        <div id="most-commented">Most commented</div>
+        <i class="fa fa-comments fa-fw aside-icons"></i>
+    </div>
+    <div class="tabs">
+        <div id="getAll">Get all</div>
+        <i class="fa fa-list-alt fa-fw aside-icons"></i>
+    </div>
 </aside>
 <div class="forumArticle">
     <form class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
