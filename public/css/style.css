@@ -432,7 +432,7 @@ input.login {
 
 /** DISCUSSION FORUM  **/
 .forumArticle {
-    background: #a8bee2;
+    background: #266DD3;
 }
 
 /** POSTS LAYOUT **/
@@ -677,6 +677,35 @@ input.login {
 .fa {
     font-size: xx-large;
 }
+.aside {
+    height: 10em;
+    width: 11em;
+    background-color: #f5f5f5;
+    position: sticky;
+    position: -webkit-sticky;
+    color: black;
+    right: 12em;
+    top: 2.6em;
+}
+.aside-list {
+    list-style: none;
+}
+.main-page-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 1780px) {
+    .main-page-container {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .aside {
+        background: #5cb85c;
+    }
+}
+
 
 /** DESKTOP VIEW! **/
 @media only screen and (min-width: 680px) {
@@ -752,9 +781,10 @@ input.login {
     .navHead {
         display: flex;
         flex-direction: row;
-        width: 680px;
+        width: 620px;
         margin: auto;
         justify-content: flex-end;
+        margin: auto 0 0 11.58em;
     }
     .navH2{
         margin-right: auto;
@@ -794,7 +824,7 @@ input.login {
     /** FORUM **/
 
     .forumArticle {
-        width: 680px;
+        width: 620px;
         margin: auto;
     }
     .loginArticle {

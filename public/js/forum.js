@@ -105,6 +105,50 @@ post.addEventListener("submit", async (evt) => {
   getPost();
 });
 
+/** MediaQuery tabs **/
+function asTabs(node) {
+  let nav = document.createElement("nav");
+  let List = document.createElement("ul");
+
+  let tabs = document.querySelectorAll("#tab div");
+  let buttons = [];
+  for (let i = 0; i < tabs.length; i++) {
+    let tab = tabs[i];
+    let li = document.createElement("li");
+    let button = document.createElement("a");
+
+    li.style.display = "inline-block";
+    button.href = "#";
+    buttons.push(button);
+    button.textContent = tab.getAttribute("data-tabname");
+    li.appendChild(button);
+    List.appendChild(li);
+  }
+
+  // adding event listeners
+  buttons.forEach(function(button, display) {
+    button.addEventListener("click", function(event) {
+      for (let i = 0; i < tabs.length; i++) {
+        let tab = tabs[i];
+        if (i === display) {
+          tab.style.display = "inline-block";
+          buttons[i].setAttribute("data-selected", "");
+        } else {
+          tab.style.display = "none";
+          buttons[i].removeAttribute("data-selected");
+        }
+      }
+    });
+  });
+
+  nav.appendChild(List);
+  let tab = document.querySelector("#tab");
+  document.body.insertBefore(nav, tab);
+}
+asTabs(document.querySelector("#tab"));
+
+
+
 // create post view
 const createPostView = async (posts) => {
   console.log("Posts: ", posts);

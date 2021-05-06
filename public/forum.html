@@ -35,23 +35,30 @@
         </div>
     </nav>
 </header>
+<div class="main-page-container">
+<aside class="aside" id="tab">
+    <div data-tabname="one">tab one</div>
+    <div data-tabname="two">tab two</div>
+    <div data-tabname="three">tab three</div>
+</aside>
 <div class="forumArticle">
-    <form novalidate class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
+    <form class="post" id="forum-post" action="/user/post" method="POST" enctype="multipart/form-data">
         <textarea name="title" class="post-title" placeholder="Title" required></textarea>
         <textarea name="content" class="post-content" placeholder="Type your message here..." required></textarea>
         <div class="attachments-send">
             <input type="file" name="image" id="image" class="post-file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime,video/webm">
             <input type="submit" class="post-button" id="post-btn" value="Send">
-            </div>
-            <div class="image-preview" id="imagePreview">
-                <img src="" alt="Image preview" class="image-preview-image">
-                <span class="image-preview-default-text">Image Preview</span>
-            </div>
+        </div>
+        <div class="image-preview" id="imagePreview">
+            <img src="" alt="Image preview" class="image-preview-image">
+            <span class="image-preview-default-text">Image Preview</span>
+        </div>
     </form>
     <div class="hide modal" id="image-modal">
         <a href="#" class="close">Close</a>
         <img src="" alt="">
     </div>
+
     <section class="post-article">
 
         <!-- Posts comes here!    -->
@@ -60,28 +67,27 @@
     <!-- The Modal -->
     <div id="editPostModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>Edit post</h2>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Edit post</h2>
+            </div>
+            <div class="modal-body">
+                <form id="updatePost" action="/update-post/" method="PUT" name="updatePostForm" enctype="multipart/form-data">
+                    <input type="text" name="title" id="updateTitle">
+                    <input type="text" name="content" id="updateContent">
+                    <input type="hidden" name="postId" id="postId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="deletePost">Delete post</button>
+                <button type="submit" id="saveChanges">Save changes</button>
+                </form>
+            </div>
         </div>
-        <div class="modal-body">
-        <form id="updatePost" action="/update-post/" method="PUT" name="updatePostForm" enctype="multipart/form-data">
-            <input type="text" name="title" id="updateTitle">
-            <input type="text" name="content" id="updateContent">
-            <input type="hidden" name="postId" id="postId">
-        </div>
-        <div class="modal-footer">
-            <button type="button" id="deletePost">Delete post</button>
-            <button type="submit" id="saveChanges">Save changes</button>
-        </form>
-        </div>
-    </div>
-
     </div>
 </div>
-
+</div>
 <footer class="mainFooter" id="forumFooter">
     <p class="footerP">© 2021 by Bitter</p>
     <p class="footerP">Need help? Please fill the form to Contact Us!</p>
@@ -91,7 +97,6 @@
         <textarea name="message" placeholder="Type your message here..." required></textarea>
         <input type="submit" value="Submit">
     </form>
-
 </footer>
 <script src="js/nav.js"></script>
 <script src="js/serialize.js"></script>
