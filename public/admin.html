@@ -46,13 +46,37 @@
           <th>Firstname</th>
           <th>Lastname</th>
           <th>Email/Username</th>
-          <th>Gender</th>
-          <th>DateOfBirth</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
       </table>
     </section>
+    <div id="editUserModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2>Edit user</h2>
+          </div>
+          <div class="modal-body">
+              <form id="updateUser" action="" method="PUT" name="updateUserForm" enctype="multipart/form-data">
+                  <input type="text" name="firstname" id="updateFirstname" placeholder="Firstname...">
+                  <input type="text" name="lastname" id="updateLastname" placeholder="Lastname">
+                  <input type="email" name="email" id="updateEmail" placeholder="Email">
+                  <select name="gender" id="updateGender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <input type="date" name="dateOfBirth" id="updateDateOfBirth">
+                  <input type="hidden" name="userId" id="userId">
+          </div>
+          <div class="modal-footer">
+              <button type="button" id="deletePost">Delete</button>
+              <button type="submit" id="saveChanges">Save</button>
+              </form>
+          </div>
+      </div>
+  </div>
     <script src="js/nav.js"></script>
     <script src="js/admin.js"></script>
   </body>

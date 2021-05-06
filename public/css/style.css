@@ -584,7 +584,7 @@ i:hover {
 
 /** Modal **/
 /* The Modal (background) */
-#editPostModal {
+#editPostModal, #editUserModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */

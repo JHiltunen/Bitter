@@ -2,6 +2,13 @@
 const url = 'https://localhost:8001'; // change url when uploading to server
 const infoTable = document.querySelector('#dataTable');
 const tbody = document.querySelector('tbody');
+const modal = document.querySelector('#editUserModal'); // Get the modal
+// edit
+const updateFirstname = document.querySelector('#updateFirstname');
+const updateLastname = document.querySelector('#updateLastname');
+const updateEmail = document.querySelector('#updateEmail');
+const updateGender = document.querySelector('#updateGender');
+const updateDateOfBirth = document.querySelector('#updateDateOfBirth');
 
 const getInfo = async () => {
   try {
@@ -32,14 +39,6 @@ const createTable = (users) => {
     const email = document.createElement('td');
     email.classList.add('td');
     email.innerHTML = `${user.email}`;
-    
-    const gender = document.createElement('td');
-    gender.classList.add('td');
-    gender.innerHTML = `${user.gender}`;
-    
-    const dateOfBirth = document.createElement('td');
-    dateOfBirth.classList.add('td');
-    dateOfBirth.innerHTML = `${user.dateOfBirth}`;
 
     const editField = document.createElement('td');
     editField.classList.add('td');
@@ -49,11 +48,20 @@ const createTable = (users) => {
     
     editField.appendChild(editIcon);
 
+    editIcon.addEventListener('click', () => {
+      modal.style.display = 'block';
+      updateFirstname.value = user.firstname;
+      updateLastname.value = user.lastname;
+      updateEmail.value = user.email;
+      updateGender.value = user.gender;
+      updateDateOfBirth.value = user.dateOfBirth.split('T')[0];
+    });
+
     const deleteField = document.createElement('td');
     deleteField.classList.add('td');
     const deleteIcon = document.createElement('i');
     deleteIcon.classList.add('fa');
-    deleteIcon.classList.add('fa-edit');
+    deleteIcon.classList.add('fa-trash');
     
     deleteField.appendChild(deleteIcon);
 
@@ -63,12 +71,21 @@ const createTable = (users) => {
     tr.appendChild(firstname);
     tr.appendChild(lastname);
     tr.appendChild(email);
-    tr.appendChild(gender);
-    tr.appendChild(dateOfBirth);
     tr.appendChild(editField);
-    tr.appendChild(deleteIcon);
+    tr.appendChild(deleteField);
     tbody.appendChild(tr)
 
   });
 }
 getInfo();
+
+const closeModal = () => {
+  modal.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', (event) => {
+  if (event.target == modal) {
+    closeModal();
+  }
+});
