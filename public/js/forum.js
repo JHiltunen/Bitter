@@ -3,6 +3,7 @@ const url = "https://localhost:8001"; // change url when uploading to server
 const logOut = document.querySelectorAll('.log-out');
 const login = document.querySelectorAll('.login');
 const mostLiked = document.querySelector('#most-liked');
+const mostCommented = document.querySelector('#most-commented');
 const forumArticle = document.querySelector('.forumArticle');
 const post = document.querySelector("#forum-post");
 const section = document.querySelector("section");
@@ -42,6 +43,10 @@ const getUserId = async () => {
 
 mostLiked.addEventListener('click', () => {
   getPost('/forum/posts/mostliked');
+});
+
+mostCommented.addEventListener('click', () => {
+  getPost('/forum/posts/mostcommented');
 });
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users

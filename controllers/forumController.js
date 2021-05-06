@@ -21,8 +21,14 @@ const get_five_most_liked_posts = async (req, res) => {
   res.json(mostLikedPosts);
 }
 
+const get_five_most_commented_posts = async (req, res) => {
+  const mostCommentedPosts = await postModel.getFivePostsWithMostComments();
+  res.json(mostCommentedPosts);
+}
+
 module.exports = {
   post_list_get,
   comment_list_get,
   get_five_most_liked_posts,
+  get_five_most_commented_posts,
 };
