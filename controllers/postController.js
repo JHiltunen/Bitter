@@ -5,6 +5,7 @@ const commentModel = require('../models/commentModel');
 const {makeThumbnail} = require('../utils/resize');
 const {validationResult} = require('express-validator');
 const logger = require('../utils/winston');
+const imageMeta = require('../utils/imageMeta');
 
 const make_thumbnail = async (req, res, next) => {
   try {
@@ -42,18 +43,27 @@ const create_post = async (req, res, next) => {
       } else {
         // check if there is file attached
         let postFile;
+        let coords;
         if (req.file) {
           logger.info(`File selected: ${req.file.filename}`);
           postFile = req.file.filename;
+          coords = await imageMeta.getCoordinates(req.file.path);
         } else {
           postFile = "No Image";
+          coords = 'No Coords';
           logger.info('No file selected');
         }
+
+        if (!coords) {
+          coords = 'No Coords';
+        }
+        
         // create post object to store data
         const post = [
           req.body.title,
           req.body.content,
           postFile,
+          coords,
           req.user.userId,
         ];
         logger.info(`Post to be created: ${JSON.stringify(post)}`);
