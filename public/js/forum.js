@@ -145,8 +145,9 @@ const createPostView = async (posts) => {
     content.classList.add('content-text');
     content.innerHTML = `${post.content}`;
 
-    card.appendChild(title);
     card.appendChild(postAuthor);
+    card.appendChild(title);
+
     card.appendChild(content);
 
     if (post.image !== 'No Image') {
