@@ -39,8 +39,20 @@ const updateUser = async (user) => {
   }
 };
 
+const deleteUser = async (user) => {
+  try {
+    const [rows] = await promisePool.execute(`DELETE FROM users WHERE users.userId=?`, user);
+    logger.info(`Delete user on database: ${JSON.stringify(rows)}`);
+    return rows;
+  } catch (e) {
+    logger.error(`Error on adminModel.deleteUser function while fetching database: ${e}`);
+    console.error('error', e.message);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getAllUsersSort,
   updateUser,
+  deleteUser,
 };

@@ -10,4 +10,7 @@ router.route('/users/')
 router.route('/update-user/:id')  
   .put(adminController.update_user);
 
+router.route('/delete-user/:id')
+  .delete(adminController.delete_user);
+
 module.exports = router;

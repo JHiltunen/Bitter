@@ -69,6 +69,28 @@ const createTable = (users) => {
     
     deleteField.appendChild(deleteIcon);
 
+    deleteIcon.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const fetchOptions = {
+        method: 'DELETE',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      try {
+        const response = await fetch(
+          url + '/admin/delete-user/' + user.userId,
+          fetchOptions
+        );
+        const json = await response.json();
+        console.log("delete response", json);
+        getInfo();
+        closeModal();
+      } catch (e) {
+        console.log(e.message);
+      }
+    });
+
     const tr = document.createElement('tr');
     tr.classList.add('tr');
 

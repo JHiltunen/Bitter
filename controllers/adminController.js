@@ -34,7 +34,25 @@ const update_user = async (req, res) => {
   }
 }
 
+const delete_user = async (req, res) => {
+  console.log('delete user', req.user);
+  console.log('UserId: ', req.user.userId);
+  console.log('Req params: ', req.params.id);
+  if (req.user.userId != req.params.id && req.user.name === 'Admin') {
+
+    const user = [
+      req.params.id,
+    ];
+
+    const deleteUser = await adminModel.deleteUser(user);
+    res.json(deleteUser);
+  } else {
+    res.send('Not allowed to delete current user!').status(403)
+  }
+}
+
 module.exports = {
   user_list_get,
   update_user,
+  delete_user,
 };
