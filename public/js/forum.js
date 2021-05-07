@@ -373,7 +373,7 @@ const createPostView = async (posts) => {
 
           console.log('Fetchoptions: ', fetchOptions);
           const response = await fetch(
-            url + '/forum/post/:id' + data.postId,
+            url + '/forum/post/' + data.postId,
             fetchOptions
           );
           console.log(response);

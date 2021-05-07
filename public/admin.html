@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit User Information</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navHead">
+          <span style="font-size: 30px; cursor: pointer" id="openBtn"
+            >&#9776;</span
+          >
+          <a href="index.html" class="navH2"><h2>Bitter</h2></a>
+          <a href="index.html" class="headLinks">Home</a>
+          <a href="forum.html" class="headLinks">Forum</a>
+          <a href="login.html" class="headLinks login">Login</a>
+          <a href="#" class="headLinks log-out">Logout</a>
+          <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+              >&times;</a
+            >
+            <div class="overlay-content">
+              <a href="login.html" class="login">Login</a>
+              <a href="index.html">Home</a>
+              <a href="forum.html">Forum</a>
+              <a href="#" class="log-out">Logout</a>
+              <footer class="navFooter">
+                <p>Bitter © 2021</p>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="editArticle">
+      <h2 class="edit">Edit user information</h2>
+      <table>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email/Username</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+    </section>
+    <div id="editUserModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2>Edit user</h2>
+          </div>
+          <div class="modal-body">
+              <form id="updateUser" action="" method="PUT" name="updateUserForm" enctype="multipart/form-data">
+                  <input type="text" name="firstname" id="updateFirstname" placeholder="Firstname...">
+                  <input type="text" name="lastname" id="updateLastname" placeholder="Lastname">
+                  <input type="email" name="email" id="updateEmail" placeholder="Email">
+                  <select name="gender" id="updateGender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <input type="date" name="dateOfBirth" id="updateDateOfBirth">
+                  <input type="hidden" name="userId" id="userId">
+          </div>
+          <div class="modal-footer">
+              <button type="button" id="deletePost">Delete</button>
+              <button type="submit" id="saveChanges">Save</button>
+              </form>
+          </div>
+      </div>
+  </div>
+    <script src="js/nav.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/serialize.js"></script>
+  </body>
+</html>
