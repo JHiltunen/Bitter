@@ -1,5 +1,5 @@
 'use strict';
-const url = 'https://localhost:8001'; // change url when uploading to server
+const url = 'https://10.114.32.106/bitter'; // change url when uploading to server
 const infoTable = document.querySelector('#dataTable');
 const tbody = document.querySelector('tbody');
 const modal = document.querySelector('#editUserModal'); // Get the modal

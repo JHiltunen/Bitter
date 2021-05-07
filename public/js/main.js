@@ -1,5 +1,5 @@
 'use strict';
-const url = 'https://localhost:8001'; // change url when uploading to server
+const url = 'https://10.114.32.106/bitter'; // change url when uploading to server
 const logOut = document.querySelectorAll('.log-out');
 const login = document.querySelectorAll('.login');
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users

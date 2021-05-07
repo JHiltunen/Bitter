@@ -1091,6 +1091,7 @@ table {
     .forumArticle {
         width: 620px;
         margin: auto;
+	margin-top: 4em;
     }
 
     .loginArticle {
@@ -1125,7 +1126,7 @@ table {
 
     /** POSTS **/
     .post {
-        margin-top: 4.5rem;
+        margin-top: -2.5rem;
         font-size: 0.6em;
 
     }

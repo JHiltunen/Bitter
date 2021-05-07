@@ -1,10 +1,10 @@
 'use strict';
-const url = 'https://localhost:8001'; // change url when uploading to server
+const url = 'https://10.114.32.106/bitter'; // change url when uploading to server
 const logOut = document.querySelectorAll('.log-out');
 const login = document.querySelectorAll('.login');
-const mostLiked = document.querySelector('#most-liked');
-const mostCommented = document.querySelector('#most-commented');
-const getAll = document.querySelector('#getAll');
+const mostLiked = document.querySelector('.most-liked');
+const mostCommented = document.querySelector('.most-commented');
+const getAll = document.querySelector('.getAll');
 const forumArticle = document.querySelector('.forumArticle');
 const post = document.querySelector('#forum-post');
 const section = document.querySelector('.post-article');

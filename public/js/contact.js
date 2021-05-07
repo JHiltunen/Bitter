@@ -1,5 +1,5 @@
 'use strict';
-const url = 'https://localhost:8001'; // change url when uploading to server
+const url = 'https://10.114.32.106/bitter'; // change url when uploading to server
 const contactForm = document.querySelector('#contact-form');
 
 // submit contactForm
