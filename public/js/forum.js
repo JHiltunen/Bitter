@@ -145,8 +145,9 @@ const createPostView = async (posts) => {
     content.classList.add('content-text');
     content.innerHTML = `${post.content}`;
 
-    card.appendChild(title);
     card.appendChild(postAuthor);
+    card.appendChild(title);
+
     card.appendChild(content);
 
     if (post.image !== 'No Image') {
@@ -170,6 +171,7 @@ const createPostView = async (posts) => {
     const likeIcon = document.createElement('i');
     likeIcon.classList.add('fa');
     likeIcon.classList.add('fa-thumbs-o-up');
+    likeIcon.classList.add('post-icon-like');
 
     const dislikes = document.createElement('span');
     dislikes.classList.add('dislikes');
@@ -178,6 +180,7 @@ const createPostView = async (posts) => {
     const dislikeIcon = document.createElement('i');
     dislikeIcon.classList.add('fa');
     dislikeIcon.classList.add('fa-thumbs-o-down');
+    dislikeIcon.classList.add('post-icon-dislike');
 
     // div for comment section
     const commentContainer = document.createElement('div');
@@ -197,6 +200,7 @@ const createPostView = async (posts) => {
         const editIcon = document.createElement('i');
         editIcon.classList.add('fa');
         editIcon.classList.add('fa-edit');
+        editIcon.classList.add('post-editIcon');
 
         editIcon.addEventListener('click', () => {
           console.log('Edit post: ', post.postId);

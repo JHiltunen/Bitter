@@ -799,20 +799,68 @@ aside {
     font-size: 1.6em;
 }
 .tabs {
-
     text-align: center;
     margin: auto;
-    padding: 0 13px 0;
+    width: 100%;
+    border: none;
+    font-size: 1em;
+    height: 100%;
+    padding: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .tabs:nth-child(3) {
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border-right: 1px solid #bbb;
+    border-left: 1px solid #bbb;
 }
 #aside-h2 {
     display: none;
 }
 .commentInput {
     font-size: 0.6em;
+}
+#most-liked {
+    display: none;
+}
+#most-commented {
+    display: none;
+}
+#getAll {
+    display: none;
+}
+.aside-icons {
+
+}
+.commentForm {
+    border-bottom: 1px solid #bbb;
+    padding: 0 0 0.4em 0;
+    width: 23em;
+}
+.comments h6 {
+    margin-top: 0.3em;
+    font-size: 0.9em;
+}
+.comments p {
+    border-bottom: 1px solid #bbb;
+    width: 23em;
+    padding: 0.3em 0em;
+}
+.post-icon-like:hover {
+    color: #266DD3;
+}
+.post-icon-dislike {
+    padding: 0 0.3em;
+}
+.post-icon-like {
+    padding: 0 0.3em;
+}
+.post-editIcon:hover {
+    color: #266DD3;
+}
+.post-icon-dislike:hover {
+    color: red;
 }
 
 table {
@@ -827,41 +875,93 @@ table {
     .postCommentButton {
         font-size: 0.6em;
     }
+    .postCommentButton:hover {
+        color: white;
+        background: #266DD3;
+    }
+    .commentForm {
+        border-bottom: 1px solid #bbb;
+        padding: 0 0 0.4em 0;
+        width: 14em;
+    }
+    .comments {
+        font-size: 0.6em;
+        word-break: break-all;
+
+        /* Non standard for webkit */
+
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+
+    }
+    .comments p {
+        border-bottom: 1px solid #bbb;
+        width: 23em;
+        padding: 0.3em 0em;
+    }
     html {
         background: #266DD3;
     }
     /** aside **/
     .main-page-container {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: column;
         justify-content: center;
     }
     .aside {
-        height: 10em;
-        width: 11em;
-        background-color: #f5f5f5;
-        position: sticky;
-        position: -webkit-sticky;
+        height: 2.5em;
+        width: 620px;
         color: black;
-        top: 1.95em;
-        margin-right: -2em;
-        margin-left: 1em;
-        margin-top: 4.5rem;
-        flex-direction: column;
+        top: 2em;
+        flex-direction: row;
         display: flex;
-        align-items: center;
         font-size: 1.6em;
-        justify-content: normal;
+        margin: auto;
+        position: relative;
+        border: 1px solid #bbb;
     }
-    .tabs {
-        margin: 0;
+    #most-liked {
+        display: none;
     }
-    .tabs:nth-child(2) {
-        border: 1px solid black;
+    #most-commented {
+        display: none;
+    }
+    #getAll {
+        display: none;
     }
     .tabs {
         width: 100%;
-        border: 1px solid black;
+        display: flex;
+        flex-direction: row-reverse;
+        border: none;
+        justify-content: center;
+        font-size: 1em;
+        height: 100%;
+        padding: 1em;
+        cursor: pointer;
+    }
+    .tabs:nth-child(3) {
+        border-top: none;
+        border-bottom: none;
+        border-left: 1px solid #bbb;
+        border-right: 1px solid #bbb;
+    }
+    #aside-h2 {
+       display: none;
+    }
+    .tabs:hover {
+        background: #266DD3;
+        color: #f5f5f5;
+    }
+    .tabs:hover .aside-icons {
+        color: #f5f5f5;
+    }
+    .aside-icons {
+        display: flex;
+        align-self: center;
+        color: #266DD3;
     }
     .gender {
         width: 7rem;
@@ -874,7 +974,7 @@ table {
         margin-left: 11px;
         padding: 0 0 0 8px;
     }
-  
+
     .navbar {
         top: 0;
         z-index: 100;
@@ -990,6 +1090,7 @@ table {
     /** FORUM **/
     .forumArticle {
         width: 620px;
+        margin: auto;
     }
 
     .loginArticle {
@@ -1163,4 +1264,3 @@ table {
         align-self: flex-start;
     }
 }
-
