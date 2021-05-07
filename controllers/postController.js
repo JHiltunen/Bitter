@@ -98,7 +98,7 @@ const edit_post = async (req, res, next) => {
         const post = [
           req.body.title,
           req.body.content,
-          req.body.postId,
+          req.params.id,
           req.user.userId,
         ];
         logger.info(`Edit to be created: ${JSON.stringify(post)}`);

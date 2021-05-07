@@ -48,7 +48,7 @@ const createPost = async (post) => {
     console.log('Row 72:', post);
     logger.info(`createPost post: ${JSON.stringify(post)}`);
     const [rows] = await promisePool.execute(
-        'INSERT INTO posts (title, content, image, likes, dislikes, coords, userId, vst) VALUES (?, ?, ?, 0, 0, ?, ?, now())', post);
+        'INSERT INTO posts (title, content, image, coords, userId, vst) VALUES (?, ?, ?, ?, ?, now())', post);
     logger.info(`createPost : ${JSON.stringify(rows)}`);
     return rows;
   } catch (e) {
@@ -61,7 +61,7 @@ const deletePost = async (post) => {
   try {
     console.log('postModel deletePost', post);
     const [rows] = await promisePool.execute('DELETE FROM posts WHERE postId = ?', post);
-    return rows.affectedRows === 1;
+    return rows;
   } catch (e) {
     console.error('postModel:', e.message);
   }
