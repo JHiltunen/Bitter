@@ -833,7 +833,35 @@ aside {
 .aside-icons {
 
 }
-
+.commentForm {
+    border-bottom: 1px solid #bbb;
+    padding: 0 0 0.4em 0;
+    width: 23em;
+}
+.comments h6 {
+    margin-top: 0.3em;
+    font-size: 0.9em;
+}
+.comments p {
+    border-bottom: 1px solid #bbb;
+    width: 23em;
+    padding: 0.3em 0em;
+}
+.post-icon-like:hover {
+    color: #266DD3;
+}
+.post-icon-dislike {
+    padding: 0 0.3em;
+}
+.post-icon-like {
+    padding: 0 0.3em;
+}
+.post-editIcon:hover {
+    color: #266DD3;
+}
+.post-icon-dislike:hover {
+    color: red;
+}
 
 /** DESKTOP VIEW! **/
 @media only screen and (min-width: 680px) {
@@ -842,6 +870,32 @@ aside {
     }
     .postCommentButton {
         font-size: 0.6em;
+    }
+    .postCommentButton:hover {
+        color: white;
+        background: #266DD3;
+    }
+    .commentForm {
+        border-bottom: 1px solid #bbb;
+        padding: 0 0 0.4em 0;
+        width: 14em;
+    }
+    .comments {
+        font-size: 0.6em;
+        word-break: break-all;
+
+        /* Non standard for webkit */
+
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+
+    }
+    .comments p {
+        border-bottom: 1px solid #bbb;
+        width: 23em;
+        padding: 0.3em 0em;
     }
     html {
         background: #266DD3;
